@@ -11,7 +11,7 @@ The data come from [ObsAwareData](https://github.com/DMA-PRIME/ObsAwareData) (CC
 | Stage | Contents | State |
 |---|---|---|
 | A1 | Data tools and MCP server | Done |
-| A2 | Retrieval over data documentation, with a retrieval evaluation | Retrieval done; answer comparison in progress |
+| A2 | Retrieval over data documentation; retrieval versus whole corpus in context | Done |
 | A3 | Agent that answers trend and reliability questions, with a task evaluation | Planned |
 | B1 | Real-time forecasting benchmark on as-of data | Planned |
 | B2 | Fine-tuned small model for tool calling | Planned |
@@ -72,7 +72,19 @@ Retrieval was evaluated on a hand-reviewed set of 40 questions, each with verbat
 
 Hybrid retrieval with reranking found the evidence in the top five for 8 more questions than BM25 and none fewer (sign test p = 0.008). No configuration was reliably better at putting the evidence first. Method, findings, and failure analysis: [`docs/retrieval-eval.md`](docs/retrieval-eval.md).
 
-The whole corpus is about 131,000 tokens and fits in a long-context model, so the next comparison is answers generated from retrieved passages against answers generated from the whole corpus in context: [`docs/answer-eval.md`](docs/answer-eval.md).
+### Retrieval versus the whole corpus in context
+
+The whole corpus is about 131,000 tokens and fits in a long-context model, so retrieval has to earn its place. The same generator (`gemma4:31b`, local) answered the 25 held-out questions twice: from the top 5 retrieved chunks, and from all 28 documents in context. An LLM judge from a different model family (`qwen3:235b-thinking`) graded the answers against the reviewed references and the source documents; on 15 answers graded blind by the author, the judge agreed on all 15.
+
+| | Retrieval (top 5) | Whole corpus in context |
+|---|---|---|
+| Correct, of 21 answerable | 17 (18 counting one answer the judge could not grade) | 20 |
+| Unanswerable questions correctly declined | 4 of 4 | 4 of 4 |
+| Facts stated that are not in the corpus | 0 | 0 |
+| Prompt tokens per question (median) | 1,273 | 130,005 |
+| Seconds per question (median, one H100) | 1.7 | 125.5 |
+
+The difference in correctness is not reliable at this sample size (3 questions to 1, p = 0.63). The long-context prompt was about 100 times larger and each answer about 73 times slower; with this model and runtime the shared document prefix could not be reused from cache. Every retrieval error came from the evidence not being retrieved, and in each case the model said the documents did not answer instead of inventing one. Details, judge calibration, and failure analysis: [`docs/answer-eval.md`](docs/answer-eval.md).
 
 ## Data handling
 

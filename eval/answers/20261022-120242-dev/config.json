@@ -1,0 +1,16 @@
+{
+ "split": "dev",
+ "generator": "gemma4:31b",
+ "system_prompt": "You answer questions about US respiratory surveillance data using only the documents provided.\nRules:\n- Use only information stated in the documents. Do not use outside knowledge.\n- If the documents do not answer the question, reply exactly: \"The documents do not answer this question.\"\n- Be concise: one to three sentences.\n- End with one line listing the IDs of the documents you used, in the form: Sources: <id>, <id>",
+ "rag_top_k": 5,
+ "chunk_tokens": 300,
+ "retrieval": "hybrid bm25 + BAAI/bge-m3, rerank BAAI/bge-reranker-v2-m3",
+ "num_ctx": {
+  "rag": 16384,
+  "long_context": 262144
+ },
+ "max_output": 1024,
+ "temperature": 0,
+ "cold_runs": 1,
+ "git_commit": "fa29ee9"
+}

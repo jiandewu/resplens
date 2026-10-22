@@ -1,0 +1,44 @@
+{
+ "rag": {
+  "answerable": 21,
+  "correct": 17,
+  "partial": 1,
+  "incorrect": 2,
+  "judge_failed": 1,
+  "correct_rate": 0.81,
+  "unsupported_rate": 0.048,
+  "abstained_on_unanswerable": "2/4",
+  "wrongly_abstained": 2,
+  "citation_recall": 0.905,
+  "median_prompt_tokens": 1273,
+  "median_seconds": 1.728
+ },
+ "long_context": {
+  "answerable": 21,
+  "correct": 20,
+  "partial": 0,
+  "incorrect": 1,
+  "judge_failed": 0,
+  "correct_rate": 0.952,
+  "unsupported_rate": 0.048,
+  "abstained_on_unanswerable": "2/4",
+  "wrongly_abstained": 0,
+  "citation_recall": 0.952,
+  "median_prompt_tokens": 130005,
+  "median_seconds": 125.506,
+  "cold_seconds": [
+   132.507
+  ]
+ },
+ "long_vs_rag_correct": {
+  "long_only": 4,
+  "rag_only": 1,
+  "sign_test_p": 0.375
+ },
+ "human_agreement": {
+  "scored": 15,
+  "agreement": 1.0,
+  "cohen_kappa": 1.0,
+  "disagreements": []
+ }
+}
