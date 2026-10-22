@@ -1,0 +1,41 @@
+{
+ "config": {
+  "split": "test",
+  "retriever": "hybrid",
+  "chunk_tokens": 300,
+  "embed_model": "BAAI/bge-m3",
+  "query_prefix": "",
+  "doc_prefix": "",
+  "rerank": "BAAI/bge-reranker-v2-m3",
+  "headings": true,
+  "chunks": 998,
+  "git_commit": "035f3ec",
+  "corpus_manifest_sha256": "913342e9b6d4ecec"
+ },
+ "summary": {
+  "questions": 21,
+  "mrr": 0.499,
+  "recall@1": 0.333,
+  "recall@1_ci95": [
+   0.143,
+   0.524
+  ],
+  "recall@3": 0.619,
+  "recall@3_ci95": [
+   0.429,
+   0.81
+  ],
+  "recall@5": 0.857,
+  "recall@5_ci95": [
+   0.714,
+   1.0
+  ],
+  "recall@10": 0.857,
+  "recall@10_ci95": [
+   0.714,
+   1.0
+  ],
+  "latency_ms_p50": 205.83,
+  "latency_ms_p95": 216.1
+ }
+}

@@ -1,0 +1,29 @@
+id,tier,system,kind,title,url
+oad_readme,1,all,obsawaredata,ObsAwareData README,README.md
+oad_data_dictionary,1,all,obsawaredata,ObsAwareData data dictionary,DATA_DICTIONARY.md
+oad_methods,1,all,obsawaredata,ObsAwareData methods,METHODS.md
+oad_data_sources,1,all,obsawaredata,ObsAwareData data sources,DATA_SOURCES.md
+nhsn_hrd_dataset,2,nhsn,socrata,Weekly Hospital Respiratory Data (HRD) Metrics by Jurisdiction,https://data.cdc.gov/api/views/ua7e-t2fy.json
+nhsn_hrd_prelim_dataset,2,nhsn,socrata_description,Weekly Hospital Respiratory Data (HRD) Metrics by Jurisdiction (Preliminary),https://data.cdc.gov/api/views/mpgq-jmmr.json
+nhsn_hrd_hub,2,nhsn,html,Hospital Respiratory Data,https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html
+nhsn_hrd_methods,2,nhsn,html,CDC's Hospital Respiratory Data (HRD) Methodology,https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting/data-methods.html
+nhsn_hrd_protocol,2,nhsn,pdf,Hospital Respiratory Data Reporting Protocol,https://www.cdc.gov/nhsn/pdfs/pscmanual/HRD-Protocol-Final.pdf
+nhsn_hrd_toi,2,nhsn,pdf,Table of Instructions: Hospital Respiratory Data Weekly Reporting (57.101),https://www.cdc.gov/nhsn/pdfs/pscmanual/TOI-HRD-Weekly-Reporting-57.101.pdf
+nhsn_hrd_qa,2,nhsn,pdf,HRD Data Processing and Quality Assurance Reference Guide,https://www.cdc.gov/nhsn/pdfs/HRD-Data-Processing-QA.pdf
+nhsn_hrd_faq,2,nhsn,pdf,Hospital Respiratory Data Reporting: New Resources and FAQs,https://www.cdc.gov/nhsn/psc/Hospital-Respiratory-Data_Reporting-Resources-and-FAQs.pdf
+cms_qso_25_05,2,nhsn,pdf,CMS QSO-25-05: Hospital and CAH respiratory data reporting,https://www.cms.gov/files/document/qso-25-05-hospitals-cahs.pdf
+nssp_dataset,2,nssp,socrata,NSSP Emergency Department Visit Trajectories by State and Sub-State Regions,https://data.cdc.gov/api/views/rdmq-nq56.json
+nssp_companion_guide,2,nssp,html,Companion Guide: NSSP Emergency Department Data on Respiratory Illness,https://www.cdc.gov/nssp/php/onboarding-resources/companion-guide-ed-data-respiratory-illness.html
+nssp_about,2,nssp,html,About NSSP,https://www.cdc.gov/nssp/php/about/index.html
+seer_hsa,2,nssp,html,Health Service Areas (SEER),https://seer.cancer.gov/seerstat/variables/countyattribs/hsa.html
+nwss_wval,2,nwss,html,Using the Wastewater Viral Activity Level,https://www.cdc.gov/wastewater/about/wval.html
+nwss_methods,2,nwss,html,CDC's Wastewater Monitoring Program Data Methodology,https://www.cdc.gov/wastewater/about/data-methods.html
+nwss_about_data,2,nwss,html,About Wastewater Data,https://www.cdc.gov/wastewater/about-data/index.html
+nwss_national,2,nwss,html,National Wastewater Data for Respiratory Viruses,https://www.cdc.gov/wastewater/respiratory-viruses/national.html
+nwss_dataset,2,nwss,socrata,"CDC Wastewater Viral Activity Level for SARS-CoV-2, Influenza A and RSV",https://data.cdc.gov/api/views/atcp-73re.json
+nwss_github,2,nwss,markdown,CDCgov/NWSS README,https://raw.githubusercontent.com/CDCgov/NWSS/master/README.md
+mmwr_ww_ed_wi,2,nwss,html,"MMWR: Wastewater as a complement to ED visit data, influenza A and RSV, Wisconsin 2022–23",https://www.cdc.gov/mmwr/volumes/72/wr/mm7237a2.htm
+mmwr_nwss_coe,2,nwss,html,MMWR: NWSS Centers of Excellence during the 2022–23 respiratory season,https://www.cdc.gov/mmwr/volumes/72/wr/mm7248a4.htm
+resp_faq,2,all,html,Release Notes and Frequently Asked Questions (Respiratory Illnesses Data Channel),https://www.cdc.gov/respiratory-viruses/data/faqs.html
+resp_activity_levels,2,all,html,Illness Levels Over Time,https://www.cdc.gov/respiratory-viruses/data/activity-levels.html
+resp_severity,2,nhsn,html,Hospitalizations and Deaths,https://www.cdc.gov/respiratory-viruses/data/illness-severity.html

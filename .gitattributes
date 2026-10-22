@@ -1,0 +1,2 @@
+# Raw source files are stored byte for byte; their SHA-256 is recorded in corpus/manifest.csv.
+corpus/raw/** -text

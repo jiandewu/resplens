@@ -1,0 +1,41 @@
+{
+ "config": {
+  "split": "test",
+  "retriever": "bm25",
+  "chunk_tokens": 300,
+  "embed_model": null,
+  "query_prefix": "",
+  "doc_prefix": "",
+  "rerank": null,
+  "headings": true,
+  "chunks": 998,
+  "git_commit": "035f3ec",
+  "corpus_manifest_sha256": "913342e9b6d4ecec"
+ },
+ "summary": {
+  "questions": 21,
+  "mrr": 0.381,
+  "recall@1": 0.286,
+  "recall@1_ci95": [
+   0.095,
+   0.476
+  ],
+  "recall@3": 0.476,
+  "recall@3_ci95": [
+   0.238,
+   0.714
+  ],
+  "recall@5": 0.476,
+  "recall@5_ci95": [
+   0.238,
+   0.714
+  ],
+  "recall@10": 0.524,
+  "recall@10_ci95": [
+   0.333,
+   0.762
+  ],
+  "latency_ms_p50": 0.99,
+  "latency_ms_p95": 1.35
+ }
+}

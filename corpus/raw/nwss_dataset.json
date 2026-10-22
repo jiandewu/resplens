@@ -1,0 +1,817 @@
+{
+  "id" : "atcp-73re",
+  "name" : "CDC Wastewater Viral Activity Level for SARS-CoV-2, Influenza A and RSV",
+  "assetType" : "dataset",
+  "attribution" : "DIDRI/R3SB",
+  "attributionLink" : "https://www.cdc.gov/wastewater",
+  "averageRating" : 0,
+  "category" : "Public Health Surveillance",
+  "createdAt" : 1772659821,
+  "description" : "This dataset provides a complete time history of weekly SARS-CoV-2, Influenza A, and RSV wastewater viral activity level (WVAL) values from US sampling locations. \n\nLearn more at: https://www.cdc.gov/wastewater\nThis dataset is updated weekly on Fridays.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 6257,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "USGOV_WORKS",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 41983485,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1772816675,
+  "publicationGroup" : 20295928,
+  "publicationStage" : "published",
+  "resourceName" : "NWSS",
+  "rowsUpdatedAt" : 1792162925,
+  "rowsUpdatedBy" : "nygt-u2xq",
+  "tableId" : 20295928,
+  "totalTimesRated" : 0,
+  "viewCount" : 9376,
+  "viewLastModified" : 1792162889,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1775833596,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 7427819,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1775833596,
+    "targetAudience" : "public",
+    "workflowId" : 2100,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1775833596,
+      "failureCount" : 0,
+      "startedAt" : 1775833596,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "nygt-u2xq",
+      "displayName" : "qih1@cdc.gov"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 628026807,
+    "name" : "State/Territory",
+    "dataTypeName" : "text",
+    "description" : "State, DC, US territory, or Freely Associated State jurisdiction name (2-letter abbreviation) in which the wastewater treatment plant is located",
+    "fieldName" : "state_territory",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 165938710,
+    "cachedContents" : {
+      "non_null" : "572769",
+      "largest" : "Wyoming",
+      "null" : "0",
+      "top" : [ {
+        "item" : "California",
+        "count" : "48730"
+      }, {
+        "item" : "Illinois",
+        "count" : "46010"
+      }, {
+        "item" : "New York",
+        "count" : "41417"
+      }, {
+        "item" : "Ohio",
+        "count" : "33144"
+      }, {
+        "item" : "Texas",
+        "count" : "27698"
+      }, {
+        "item" : "Missouri",
+        "count" : "24508"
+      }, {
+        "item" : "North Carolina",
+        "count" : "18951"
+      }, {
+        "item" : "Oregon",
+        "count" : "18720"
+      }, {
+        "item" : "Wisconsin",
+        "count" : "17959"
+      }, {
+        "item" : "Michigan",
+        "count" : "16682"
+      }, {
+        "item" : "Virginia",
+        "count" : "16169"
+      }, {
+        "item" : "Colorado",
+        "count" : "16150"
+      }, {
+        "item" : "Pennsylvania",
+        "count" : "14962"
+      }, {
+        "item" : "Utah",
+        "count" : "14818"
+      }, {
+        "item" : "New Jersey",
+        "count" : "12964"
+      }, {
+        "item" : "Washington",
+        "count" : "12498"
+      }, {
+        "item" : "Indiana",
+        "count" : "12084"
+      }, {
+        "item" : "Minnesota",
+        "count" : "11211"
+      }, {
+        "item" : "Georgia",
+        "count" : "11192"
+      }, {
+        "item" : "Florida",
+        "count" : "10365"
+      } ],
+      "smallest" : "Alabama",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : { }
+  }, {
+    "id" : 628026806,
+    "name" : "Counties_Served",
+    "dataTypeName" : "text",
+    "description" : "The county and county-equivalent names served by this sampling site. Note that most jurisdictions are covered by counties, but some are covered by county equivalents, such as independent cities, parishes, or census areas.",
+    "fieldName" : "counties_served",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 165938709,
+    "cachedContents" : {
+      "non_null" : "572633",
+      "largest" : "Yuma",
+      "null" : "136",
+      "top" : [ {
+        "item" : "Harris",
+        "count" : "10085"
+      }, {
+        "item" : "Jefferson",
+        "count" : "9260"
+      }, {
+        "item" : "Washington",
+        "count" : "8726"
+      }, {
+        "item" : "Montgomery",
+        "count" : "6792"
+      }, {
+        "item" : "Orange",
+        "count" : "6188"
+      }, {
+        "item" : "Fulton",
+        "count" : "5702"
+      }, {
+        "item" : "Cook",
+        "count" : "5162"
+      }, {
+        "item" : "Du Page",
+        "count" : "5077"
+      }, {
+        "item" : "Johnson",
+        "count" : "4602"
+      }, {
+        "item" : "Douglas",
+        "count" : "4566"
+      }, {
+        "item" : "Clark",
+        "count" : "4523"
+      }, {
+        "item" : "Lake",
+        "count" : "4480"
+      }, {
+        "item" : "Marion",
+        "count" : "4282"
+      }, {
+        "item" : "Cumberland",
+        "count" : "4253"
+      }, {
+        "item" : "Jackson",
+        "count" : "4111"
+      }, {
+        "item" : "Franklin",
+        "count" : "3654"
+      }, {
+        "item" : "Kent",
+        "count" : "3310"
+      }, {
+        "item" : "Utah",
+        "count" : "3305"
+      }, {
+        "item" : "Sussex",
+        "count" : "3241"
+      }, {
+        "item" : "San Luis Obispo",
+        "count" : "3207"
+      } ],
+      "smallest" : "Acadia",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : { }
+  }, {
+    "id" : 628026805,
+    "name" : "Site",
+    "dataTypeName" : "text",
+    "description" : "A unique identifier for wastewater treatment plants. This is an arbitrary integer used to provide a unique, but anonymous identifier for a wastewater treatment plant. This identifier is consistent over time, such that the same plant retains the same ID regardless of the addition or subtraction of other plants from the data set.",
+    "fieldName" : "site",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 165938708,
+    "cachedContents" : {
+      "non_null" : "572769",
+      "largest" : "ID:998",
+      "null" : "0",
+      "top" : [ {
+        "item" : "ID:114",
+        "count" : "732"
+      }, {
+        "item" : "ID:164",
+        "count" : "730"
+      }, {
+        "item" : "ID:97",
+        "count" : "726"
+      }, {
+        "item" : "ID:1848",
+        "count" : "719"
+      }, {
+        "item" : "ID:386",
+        "count" : "719"
+      }, {
+        "item" : "ID:845",
+        "count" : "709"
+      }, {
+        "item" : "ID:179",
+        "count" : "708"
+      }, {
+        "item" : "ID:313",
+        "count" : "702"
+      }, {
+        "item" : "ID:568",
+        "count" : "702"
+      }, {
+        "item" : "ID:315",
+        "count" : "702"
+      }, {
+        "item" : "ID:314",
+        "count" : "702"
+      }, {
+        "item" : "ID:178",
+        "count" : "696"
+      }, {
+        "item" : "ID:954",
+        "count" : "691"
+      }, {
+        "item" : "ID:143",
+        "count" : "684"
+      }, {
+        "item" : "ID:214",
+        "count" : "684"
+      }, {
+        "item" : "ID:113",
+        "count" : "680"
+      }, {
+        "item" : "ID:215",
+        "count" : "680"
+      }, {
+        "item" : "ID:121",
+        "count" : "675"
+      }, {
+        "item" : "ID:169",
+        "count" : "672"
+      }, {
+        "item" : "ID:1950",
+        "count" : "671"
+      } ],
+      "smallest" : "ID:10",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : { }
+  }, {
+    "id" : 628026804,
+    "name" : "Population_Served",
+    "dataTypeName" : "number",
+    "description" : "Estimated number of persons served by this sampling site (i.e., served by this wastewater treatment plant or, if 'sample_location' is \"upstream\", then by this upstream location)",
+    "fieldName" : "population_served",
+    "position" : 4,
+    "renderTypeName" : "number",
+    "tableColumnId" : 165938707,
+    "cachedContents" : {
+      "non_null" : "572769",
+      "largest" : "4000000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "30000",
+        "count" : "7771"
+      }, {
+        "item" : "25000",
+        "count" : "6481"
+      }, {
+        "item" : "12000",
+        "count" : "6254"
+      }, {
+        "item" : "60000",
+        "count" : "5934"
+      }, {
+        "item" : "15000",
+        "count" : "5359"
+      }, {
+        "item" : "10000",
+        "count" : "5273"
+      }, {
+        "item" : "50000",
+        "count" : "5026"
+      }, {
+        "item" : "20000",
+        "count" : "4983"
+      }, {
+        "item" : "100000",
+        "count" : "4478"
+      }, {
+        "item" : "200000",
+        "count" : "4438"
+      }, {
+        "item" : "90000",
+        "count" : "4434"
+      }, {
+        "item" : "40000",
+        "count" : "4369"
+      }, {
+        "item" : "45000",
+        "count" : "3953"
+      }, {
+        "item" : "70000",
+        "count" : "3747"
+      }, {
+        "item" : "65000",
+        "count" : "3743"
+      }, {
+        "item" : "7000",
+        "count" : "3541"
+      }, {
+        "item" : "120000",
+        "count" : "3386"
+      }, {
+        "item" : "16000",
+        "count" : "3223"
+      }, {
+        "item" : "5000",
+        "count" : "3196"
+      }, {
+        "item" : "14000",
+        "count" : "3057"
+      } ],
+      "smallest" : "564",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 628026803,
+    "name" : "Source",
+    "dataTypeName" : "text",
+    "description" : "The source of the data collected and reported to CDC's Wastewater Surveillance Program, including public health departments (State_Territory), CDC's national wastewater testing contract (CDC_Verily, or formerly, CDC_Biobot) and an academic partner group WastewaterSCAN (WastewaterSCAN). For additional information see: https://www.cdc.gov/wastewater/about/index.html",
+    "fieldName" : "source",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 165938706,
+    "cachedContents" : {
+      "non_null" : "572769",
+      "largest" : "WastewaterSCAN",
+      "null" : "0",
+      "top" : [ {
+        "item" : "State_Territory",
+        "count" : "406912"
+      }, {
+        "item" : "WastewaterSCAN",
+        "count" : "70129"
+      }, {
+        "item" : "CDC_Verily",
+        "count" : "45487"
+      }, {
+        "item" : "State_Territory, WastewaterSCAN",
+        "count" : "17187"
+      }, {
+        "item" : "CDC_Biobot",
+        "count" : "16093"
+      }, {
+        "item" : "CDC_Verily, WastewaterSCAN",
+        "count" : "7693"
+      }, {
+        "item" : "CDC_Verily, State_Territory",
+        "count" : "5150"
+      }, {
+        "item" : "CDC_Biobot, State_Territory",
+        "count" : "1837"
+      }, {
+        "item" : "CDC_Biobot, WastewaterSCAN",
+        "count" : "1259"
+      }, {
+        "item" : "CDC_Verily, State_Territory, WastewaterSCAN",
+        "count" : "823"
+      }, {
+        "item" : "CDC_Biobot, State_Territory, WastewaterSCAN",
+        "count" : "199"
+      } ],
+      "smallest" : "CDC_Biobot",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : { }
+  }, {
+    "id" : 628026802,
+    "name" : "Site_WVAL",
+    "dataTypeName" : "number",
+    "description" : "The calculated site wastewater viral activity level (WVAL) for the CDC/MMWR reporting week.",
+    "fieldName" : "site_wval",
+    "position" : 6,
+    "renderTypeName" : "number",
+    "tableColumnId" : 165938705,
+    "cachedContents" : {
+      "non_null" : "572769",
+      "largest" : "2663522980784095400000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1.0",
+        "count" : "205845"
+      }, {
+        "item" : "1.65",
+        "count" : "711"
+      }, {
+        "item" : "1.11",
+        "count" : "686"
+      }, {
+        "item" : "1.6",
+        "count" : "680"
+      }, {
+        "item" : "1.93",
+        "count" : "680"
+      }, {
+        "item" : "1.51",
+        "count" : "676"
+      }, {
+        "item" : "1.04",
+        "count" : "675"
+      }, {
+        "item" : "1.55",
+        "count" : "649"
+      }, {
+        "item" : "1.49",
+        "count" : "648"
+      }, {
+        "item" : "1.42",
+        "count" : "645"
+      }, {
+        "item" : "1.54",
+        "count" : "644"
+      }, {
+        "item" : "1.66",
+        "count" : "643"
+      }, {
+        "item" : "1.64",
+        "count" : "641"
+      }, {
+        "item" : "1.62",
+        "count" : "627"
+      }, {
+        "item" : "1.82",
+        "count" : "627"
+      }, {
+        "item" : "1.44",
+        "count" : "622"
+      }, {
+        "item" : "1.38",
+        "count" : "622"
+      }, {
+        "item" : "1.48",
+        "count" : "619"
+      }, {
+        "item" : "2.04",
+        "count" : "618"
+      }, {
+        "item" : "1.5",
+        "count" : "613"
+      } ],
+      "smallest" : "0.0",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 628026801,
+    "name" : "Site_WVAL_Category",
+    "dataTypeName" : "text",
+    "description" : "Category for the calculated site WVAL for the CDC/MMWR reporting week. Categories are ordinal based on pathogen specific cut-offs of WVAL values: very low, low, moderate, high, very high; and includes a 'limited/no data' category when there is insufficient data to calculate a WVAL.",
+    "fieldName" : "site_wval_category",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 165938704,
+    "cachedContents" : {
+      "non_null" : "572769",
+      "largest" : "Very Low",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Very Low",
+        "count" : "292529"
+      }, {
+        "item" : "Low",
+        "count" : "84252"
+      }, {
+        "item" : "Very High",
+        "count" : "80507"
+      }, {
+        "item" : "Moderate",
+        "count" : "67597"
+      }, {
+        "item" : "High",
+        "count" : "47884"
+      } ],
+      "smallest" : "High",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : { }
+  }, {
+    "id" : 628026800,
+    "name" : "Date_Included_In_WVAL",
+    "dataTypeName" : "text",
+    "description" : "Date site first submitted samples for inclusion in WVAL calculation",
+    "fieldName" : "date_included_in_wval",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 165938703,
+    "cachedContents" : {
+      "non_null" : "572769",
+      "largest" : "2026-10-18",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2023-12-10",
+        "count" : "7752"
+      }, {
+        "item" : "2021-09-13",
+        "count" : "6238"
+      }, {
+        "item" : "2022-01-03",
+        "count" : "6225"
+      }, {
+        "item" : "2023-11-27",
+        "count" : "6015"
+      }, {
+        "item" : "2022-11-07",
+        "count" : "5600"
+      }, {
+        "item" : "2020-08-17",
+        "count" : "5460"
+      }, {
+        "item" : "2021-08-02",
+        "count" : "5307"
+      }, {
+        "item" : "2025-01-22",
+        "count" : "5226"
+      }, {
+        "item" : "2024-10-27",
+        "count" : "5160"
+      }, {
+        "item" : "2023-07-17",
+        "count" : "5036"
+      }, {
+        "item" : "2023-05-15",
+        "count" : "4569"
+      }, {
+        "item" : "2022-12-15",
+        "count" : "4463"
+      }, {
+        "item" : "2022-11-14",
+        "count" : "4381"
+      }, {
+        "item" : "2022-12-19",
+        "count" : "4138"
+      }, {
+        "item" : "2023-05-22",
+        "count" : "4106"
+      }, {
+        "item" : "2021-10-25",
+        "count" : "3962"
+      }, {
+        "item" : "2022-06-12",
+        "count" : "3713"
+      }, {
+        "item" : "2022-05-23",
+        "count" : "3571"
+      }, {
+        "item" : "2022-05-24",
+        "count" : "3531"
+      }, {
+        "item" : "2022-07-24",
+        "count" : "3444"
+      } ],
+      "smallest" : "2020-04-22",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : { }
+  }, {
+    "id" : 628026799,
+    "name" : "Week_End",
+    "dataTypeName" : "text",
+    "description" : "Last date in one week time period for CDC/MMWR reporting week (always a Saturday)",
+    "fieldName" : "week_end",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 165938702,
+    "cachedContents" : {
+      "non_null" : "572769",
+      "largest" : "2026-10-10",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2026-04-18",
+        "count" : "3227"
+      }, {
+        "item" : "2026-05-09",
+        "count" : "3205"
+      }, {
+        "item" : "2026-05-02",
+        "count" : "3198"
+      }, {
+        "item" : "2026-05-23",
+        "count" : "3175"
+      }, {
+        "item" : "2026-05-16",
+        "count" : "3164"
+      }, {
+        "item" : "2026-02-14",
+        "count" : "3162"
+      }, {
+        "item" : "2026-02-28",
+        "count" : "3158"
+      }, {
+        "item" : "2025-01-18",
+        "count" : "3155"
+      }, {
+        "item" : "2025-02-15",
+        "count" : "3154"
+      }, {
+        "item" : "2025-03-08",
+        "count" : "3152"
+      }, {
+        "item" : "2026-03-14",
+        "count" : "3151"
+      }, {
+        "item" : "2025-03-01",
+        "count" : "3149"
+      }, {
+        "item" : "2026-02-07",
+        "count" : "3137"
+      }, {
+        "item" : "2025-02-08",
+        "count" : "3131"
+      }, {
+        "item" : "2026-08-01",
+        "count" : "3130"
+      }, {
+        "item" : "2026-04-04",
+        "count" : "3122"
+      }, {
+        "item" : "2026-06-06",
+        "count" : "3122"
+      }, {
+        "item" : "2026-03-21",
+        "count" : "3121"
+      }, {
+        "item" : "2024-12-14",
+        "count" : "3117"
+      }, {
+        "item" : "2026-07-18",
+        "count" : "3107"
+      } ],
+      "smallest" : "2022-01-01",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : { }
+  }, {
+    "id" : 628026798,
+    "name" : "Pathogen_Target",
+    "dataTypeName" : "text",
+    "description" : "Pathogen for which wastewater viral activity levels calculated.",
+    "fieldName" : "pathogen_target",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 165938701,
+    "cachedContents" : {
+      "non_null" : "572769",
+      "largest" : "SARS-CoV-2",
+      "null" : "0",
+      "top" : [ {
+        "item" : "SARS-CoV-2",
+        "count" : "280369"
+      }, {
+        "item" : "Influenza A virus",
+        "count" : "153859"
+      }, {
+        "item" : "RSV",
+        "count" : "138541"
+      } ],
+      "smallest" : "Influenza A virus",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : { }
+  }, {
+    "id" : 628026808,
+    "name" : "date_updated",
+    "dataTypeName" : "text",
+    "description" : "Timestamp of processing run used in posted data.  \"As of \" stamp.",
+    "fieldName" : "date_updated",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 165938711,
+    "cachedContents" : {
+      "non_null" : "572769",
+      "largest" : "2026-10-16 11:00",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2026-10-16 11:00",
+        "count" : "572769"
+      } ],
+      "smallest" : "2026-10-16 11:00",
+      "count" : "572769",
+      "cardinality" : "572769"
+    },
+    "format" : { }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "Public Domain U.S. Government",
+    "termsLink" : "https://www.usa.gov/government-works"
+  },
+  "metadata" : {
+    "custom_fields" : {
+      "Data Quality" : {
+        "Geospatial Resolution" : "County level",
+        "Footnotes" : "On August 14, 2026, CDC updated the methodology used to calculate the Wastewater Viral Activity Level (WVAL). This update was made as a result of a revalidation process to ensure continuous quality improvement. These updates were applied to all historical data to ensure data can be compared over time. For specific details on WVAL methodology please see www.cdc.gov/wastewater/about/wval.html.",
+        "Suggested Citation" : "Centers for Disease Control and Prevention, National Wastewater Surveillance System Analytics Data Set, year(s), as compiled from data provided through National Wastewater Surveillance System in the Rapid Response Research and Surveillance Branch (R3SB).",
+        "Geographic Unit of Analysis" : "Sampling location"
+      },
+      "Common Core" : {
+        "Contact Email" : "nwss@cdc.gov",
+        "Homepage" : "https://www.cdc.gov/wastewater",
+        "Contact Name" : "National Wastewater Surveillance System (NWSS)",
+        "Update Frequency" : "R/P1W",
+        "Program Code" : "009:028",
+        "Geographic Coverage" : "US States and Territories",
+        "Publisher" : "CDC NWSS",
+        "Bureau Code" : "009:20",
+        "Public Access Level" : "public"
+      },
+      "Common Core 3" : {
+        "Contact Email" : "nwss@cdc.gov",
+        "Geographic Name" : "US States and Territories",
+        "Contact Name" : "National Wastewater Surveillance System (NWSS)",
+        "Program Code" : "009:028",
+        "Publisher" : "CDC NWSS",
+        "Bureau Code" : "009:20",
+        "Public Access Level" : "public"
+      }
+    },
+    "rowLabel" : "Wastewater viral activitity level per pathogen per CDC/MMWR  week of collection from a sampling site",
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "mt3r-qr2b",
+    "displayName" : "NWSS",
+    "screenName" : "NWSS",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula", "mayBeStoriesCoOwner" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "mt3r-qr2b",
+    "displayName" : "NWSS",
+    "screenName" : "NWSS",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula", "mayBeStoriesCoOwner" ]
+  },
+  "tags" : [ "wastewater", "nwss", "sars-cov-2", "covid-19", "coronavirus", "influenza a", "rsv", "respiratory syncytial virus", "ncezid", "united states", "weekly" ],
+  "flags" : [ "default", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}
