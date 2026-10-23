@@ -18,7 +18,7 @@ from pathlib import Path
 
 from . import corpus
 from .dense import OLLAMA_URL
-from .evaluate import load_questions
+from .evaluate import _git_commit, load_questions
 
 
 JUDGE = "qwen3:235b-thinking"
@@ -90,6 +90,7 @@ def _answers(run: Path) -> list[dict]:
 
 
 def score(run: Path) -> None:
+    commit = _git_commit()  # per row, since scoring can resume under different code
     config = json.loads((run / "config.json").read_text())
     questions = {q["id"]: q for q in load_questions(split=config["split"])}
     documents = {doc.id: doc.text for doc in corpus.load()}
@@ -109,7 +110,8 @@ def score(run: Path) -> None:
             if verdict is None:
                 verdict = {"correctness": "judge_failed", "unsupported_claims": False, "abstained": False,
                            "explanation": "judge produced no verdict after a retry", "reasoning": ""}
-            handle.write(json.dumps({"id": row["id"], "system": row["system"], **verdict}) + "\n")
+            handle.write(json.dumps({"id": row["id"], "system": row["system"], **verdict, "judge": JUDGE,
+                                     "git_commit": commit}) + "\n")
             handle.flush()
             print(row["id"], row["system"], verdict["correctness"], "unsupported" if verdict["unsupported_claims"] else "")
 

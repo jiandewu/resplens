@@ -130,3 +130,25 @@ def test_heading_path_counts_toward_the_budget():
     chunks = chunk_document("doc", long_heading + "\n\n" + "\n\n".join("word " * 20 for _ in range(10)),
                             max_tokens=120, overlap=0)
     assert all(approx_tokens(chunk.indexed_text()) <= 120 + 2 for chunk in chunks)
+
+
+def test_untracked_inputs_mark_a_run_dirty(tmp_path):
+    """Runs once recorded a clean commit while a new, uncommitted module produced them."""
+    import subprocess
+    from resplens.retrieval.evaluate import _git_commit
+
+    def git(*args):
+        subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@t", *args], cwd=tmp_path, check=True,
+                       capture_output=True)
+
+    git("init", "-q")
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src" / "a.py").write_text("x = 1\n")
+    git("add", "src")
+    git("commit", "-q", "-m", "init")
+    assert not _git_commit(tmp_path).endswith("-dirty")
+    (tmp_path / "eval" / "runs" / "r").mkdir(parents=True)
+    (tmp_path / "eval" / "runs" / "r" / "summary.json").write_text("{}")
+    assert not _git_commit(tmp_path).endswith("-dirty")
+    (tmp_path / "src" / "new.py").write_text("y = 2\n")
+    assert _git_commit(tmp_path).endswith("-dirty")

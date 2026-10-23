@@ -84,13 +84,18 @@ def bm25_search(chunks: list[Chunk], with_headings: bool = True):
     return lambda query, k: [position for position, _ in index.search(query, k)]
 
 
-def _git_commit() -> str:
-    """Short commit of the code that produced a run, with "-dirty" if tracked files had uncommitted changes."""
+# Inputs that can change a run's results. Untracked files count: a new module that is not yet committed
+# made earlier runs look clean. Run outputs under eval/runs and eval/answers do not.
+RUN_INPUTS = ["src", "corpus", "eval/questions.jsonl", "pyproject.toml", "uv.lock"]
+
+
+def _git_commit(root: Path = ROOT) -> str:
+    """Short commit of the code that produced a run, with "-dirty" if its inputs had uncommitted or untracked files."""
     try:
-        commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True,
+        commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=root, capture_output=True, text=True,
                                 check=True).stdout.strip()
-        dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=ROOT,
-                               capture_output=True, text=True, check=True).stdout.strip()
+        dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all", "--", *RUN_INPUTS],
+                               cwd=root, capture_output=True, text=True, check=True).stdout.strip()
     except (OSError, subprocess.CalledProcessError):
         return "unknown"
     return f"{commit}-dirty" if dirty else commit

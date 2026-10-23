@@ -88,6 +88,7 @@ def rag_contexts(questions: list[dict], documents: list[corpus.Document]) -> dic
 
 
 def generate(split: str, cold_runs: int = 3) -> Path:
+    commit = _git_commit()  # at the start: a run takes about an hour, and the code may change meanwhile
     documents = corpus.load()
     questions = load_questions(split=split)
     run_dir = ROOT / "eval" / "answers" / f"{datetime.now():%Y%m%d-%H%M%S}-{split}"
@@ -130,7 +131,7 @@ def generate(split: str, cold_runs: int = 3) -> Path:
     config = {"split": split, "generator": GENERATOR, "system_prompt": SYSTEM_PROMPT, "rag_top_k": RAG_TOP_K,
               "chunk_tokens": CHUNK_TOKENS, "retrieval": "hybrid bm25 + BAAI/bge-m3, rerank BAAI/bge-reranker-v2-m3",
               "num_ctx": {"rag": RAG_CONTEXT, "long_context": LONG_CONTEXT}, "max_output": MAX_OUTPUT,
-              "temperature": 0, "cold_runs": cold_runs, "git_commit": _git_commit()}
+              "temperature": 0, "cold_runs": cold_runs, "git_commit": commit}
     (run_dir / "config.json").write_text(json.dumps(config, indent=1))
     (run_dir / "answers.jsonl").write_text("".join(json.dumps(row) + "\n" for row in rows))
     print(f"saved to {run_dir.relative_to(ROOT)}")

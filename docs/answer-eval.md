@@ -1,6 +1,6 @@
 # A2 answer evaluation plan: retrieval versus the whole corpus in context
 
-Status: pre-registered 2026-10-22, before any answer-generation run on the test split. No results yet.
+Status: complete, 2026-10-22. The plan was pre-registered before any answer-generation run on the test split; notes recorded during the dev and test runs, results, and failure analysis follow it.
 
 ## Question
 
@@ -63,6 +63,8 @@ Test split: 25 questions, 21 answerable and 4 unanswerable. Each system answers 
 
 Run: `eval/answers/20261022-123659-test/`. The answers were generated from code later committed as `a3275f4` (the run records `fa29ee9-dirty`); judging used the frozen third rubric with the output cap described above.
 
+Run records, checked 2026-10-23: the dev run records a clean `fa29ee9`, but `answer.py` was not yet committed; the dirty check of the time ignored untracked files (now fixed; see the correction in `retrieval-eval.md`). The system prompt, context sizes, output limit, and top k saved in both runs' `config.json` match `a3275f4`, and the RAG chunk IDs saved for every question (15 dev, 25 test) are reproduced exactly by the committed retrieval code. Generation itself was not rerun. Judging recorded no commit at the time; judgments now carry the judge model and commit on every row, and answer runs record the commit at the start of the run rather than at the end.
+
 ### Judge as pre-registered
 
 | | RAG | Long context |
@@ -103,4 +105,4 @@ On this 74,000-word corpus, answering from the whole corpus in context was right
 
 ## Records
 
-Each run stores the configuration, model names and digests, prompt text, git commit, per-question outputs, judge outputs (including the judge's reasoning), and timing under `eval/answers/<timestamp>/`.
+Each run stores the configuration, model names, the generator's prompt text, git commit, per-question outputs, judge outputs (including the judge's reasoning and seed), and timing under `eval/answers/<timestamp>/`. (Correction: the plan also listed model digests; they were not recorded. The judge prompt is in `judge.py` at the recorded commit, not in the run directory.)

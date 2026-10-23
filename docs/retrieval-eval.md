@@ -1,6 +1,6 @@
 # A2 retrieval evaluation plan
 
-Status: draft, 2026-10-22. No experiments have been run; there are no results in this document.
+Status: complete, 2026-10-22. The plan below was written before any experiment; the pre-registered configurations, test results, and findings follow it. Where the work departed from the plan, the plan's text is kept and the change is noted.
 
 ## Questions this stage answers
 
@@ -38,7 +38,7 @@ State quality reports are not in the corpus: they hold state-specific numbers th
 - **Recall@k** (k = 1, 3, 5, 10): a retrieved chunk contains an evidence quote (whitespace- and case-normalized match). Multi-passage questions need every quote.
 - **MRR** of the first matching chunk.
 - **Cost**: index build time, index size, query latency (p50, p95).
-- Answer quality (correctness, faithfulness, abstention) is measured in A3, where answers are generated.
+- Answer quality (correctness, faithfulness, abstention) is measured in A3, where answers are generated. (Changed: it was measured in A2 instead, comparing retrieval with the whole corpus in context; see `answer-eval.md`.)
 
 ## Systems compared
 
@@ -51,15 +51,17 @@ State quality reports are not in the corpus: they hold state-specific numbers th
 | Chunking | about 200, 400, 800 tokens; split at headings first |
 | Long-context baseline (Tier 1 only) | whole document set in the prompt; measured in A3, since it has no ranking |
 
+Changed during the work: chunk sizes became 200, 300, and 400 embedding tokens for `nomic-embed-text-v2-moe` (512-token input limit) and 300 to 512 for `bge-m3`; the long-context baseline used the whole corpus (both tiers), because it fits in the generator's window, and was measured in A2 (`answer-eval.md`).
+
 One factor at a time from a BM25 baseline on `dev`, then the best combination and the baseline once on `test`.
 
 ## Smoke-test findings (2026-10-22, local gemma4:31b Q4_K_M on one H100 NVL, Ollama 0.20.0)
 
 These are single runs that shaped the design, not results.
 
-- The built corpus (28 documents, 74,368 words) is about 131,000 tokens for this model, about 1.76 tokens per word because of tables and identifiers. The HRD column dictionary alone is about 28,000 tokens.
+- The built corpus (28 documents, 74,368 words at the time; 74,405 after the extraction fixes below) is about 131,000 tokens for this model, about 1.76 tokens per word because of tables and identifiers. The HRD column dictionary alone is about 28,000 tokens.
 - Whole corpus in context with `num_ctx` 131,072: the prompt filled the window with no room for output. The model answered a threshold question with a wrong number and an invented "quote". With `num_ctx` 262,144 the same question was answered correctly with exact quotes. **Rule: every long-context run checks that prompt plus maximum output fits in the window, and fails otherwise.**
-- Cost of the long-context baseline: about 125 s to read the prompt cold and about 10 s per question when the document prefix is cached; 69 GB of GPU memory at 262,144 context. Results must report cold and cached latency separately, since hosted APIs also cache and bill cached input differently.
+- Cost of the long-context baseline: about 125 s to read the prompt cold and about 10 s per question when the document prefix is cached; 69 GB of GPU memory at 262,144 context. (Correction: the 10 s figure was most likely a repeat of the identical prompt. A controlled measurement later showed that `gemma4:31b` in this runtime reuses its cache only for an identical prompt, so a new question re-reads the whole corpus, about 125 s; see `answer-eval.md`.) Results must report cold and cached latency separately, since hosted APIs also cache and bill cached input differently.
 - `nomic-embed-text-v2-moe` accepts at most 512 tokens per input, so chunks for that model must stay below about 400 tokens.
 
 ## Implementation findings (2026-10-22)
@@ -104,9 +106,15 @@ Questions the final configuration misses in the top five:
 
 - **q15**, a South Carolina threshold in a 50-row table: the question says "South Carolina", the table says "SC", and the answer is one row of numbers. Table lookups are a poor fit for text retrieval; in the agent stage they belong to structured tools.
 - **q19**, two quotes of formula text extracted from a PDF table.
-- **q28**, a definition question (to be analysed with the answer-generation results).
+- **q28**, a definition question (to be analysed with the answer-generation results). Analysed in `answer-eval.md`: the RAG answer used a different, also correct description of the site ID from the ObsAwareData documentation and was graded `partial`.
 
 The test split was run twice with identical configurations: the first run cached query embeddings, which understated dense and hybrid latency. Query encoding is no longer cached; retrieval metrics were identical in both runs.
+
+### Correction to the run records (2026-10-23)
+
+The four test runs record `git_commit` `035f3ec`, but that commit predates the code that produced them: dense, hybrid, and reranked retrieval were committed afterwards in `6e2a9d5`, and the reviewed question set in `086cc93`. At the time the commit stamp had no dirty check; the check added later (`19ba982`) ignored untracked files, so a new, uncommitted module still looked clean. The corpus is not affected: every run records the manifest hash `913342e9b6d4ecec`, which is the manifest committed in `6e2a9d5`.
+
+To settle what the runs used, all four were rebuilt from committed code with an empty embedding cache (document embeddings recomputed) and compared question by question: the retrieved chunk IDs and evidence ranks are identical for all four, so the published results are reproducible from the committed code. The dirty check now includes untracked files under the run inputs (`src`, `corpus`, `eval/questions.jsonl`, `pyproject.toml`, `uv.lock`), with a test.
 
 ## Statistics and records
 
@@ -114,3 +122,4 @@ The test split was run twice with identical configurations: the first run cached
 - 95% bootstrap intervals over questions; paired comparisons between configurations on the same questions.
 - With 25 test questions, differences under about 10 points of recall are likely noise; results say so.
 - Each run stores configuration, corpus manifest hash, model names, git commit, and per-question results under `eval/runs/<timestamp>/`.
+- Commit IDs in run records and in these documents refer to the development history; the public repository has one commit per milestone, so they cannot be checked out there. The code that produced the published results is in the public milestone commit that added them.
