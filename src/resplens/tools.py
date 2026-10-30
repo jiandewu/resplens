@@ -51,7 +51,8 @@ FLAGS = {
     "flagged_anomalous": "Reported, but an unusually large week-over-week change, or blended wastewater sources. "
                          "Check before use.",
     "incidental_missing": "No value reported for a week within an otherwise active series.",
-    "structural_absent": "Not collected in this period by design (RSV hospital data before 2024-08-03).",
+    "structural_absent": "Not collected in this period by design (RSV hospital data for weeks up to and including "
+                         "2024-08-03).",
 }
 USABLE_FLAGS = ("observed_valid", "observed_zero")
 WW_CATEGORIES = ("Very Low", "Low", "Moderate", "High", "Very High")

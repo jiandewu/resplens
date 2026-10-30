@@ -1,0 +1,80 @@
+{
+ "transport": "stdio",
+ "command": "python -m resplens.server",
+ "tasks": [
+  "a01",
+  "a05",
+  "a09"
+ ],
+ "calls": 7,
+ "identical": 7,
+ "rows": [
+  {
+   "id": "a01",
+   "tool": "describe_measures",
+   "args": {},
+   "identical": true
+  },
+  {
+   "id": "a01",
+   "tool": "get_series",
+   "args": {
+    "end": "2026-10-10",
+    "measure": "hospital_admission_count",
+    "pathogen": "influenza",
+    "region_type": "state",
+    "start": "2026-09-13",
+    "state": "SC"
+   },
+   "identical": true
+  },
+  {
+   "id": "a01",
+   "tool": "check_reliability",
+   "args": {
+    "end": "2026-10-10",
+    "pathogen": "influenza",
+    "state": "SC",
+    "weeks": 4
+   },
+   "identical": true
+  },
+  {
+   "id": "a05",
+   "tool": "describe_measures",
+   "args": {},
+   "identical": true
+  },
+  {
+   "id": "a05",
+   "tool": "get_revisions",
+   "args": {
+    "measure": "hospital_admission_count",
+    "pathogen": "covid",
+    "region_type": "state",
+    "state": "SC",
+    "week": "2026-09-05"
+   },
+   "identical": true
+  },
+  {
+   "id": "a09",
+   "tool": "describe_measures",
+   "args": {},
+   "identical": true
+  },
+  {
+   "id": "a09",
+   "tool": "get_series",
+   "args": {
+    "end": "2026-09-19",
+    "measure": "hospital_admission_count",
+    "pathogen": "covid",
+    "region_type": "state",
+    "start": "2026-09-19",
+    "state": "WY"
+   },
+   "identical": true
+  }
+ ]
+}

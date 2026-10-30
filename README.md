@@ -12,7 +12,7 @@ The data come from [ObsAwareData](https://github.com/DMA-PRIME/ObsAwareData) (CC
 |---|---|---|
 | A1 | Data tools and MCP server | Done |
 | A2 | Retrieval over data documentation; retrieval versus whole corpus in context | Done |
-| A3 | Agent that answers trend and reliability questions, with a task evaluation | Planned |
+| A3 | Agent that answers trend and reliability questions, with a task evaluation | In progress: [evaluation plan](docs/agent-eval.md) pre-registered and dev-set settings fixed; test runs pending |
 | B1 | Real-time forecasting benchmark on as-of data | Planned |
 | B2 | Fine-tuned small model for tool calling | Planned |
 | A4 | Deployed service | Planned |

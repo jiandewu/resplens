@@ -13,6 +13,9 @@ import numpy as np
 
 
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
+# llama.cpp starts a thread per host core; on a node where this job has 4 of 64 cores, that cut qwen3:235b
+# generation from 78 to 4 tokens/s. Every layer runs on GPU, so the thread count does not change outputs.
+CPU_THREADS = len(os.sched_getaffinity(0))
 CACHE = Path(__file__).resolve().parents[3] / ".cache" / "embeddings"
 
 

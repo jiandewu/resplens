@@ -89,12 +89,12 @@ def bm25_search(chunks: list[Chunk], with_headings: bool = True):
 RUN_INPUTS = ["src", "corpus", "eval/questions.jsonl", "pyproject.toml", "uv.lock"]
 
 
-def _git_commit(root: Path = ROOT) -> str:
+def _git_commit(root: Path = ROOT, inputs: list[str] = RUN_INPUTS) -> str:
     """Short commit of the code that produced a run, with "-dirty" if its inputs had uncommitted or untracked files."""
     try:
         commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=root, capture_output=True, text=True,
                                 check=True).stdout.strip()
-        dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all", "--", *RUN_INPUTS],
+        dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all", "--", *inputs],
                                cwd=root, capture_output=True, text=True, check=True).stdout.strip()
     except (OSError, subprocess.CalledProcessError):
         return "unknown"
