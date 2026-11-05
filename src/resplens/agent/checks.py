@@ -19,8 +19,13 @@ ISO_DATE = re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b")
 US_DATE = re.compile(r"\b(\d{1,2})/(\d{1,2})/(\d{4})\b")
 NAMED_DATE = re.compile(r"\b(" + "|".join(sorted(MONTHS, key=len, reverse=True)) + r")\.?\s+(\d{1,2})(?:st|nd|rd|th)?"
                         r"(?:,?\s+(\d{4}))?\b", re.IGNORECASE)
+# gpt-oss also writes the day first (19 Sep, 3 Oct 2026)
+MONTH_NAMES = "|".join(sorted(MONTHS, key=len, reverse=True))
+DAY_MONTH_DATE = re.compile(r"\b(3[01]|[12]\d|0?[1-9])(?:st|nd|rd|th)?\s+(" + MONTH_NAMES + r")\b\.?(?:,?\s+(\d{4}))?",
+                            re.IGNORECASE)
 NUMBER = re.compile(r"(?<![\w.])-?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?![\w])")
 NOT_NUMBERS = re.compile(r"\b(?:COVID-19|SARS-CoV-2|H1N1|H3N2|H5N1)\b", re.IGNORECASE)
+CITATION_MARK = re.compile(r"【[^】]*】")  # gpt-oss citation markers such as 【0†oad_methods#11】 are not claims
 LIST_MARKER = re.compile(r"^\s*\d+[.)]\s", re.MULTILINE)
 SOURCES_LINE = re.compile(r"^\s*\**sources?\**\s*:.*$", re.IGNORECASE | re.MULTILINE)
 WORDS = {"zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8,
@@ -55,7 +60,14 @@ def _dates(text: str) -> tuple[list[str], str]:
 
     text = ISO_DATE.sub(iso, text)
     text = US_DATE.sub(us, text)
+    def day_month(match):
+        day, month = int(match.group(1)), MONTHS[match.group(2).lower()]
+        year = f"{int(match.group(3)):04d}" if match.group(3) else "-"
+        found.append(f"{year}-{month:02d}-{day:02d}")
+        return " "
+
     text = NAMED_DATE.sub(named, text)
+    text = DAY_MONTH_DATE.sub(day_month, text)
     return found, text
 
 
@@ -64,8 +76,9 @@ def _numbers(text: str) -> list[float]:
 
 
 def answer_tokens(answer: str) -> tuple[list[str], list[float]]:
-    """Dates and numbers stated in an answer, ignoring the Sources line, list markers, and names like COVID-19."""
-    text = SOURCES_LINE.sub(" ", answer.translate(DASHES))
+    """Dates and numbers stated in an answer, ignoring the Sources line, citation and list markers, and names like
+    COVID-19."""
+    text = CITATION_MARK.sub(" ", SOURCES_LINE.sub(" ", answer.translate(DASHES)))
     text = NOT_NUMBERS.sub(" ", text)
     text = LIST_MARKER.sub(" ", text)
     dates, text = _dates(text)

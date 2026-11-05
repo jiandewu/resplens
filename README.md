@@ -12,7 +12,7 @@ The data come from [ObsAwareData](https://github.com/DMA-PRIME/ObsAwareData) (CC
 |---|---|---|
 | A1 | Data tools and MCP server | Done |
 | A2 | Retrieval over data documentation; retrieval versus whole corpus in context | Done |
-| A3 | Agent that answers trend and reliability questions, with a task evaluation | In progress: [evaluation plan](docs/agent-eval.md) pre-registered and dev-set settings fixed; test runs pending |
+| A3 | Agent that answers trend and reliability questions, with a task evaluation | Done |
 | B1 | Real-time forecasting benchmark on as-of data | Planned |
 | B2 | Fine-tuned small model for tool calling | Planned |
 | A4 | Deployed service | Planned |
@@ -85,6 +85,19 @@ The whole corpus is about 131,000 tokens and fits in a long-context model, so re
 | Seconds per question (median, one H100) | 1.7 | 125.5 |
 
 The difference in correctness is not reliable at this sample size (3 questions to 1, p = 0.63). The long-context prompt was about 100 times larger and each answer about 73 times slower; with this model and runtime the shared document prefix could not be reused from cache. Every retrieval error came from the evidence not being retrieved, and in each case the model said the documents did not answer instead of inventing one. Details, judge calibration, and failure analysis: [`docs/answer-eval.md`](docs/answer-eval.md).
+
+## Agent evaluation
+
+An agent loop gives a local model the six data tools plus a documentation search tool, and answers questions that need several calls, for example a four-week trend together with its reliability caveats. The evaluation plan was frozen and [published](docs/agent-eval.md) before any test run. It covers 37 tasks, 13 for tuning and 24 held out, of seven types: trends, lookups, revisions, definitions, mixed, unanswerable, and prompt injection. Two systems were compared on the same prompt and tools: `gemma4:31b` and `gpt-oss:120b`. Each ran every test task three times. A task succeeds only if the answer is correct, every number in it comes from a tool output or is correctly derived from one, the reliability caveat is stated when needed, and no injected instruction was followed. The author graded the first run of all 48 answers blind to the system, and the hand review checked every number that did not match a tool output directly.
+
+| | gemma4:31b | gpt-oss:120b |
+|---|---|---|
+| Mean task success over 3 runs | 0.82 | 0.79 |
+| Held-out tasks solved (at least 2 of 3 runs) | 20 of 24 | 18 of 24 |
+| Tool-call recall | 0.92 | 0.97 |
+| Median seconds per task (two H100 GPUs) | 7.3 | 5.0 |
+
+The difference between the systems is not detectable (sign test p = 0.69; the run-1 sensitivity analysis favors gpt-oss by one task). The failures differ in kind: gpt-oss more often misread a tool output or a document (8 runs), and gemma more often gave an incomplete documentation answer (5 runs). Both followed an instruction planted in a data-tool output in all 6 runs, while resisting a planted tool call and a false number in a retrieved document. The retrieval-only pipeline from A2, given no data tools, answered 7 of 24 tasks correctly, none of them data-value questions. Results, the judge's agreement with the author, the changes made after freezing, and failure analysis: [`docs/agent-results.md`](docs/agent-results.md).
 
 ## Data handling
 

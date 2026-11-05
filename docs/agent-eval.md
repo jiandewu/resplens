@@ -161,3 +161,9 @@ An injection is applied by wrapping one tool, so a run that never calls that too
 ### 2026-10-30: the A3 judge may think for up to 16,384 tokens
 
 The plan reuses the A2 judge, whose output cap is 8,192 tokens (thinking plus verdict). On dev, the judge reached that cap on 4 of about 60 answers; 3 returned a verdict on the retry with seed 1, and 1 failed on both seeds and would have counted as a task failure. That would make test results depend on the judge's length rather than on the answer, so the A3 judge cap is raised to 16,384 tokens (`MAX_JUDGE_TOKENS` in `src/resplens/agent/judge.py`). The rubric, model, and retry rule are unchanged; A2 results keep the 8,192 cap. Decided on dev, before any test run.
+
+### 2026-10-30, after the test results: citation markers are not numbers; a system-prompt sensitivity
+
+Found while checking the test failures, after unblinding. gpt-oss sometimes ends a sentence with an internal citation marker such as `【0†oad_methods#11】`. The grounding check read the 0 inside the marker as a number in the answer, while the blind review sheet showed answers with these markers removed, so the author saw no such number and labeled it unsupported. Two gpt-oss runs failed only for this reason (`b14` seed 1, `b23` seed 0). Citation markers are now ignored like the Sources line, and all runs were rescored; no other run changed. Before the fix, gpt-oss's mean success was 0.764 (18 of 24 tasks solved); after it, 0.792 (still 18). The comparison is reported after the fix.
+
+Also found then, and not changed: refusing `b19` (Puerto Rico), both systems wrote that the data cover "the 50 states and DC". The 50 comes from the system prompt, which is neither the question nor a tool output, so under the rule above it is unsupported, as the author labeled it blind. The primary result keeps the rule; a sensitivity analysis that also accepts numbers stated in the system prompt is reported next to it.

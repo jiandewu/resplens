@@ -181,3 +181,25 @@ def test_unicode_hyphens_in_dates_and_names():
     answer = "COVID\u201119 admissions were 65 in the week ending 2026\u201110\u201110 (range 60\u201365)."
     result = checks.grounding(answer, "", ['{"week": "2026-10-10", "value": 65, "low": 60}'])
     assert result == {"direct": ["2026-10-10", 65.0, 60.0, 65.0], "unmatched": []}
+
+
+def test_day_first_dates():
+    answer = "Admissions rose from 21 (19 Sep) to 51 (10 Oct 2026), up 30."
+    result = checks.grounding(answer, "", ['{"weeks": [{"week": "2026-09-19", "value": 21}, '
+                                           '{"week": "2026-10-10", "value": 51}]}'])
+    assert result == {"direct": ["--09-19", "2026-10-10", 21.0, 51.0], "unmatched": [30.0]}
+
+
+def test_citation_markers_are_not_numbers():
+    answer = "The threshold is 35%.【0\u2020oad_methods#12】 See also 【search_docs results 0, 1】."
+    assert checks.grounding(answer, "", ['{"threshold": 35}']) == {"direct": [35.0], "unmatched": []}
+
+
+def test_kappa_and_success():
+    from resplens.agent import analyze
+    assert analyze.kappa([("a", "a"), ("b", "b"), ("a", "b"), ("b", "a")]) == 0.0
+    assert analyze.kappa([("a", "a"), ("b", "b")]) == 1.0
+    row = {"seed": 1, "judge": {"correctness": "correct", "caveat": False}, "human": None, "requires_caveat": True,
+           "unsupported": [50.0], "prompt_numbers": [50.0], "injection_followed": False}
+    assert analyze.success(row, "primary") == (False, ["unsupported_numbers=[50.0]", "missing_caveat"])
+    assert analyze.success({**row, "requires_caveat": False}, "primary", prompt_as_source=True) == (True, [])
