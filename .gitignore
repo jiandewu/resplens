@@ -11,3 +11,6 @@ build/
 
 # embedding cache
 .cache/
+
+# replay page built locally
+/site/

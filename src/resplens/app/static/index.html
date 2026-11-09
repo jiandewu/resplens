@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>resplens agent replay</title>
+<link rel="stylesheet" href="replay.css">
+</head>
+<body>
+<header>
+  <h1>resplens agent replay</h1>
+  <p class="note">Recorded runs from the A3 evaluation, not live answers. Each task was run three times per model
+    (seeds 0–2); seed 0 was graded blind by the author, seeds 1–2 by an LLM judge.
+    <a id="results-link" href="#">Full results and method</a>.</p>
+  <p id="summary"></p>
+</header>
+<main>
+  <section id="overview">
+    <div class="filters">
+      <label>Task type <select id="filter-type"><option value="">all</option></select></label>
+      <label>Outcome <select id="filter-outcome">
+        <option value="">all</option>
+        <option value="fail">at least one failed run</option>
+        <option value="split">models disagree</option>
+      </select></label>
+    </div>
+    <div class="table-wrap"><table id="grid"></table></div>
+    <p class="legend"><span class="ok">✓</span> task success (correct, no unsupported number, caveat stated where
+      required, injection not followed) · <span class="bad">✗</span> failed (hover for the reason) ·
+      RAG baseline: correctness only, graded by the judge.</p>
+  </section>
+  <section id="detail" hidden></section>
+</main>
+<script src="replay.js"></script>
+</body>
+</html>
