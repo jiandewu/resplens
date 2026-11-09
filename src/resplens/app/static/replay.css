@@ -59,3 +59,9 @@ summary { cursor: pointer; color: var(--muted); }
 .error { color: var(--bad); }
 .pick { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
 .box { background: var(--panel); border-radius: 8px; padding: 10px 12px; margin: 8px 0; }
+textarea { display: block; width: 100%; margin: 6px 0 8px; font: inherit; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+button { font: inherit; color: var(--bg); background: var(--link); border: 0; border-radius: 6px; padding: 4px 14px;
+  cursor: pointer; }
+button:disabled { opacity: 0.5; cursor: wait; }
+#result { margin: 16px 0 32px; }

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>resplens agent</title>
+<link rel="stylesheet" href="static/replay.css">
+</head>
+<body>
+<header>
+  <h1>resplens agent</h1>
+  <p class="note">Runs the A3 agent on this machine against a local Ollama: the evaluated system prompt, tools and
+    settings, run 1 (seed 0). Answers are not graded; numbers in the answer are checked against the question and
+    the tool outputs, as in the evaluation.</p>
+</header>
+<main>
+  <form id="ask" class="box">
+    <label for="question">Question</label>
+    <textarea id="question" rows="3" maxlength="1000" required
+      placeholder="What is the latest weekly influenza hospital admission count in South Carolina, and can I trust it?"></textarea>
+    <div class="pick">
+      <label>System <select id="system"></select></label>
+      <button type="submit" id="submit">Ask</button>
+      <span id="status" class="meta"></span>
+    </div>
+    <p id="not-evaluated" class="meta" hidden>This model was not part of the evaluation.</p>
+  </form>
+  <section id="result" class="panel" hidden></section>
+</main>
+<script src="static/replay.js"></script>
+<script src="static/live.js"></script>
+</body>
+</html>

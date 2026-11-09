@@ -14,3 +14,6 @@ build/
 
 # replay page built locally
 /site/
+
+# local service query log
+/logs/

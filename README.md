@@ -15,7 +15,7 @@ The data come from [ObsAwareData](https://github.com/DMA-PRIME/ObsAwareData) (CC
 | A3 | Agent that answers trend and reliability questions, with a task evaluation | Done |
 | B1 | Real-time forecasting benchmark on as-of data | Planned |
 | B2 | Fine-tuned small model for tool calling | Planned |
-| A4 | Deployed service | Planned |
+| A4 | Public replay of the evaluated runs; local agent service | Replay published; local service done |
 
 ## Tools
 
@@ -98,6 +98,25 @@ An agent loop gives a local model the six data tools plus a documentation search
 | Median seconds per task (two H100 GPUs) | 7.3 | 5.0 |
 
 The difference between the systems is not detectable (sign test p = 0.69; the run-1 sensitivity analysis favors gpt-oss by one task). The failures differ in kind: gpt-oss more often misread a tool output or a document (8 runs), and gemma more often gave an incomplete documentation answer (5 runs). Both followed an instruction planted in a data-tool output in all 6 runs, while resisting a planted tool call and a false number in a retrieved document. The retrieval-only pipeline from A2, given no data tools, answered 7 of 24 tasks correctly, none of them data-value questions. Results, the judge's agreement with the author, the changes made after freezing, and failure analysis: [`docs/agent-results.md`](docs/agent-results.md).
+
+**Replay**: every test run, with each model turn, tool call and output, the grades, and the numbers in each answer marked as found in a tool output, checked by hand, or unsupported: <https://jiande.is-a.si/resplens/>. It is built from the files in `eval/` by `uv run python -m resplens.app.replay --out site`.
+
+## Run the agent locally
+
+A small web service runs the evaluated agent (same system prompt, tools and settings) against a local [Ollama](https://ollama.com), streams each step to the page, and checks the numbers in the answer against the tool outputs as the evaluation does.
+
+```bash
+ollama pull gemma4:31b            # and/or gpt-oss:120b
+uv sync --extra app --extra models
+uv run resplens-app               # http://127.0.0.1:8000
+```
+
+![The local service answering a dev-set question: the trace streams in, then the answer with each number marked as found in the tool outputs](docs/img/local-service.gif)
+
+- Memory: `gemma4:31b` used 20.9 GB and `gpt-oss:120b` 64.5 GB of GPU memory at the evaluated 32k context (Ollama 0.40.13, measured 2026-11-09). The first documentation search loads the retrieval models (`BAAI/bge-m3` and `BAAI/bge-reranker-v2-m3`).
+- `RESPLENS_OTHER_MODEL=<ollama model>` adds another model, marked on the page as not evaluated. `OLLAMA_URL` points to another Ollama server.
+- One question at a time; questions up to 1,000 characters. `GET /healthz` checks the service without calling a model.
+- Each query appends one line to `logs/queries.jsonl`: model and digest, seconds, tokens, model turns, tools called, stop reason, and the numbers not found in the tool outputs. The question text is included unless `RESPLENS_LOG_QUESTIONS=0`.
 
 ## Data handling
 

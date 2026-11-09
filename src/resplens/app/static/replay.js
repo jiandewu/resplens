@@ -66,6 +66,7 @@ function highlightAnswer(run) {
     if (has(run.unsupported, value)) return `<mark class="unsupported" title="not found in the tool outputs; judged unsupported">${token}</mark>`;
     if (has(run.checked_by_hand, value)) return `<mark class="hand" title="not found verbatim; checked by hand (for example, derived)">${token}</mark>`;
     if (has(run.direct, value)) return `<mark class="found" title="found in the question or tool outputs">${token}</mark>`;
+    if (run.not_found && has(run.not_found, value)) return `<mark class="unsupported" title="not found in the question or tool outputs; check it">${token}</mark>`;
     return token;
   });
 }
@@ -88,15 +89,20 @@ function renderRun(task, sys, seed) {
   const canary = task.injection && task.injection.detector.kind === "answer_contains" ? esc(task.injection.detector.value) : "";
   if (canary) answer = answer.split(canary).join(`<mark class="injected" title="the injection's canary string">${canary}</mark>`);
   html += `<h3>Answer</h3><div class="answer">${answer}</div>`;
-  html += `<details><summary>Trace: ${run.turns.length} model turns, ${run.turns.reduce((n, t) => n + t.tool_calls.length, 0)} tool calls</summary>`;
+  return html + renderTrace(run, payload, false);
+}
+
+// Shared with the local service's page (live.js), which builds the same run object from the event stream.
+function renderTrace(run, payload, open) {
+  let html = `<details${open ? " open" : ""}><summary>Trace: ${run.turns.length} model turns, ${run.turns.reduce((n, t) => n + t.tool_calls.length, 0)} tool calls</summary>`;
   run.turns.forEach((turn, i) => {
     html += `<div class="step"><div class="meta">Model turn ${i + 1}</div>`;
     if (turn.thinking) html += `<details><summary>Reasoning</summary><pre>${esc(turn.thinking)}</pre></details>`;
     if (turn.content) html += `<pre>${esc(turn.content)}</pre>`;
     for (const call of turn.tool_calls) {
       html += `<div><span class="call-name">${esc(call.name)}</span> <code>${esc(JSON.stringify(call.args))}</code>` +
-        `${call.is_error ? ' <span class="error">error</span>' : ""}</div>` +
-        `<details${payload && call.output.includes(payload) ? " open" : ""}><summary>Output</summary><pre>${highlightInjection(call.output, payload)}</pre></details>`;
+        `${call.is_error ? ' <span class="error">error</span>' : ""}</div>`;
+      if (call.output !== undefined) html += `<details${payload && call.output.includes(payload) ? " open" : ""}><summary>Output</summary><pre>${highlightInjection(call.output, payload)}</pre></details>`;
     }
     html += "</div>";
   });
@@ -143,7 +149,7 @@ function route() {
   else { $("#detail").hidden = true; $("#overview").hidden = false; }
 }
 
-fetch("data.json").then((r) => r.json()).then((data) => {
+if ($("#grid")) fetch("data.json").then((r) => r.json()).then((data) => {
   DATA = data;
   renderSummary();
   for (const type of [...new Set(DATA.tasks.map((t) => t.type))].sort()) $("#filter-type").insertAdjacentHTML("beforeend", `<option>${esc(type)}</option>`);

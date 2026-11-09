@@ -1,6 +1,6 @@
 # A4: running the agent locally, and a public replay of the evaluated runs
 
-Status: **reviewed by the author 2026-11-06** (decisions at the end). B (the replay) is implemented in `src/resplens/app/` and published on GitHub Pages; A is not implemented yet.
+Status: **reviewed by the author 2026-11-06** (decisions at the end). B (the replay) is implemented in `src/resplens/app/replay.py` and published on GitHub Pages; A (the local service) in `src/resplens/app/service.py` (2026-11-09).
 
 ## Goal
 
@@ -70,3 +70,14 @@ Dev runs are left out; the page shows only what the results report.
 1. The replay is hosted on GitHub Pages from the public repository.
 2. The replay may be released to the public repository on its own, ahead of other work, since it shows only files that are already public.
 3. Containers are not built for now. This cluster node has no Docker, and it cannot be installed: there is no root access, and rootless Docker or Podman needs subordinate user IDs (`/etc/subuid`), which this account does not have. The local service ships with the `uv` route only; the Dockerfile and compose file wait until there is a machine with Docker to test them on, since an untested Dockerfile would not be shipped.
+
+## Implementation notes (2026-11-09)
+
+- **Service**: `POST /api/ask` streams JSON events (`start`, `model_start`, `model_turn`, `tool_output`, `answer`, or `error`). The loop runs in a worker thread with its own event loop and an in-process MCP client; events pass through a queue. A second question while one runs gets HTTP 429. If the browser disconnects, the running question still finishes and is logged. A failed query is reported on the page and not logged.
+- **Systems**: `gemma` and `gpt-oss` with the A3 settings and seed 0 (the evaluation's first run); `RESPLENS_OTHER_MODEL` adds one more, thinking off, marked as not evaluated.
+- **Page**: `live.html` and `live.js` build the same run object as the replay and draw it with the replay's renderer (`renderTrace`, `highlightAnswer` in `replay.js`). Numbers not found in the question or tool outputs are marked; there is no hand review, so the page says "derived or unsupported, check it".
+- **Tests** (`tests/test_service.py`, scripted fake model, synthetic mirror): event order, number check and log line; question text left out of the log; 429 while busy; length and system checks; a model failure reported and the lock released; `healthz`, systems list and page served without a model.
+- **Live check** (gemma, Ollama 0.40.13, two H100 GPUs): dev tasks `a01` (3 tool calls, 15 s, 11 numbers all found), `a07` (`search_docs`, 53 s including loading the retrieval models), and `a03` through the page in headless Chromium (no script errors; no horizontal scroll at 390 px). A second request during `a07` returned 429. The replay page was rechecked after the shared renderer change: same grid counts, no script errors.
+- **Memory** (Ollama `/api/ps`, 32k context): `gemma4:31b` 20.9 GB, `gpt-oss:120b` 64.5 GB, all on GPU.
+- **Demo GIF** (`docs/img/local-service.gif`, 153 KB): dev task `a01` with gemma, captured from the page in headless Chromium and assembled with Pillow.
+
