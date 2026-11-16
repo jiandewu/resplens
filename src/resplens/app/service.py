@@ -7,8 +7,10 @@ Runs the unchanged A3 loop (`agent.loop.run_task`, A3 system prompt and tools) a
 step as server-sent events, checks the numbers in the answer as the evaluation does, and appends one line per query
 to logs/queries.jsonl. One question at a time.
 
-Environment: OLLAMA_URL (default http://127.0.0.1:11434); RESPLENS_OTHER_MODEL adds a system running another Ollama
-model with thinking off (marked as not evaluated); RESPLENS_LOG_QUESTIONS=0 leaves question text out of the log;
+Environment: OLLAMA_URL (default http://127.0.0.1:11434); RESPLENS_VLLM_URL points to a vLLM server (OpenAI-compatible)
+and adds the B2 systems it serves, by served model name `b2-ft` or `b2-base` (docs/finetune-results.md);
+RESPLENS_OTHER_MODEL adds a system running another Ollama model with thinking off (marked as not evaluated);
+RESPLENS_LOG_QUESTIONS=0 leaves question text out of the log;
 RESPLENS_HOST and RESPLENS_PORT set the address (default 127.0.0.1:8000).
 """
 
@@ -20,7 +22,9 @@ import os
 import queue
 import threading
 import time
+import urllib.request
 from datetime import datetime
+from functools import partial
 from pathlib import Path
 from typing import Callable
 
@@ -41,10 +45,20 @@ SEED = 0  # the evaluation's first run
 LOG = ROOT / "logs" / "queries.jsonl"
 
 Emit = Callable[[dict], None]
+# Names shown on the page for the B2 systems; other systems show their Ollama model name.
+LABELS = {"b2-base": "Gemma 4 E4B base (vLLM)", "b2-ft": "Gemma 4 E4B fine-tuned (vLLM)"}
 
 
-def systems() -> dict:
-    out = {name: {**spec, "evaluated": True} for name, spec in SYSTEMS.items()}
+def vllm_models(url: str) -> set[str]:
+    """The model names a vLLM server serves (GET /v1/models)."""
+    with urllib.request.urlopen(f"{url}/v1/models", timeout=10) as response:
+        return {model["id"] for model in json.load(response)["data"]}
+
+
+def systems(served: set[str] = frozenset()) -> dict:
+    """The evaluated systems; a vLLM system only when the vLLM server serves its model."""
+    out = {name: {**spec, "evaluated": True} for name, spec in SYSTEMS.items()
+           if spec.get("backend") != "vllm" or spec["model"] in served}
     other = os.environ.get("RESPLENS_OTHER_MODEL")
     if other:
         out["other"] = {"model": other, "think": False, "evaluated": False}
@@ -78,12 +92,21 @@ def streaming_chat(chat_fn, emit: Emit):
 
 
 class Service:
-    def __init__(self, chat_fn=loop.chat, search=None, client_factory=lambda: Client(server.mcp), log_path: Path = LOG,
-                 log_questions: bool | None = None, info=model_info):
+    def __init__(self, chat_fn=None, search=None, client_factory=lambda: Client(server.mcp), log_path: Path = LOG,
+                 log_questions: bool | None = None, info=model_info, vllm_url: str | None = None,
+                 served=vllm_models):
+        """chat_fn, when given, answers for every system (tests); otherwise each system uses its backend."""
         self.chat_fn, self.client_factory, self.log_path, self.info = chat_fn, client_factory, log_path, info
         self.log_questions = (os.environ.get("RESPLENS_LOG_QUESTIONS", "1") != "0" if log_questions is None
                               else log_questions)
-        self.systems = systems()
+        self.vllm_url = vllm_url or os.environ.get("RESPLENS_VLLM_URL")
+        models: set[str] = set()
+        if self.vllm_url:
+            try:
+                models = served(self.vllm_url)
+            except OSError as exc:
+                print(f"vLLM server {self.vllm_url} not reachable ({exc}); the B2 systems are not offered")
+        self.systems = systems(models)
         self.lock = threading.Lock()  # one question at a time
         self._search, self._search_lock = search, threading.Lock()
 
@@ -94,6 +117,11 @@ class Service:
                 self._search = loop.document_search()
         return self._search(query)
 
+    def chat_for(self, spec: dict):
+        if self.chat_fn is not None:
+            return self.chat_fn
+        return partial(loop.openai_chat, url=self.vllm_url) if spec.get("backend") == "vllm" else loop.chat
+
     async def run(self, question: str, system: str, emit: Emit) -> dict:
         spec = self.systems[system]
         emit({"type": "start", "system": system, "model": spec["model"], "evaluated": spec["evaluated"]})
@@ -101,7 +129,7 @@ class Service:
             toolbox = await StreamingToolbox.create(client, search=self.search)
             toolbox.emit = emit
             trace = await loop.run_task({"id": "live", "question": question}, toolbox, spec["model"], spec["think"],
-                                        SEED, chat_fn=streaming_chat(self.chat_fn, emit))
+                                        SEED, chat_fn=streaming_chat(self.chat_for(spec), emit))
         result = trace.to_dict()
         check = checks.grounding(result["answer"], question, [call["output"] for call in trace.calls()])
         emit({"type": "answer", "answer": result["answer"], "stop": result["stop"], "direct": check["direct"],
@@ -111,13 +139,14 @@ class Service:
         return result
 
     def log(self, question: str, system: str, spec: dict, result: dict, check: dict) -> None:
-        try:
-            digest = self.info(spec["model"])["digest"]
+        backend = spec.get("backend", "ollama")
+        try:  # Ollama models have a digest; a vLLM model is recorded by its served name only
+            digest = self.info(spec["model"])["digest"] if backend == "ollama" else None
         except OSError:
             digest = None
         calls = [call for turn in result["turns"] for call in turn["tool_calls"]]
         line = {"time": datetime.now().astimezone().isoformat(timespec="seconds"), "system": system,
-                "model": spec["model"], "digest": digest, "evaluated": spec["evaluated"],
+                "model": spec["model"], "backend": backend, "digest": digest, "evaluated": spec["evaluated"],
                 "question": question if self.log_questions else None, "seconds": result["seconds"],
                 "prompt_tokens": result["prompt_tokens"], "output_tokens": result["output_tokens"],
                 "model_turns": result["model_turns"], "tools": [call["name"] for call in calls],
@@ -143,7 +172,8 @@ def create_app(service: Service | None = None) -> FastAPI:
 
     @app.get("/api/systems")
     def list_systems() -> dict:
-        return {name: {"model": spec["model"], "evaluated": spec["evaluated"]} for name, spec in service.systems.items()}
+        return {name: {"model": spec["model"], "label": LABELS.get(name, spec["model"]), "evaluated": spec["evaluated"]}
+                for name, spec in service.systems.items()}
 
     @app.post("/api/ask")
     def ask(body: Ask) -> StreamingResponse:

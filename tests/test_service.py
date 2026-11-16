@@ -16,8 +16,8 @@ def make(mirror, monkeypatch, tmp_path):
     monkeypatch.setattr(server, "_dataset", Dataset(mirror=mirror))
 
     def build(chat, **kwargs):
-        svc = service.Service(chat_fn=chat, search=lambda query: [], log_path=tmp_path / "queries.jsonl",
-                              info=lambda model: {"digest": "sha256:fake"}, **kwargs)
+        kwargs.setdefault("info", lambda model: {"digest": "sha256:fake"})
+        svc = service.Service(chat_fn=chat, search=lambda query: [], log_path=tmp_path / "queries.jsonl", **kwargs)
         return svc, TestClient(service.create_app(svc))
     return build
 
@@ -75,6 +75,42 @@ def test_healthz_and_page_need_no_model(make, monkeypatch):
     monkeypatch.setenv("RESPLENS_OTHER_MODEL", "llama3.2:3b")
     _, client = make(scripted())
     assert client.get("/healthz").json() == {"status": "ok"}
-    assert client.get("/api/systems").json()["other"] == {"model": "llama3.2:3b", "evaluated": False}
+    assert client.get("/api/systems").json()["other"] == {"model": "llama3.2:3b", "label": "llama3.2:3b",
+                                                         "evaluated": False}
     assert "resplens agent" in client.get("/").text
     assert client.get("/static/live.js").status_code == 200
+
+
+def test_b2_systems_are_offered_only_when_vllm_serves_them(make, monkeypatch):
+    monkeypatch.delenv("RESPLENS_VLLM_URL", raising=False)
+    _, client = make(scripted())
+    assert set(client.get("/api/systems").json()) == {"gemma", "gpt-oss"}
+    assert client.post("/api/ask", json={"question": QUESTION, "system": "b2-ft"}).status_code == 422
+    _, client = make(scripted(), vllm_url="http://vllm", served=lambda url: {"b2-ft"})
+    listed = client.get("/api/systems").json()
+    assert set(listed) == {"gemma", "gpt-oss", "b2-ft"}
+    assert listed["b2-ft"] == {"model": "b2-ft", "label": "Gemma 4 E4B fine-tuned (vLLM)", "evaluated": True}
+
+    def unreachable(url):
+        raise OSError("connection refused")
+    _, client = make(scripted(), vllm_url="http://vllm", served=unreachable)
+    assert set(client.get("/api/systems").json()) == {"gemma", "gpt-oss"}
+
+
+def test_b2_system_is_sent_to_vllm_and_logged_without_a_digest(make, monkeypatch):
+    replies, urls = scripted({"content": "No data."}), []
+
+    def openai_chat(model, messages, tools, think, seed, url=None):
+        urls.append((model, url))
+        return replies(model, messages, tools, think, seed)
+
+    def ollama_chat(*args):
+        raise AssertionError("the b2 system must not go to Ollama")
+    monkeypatch.setattr(service.loop, "openai_chat", openai_chat)
+    monkeypatch.setattr(service.loop, "chat", ollama_chat)
+    svc, client = make(None, vllm_url="http://vllm", served=lambda url: {"b2-ft"},
+                       info=lambda model: pytest.fail("no Ollama digest for a vLLM model"))
+    got = events(client.post("/api/ask", json={"question": QUESTION, "system": "b2-ft"}))
+    assert got[-1]["type"] == "answer" and urls == [("b2-ft", "http://vllm")]
+    line = json.loads(svc.log_path.read_text())
+    assert line["backend"] == "vllm" and line["digest"] is None and line["model"] == "b2-ft"

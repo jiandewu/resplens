@@ -60,7 +60,7 @@ async function ask(question, system) {
 
 fetch("api/systems").then((r) => r.json()).then((systems) => {
   SYSTEMS_INFO = systems;
-  for (const [name, info] of Object.entries(systems)) $("#system").insertAdjacentHTML("beforeend", `<option value="${esc(name)}">${esc(info.model)}</option>`);
+  for (const [name, info] of Object.entries(systems)) $("#system").insertAdjacentHTML("beforeend", `<option value="${esc(name)}">${esc(info.label)}</option>`);
   const note = () => { $("#not-evaluated").hidden = SYSTEMS_INFO[$("#system").value].evaluated; };
   $("#system").onchange = note;
   note();

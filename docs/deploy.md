@@ -81,3 +81,11 @@ Dev runs are left out; the page shows only what the results report.
 - **Memory** (Ollama `/api/ps`, 32k context): `gemma4:31b` 20.9 GB, `gpt-oss:120b` 64.5 GB, all on GPU.
 - **Demo GIF** (`docs/img/local-service.gif`, 153 KB): dev task `a01` with gemma, captured from the page in headless Chromium and assembled with Pillow.
 
+## B2 models in the local service (2026-11-16)
+
+- **Why**: the plan joins the two lines here: the fine-tuned 4B model from B2 ([`finetune-results.md`](finetune-results.md)) as an optional local backend beside the Ollama models.
+- **Bug found first**: B2 added `b2-base` and `b2-ft` to the runner's `SYSTEMS`, and the service listed every entry, so the page offered them and sent them to Ollama, which failed. This was in the public release of B2.
+- **Change**: `RESPLENS_VLLM_URL` names a vLLM server; at start the service reads its `/v1/models` and offers each B2 system whose served name is there (none if the server cannot be reached). Each system is sent to its own backend (`loop.chat` for Ollama, `loop.openai_chat` for vLLM), with the settings of the B2 test runs. The page shows readable names for the B2 systems. The query log gains `backend`; a vLLM model has no digest there.
+- **Tests**: B2 systems not offered without a vLLM server, or when it cannot be reached; offered when served; a B2 question goes to the vLLM function with the configured URL, never to Ollama, and is logged with `backend` `vllm` and no digest. Suite 111 passed, 1 skipped.
+- **Live check** (vLLM 0.33.0, bf16, fine-tuned model on one H100, service and retrieval models on the other): `/api/systems` listed `b2-ft` and not `b2-base` (not served). Dev task `a01`: 3 tool calls, 8.0 s, 11 numbers all found, stop `answer`. Dev task `a07`: one `search_docs` call, 36 s including loading the retrieval models, 0.8 s on a second run. Weights 15.2 GB; vLLM reserves most of the rest of the GPU for the KV cache by default.
+- **Weights**: the fine-tuned model is not published (author's decision, 2026-11-16), so outside this project the vLLM path works with the base model only.

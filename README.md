@@ -125,6 +125,15 @@ uv run resplens-app               # http://127.0.0.1:8000
 ![The local service answering a dev-set question: the trace streams in, then the answer with each number marked as found in the tool outputs](docs/img/local-service.gif)
 
 - Memory: `gemma4:31b` used 20.9 GB and `gpt-oss:120b` 64.5 GB of GPU memory at the evaluated 32k context (Ollama 0.40.13, measured 2026-11-09). The first documentation search loads the retrieval models (`BAAI/bge-m3` and `BAAI/bge-reranker-v2-m3`).
+- The 4B models from the fine-tuning section run on [vLLM](https://docs.vllm.ai) instead. Serve one under the name `b2-base` or `b2-ft` and set `RESPLENS_VLLM_URL`; the page offers the vLLM systems it finds there. The fine-tuned weights are not published, so outside this project only the base model can be served:
+
+  ```bash
+  vllm serve google/gemma-4-E4B-it --served-model-name b2-base --port 8100 --dtype bfloat16 \
+      --max-model-len 32768 --seed 0 --enable-auto-tool-choice --tool-call-parser gemma4
+  RESPLENS_VLLM_URL=http://127.0.0.1:8100 uv run resplens-app
+  ```
+
+  The fine-tuned model used 15.2 GB for its weights (vLLM 0.33.0, bf16) and answered dev task `a01` in 8 s with three tool calls (measured 2026-11-16).
 - `RESPLENS_OTHER_MODEL=<ollama model>` adds another model, marked on the page as not evaluated. `OLLAMA_URL` points to another Ollama server.
 - One question at a time; questions up to 1,000 characters. `GET /healthz` checks the service without calling a model.
 - Each query appends one line to `logs/queries.jsonl`: model and digest, seconds, tokens, model turns, tools called, stop reason, and the numbers not found in the tool outputs. The question text is included unless `RESPLENS_LOG_QUESTIONS=0`.
