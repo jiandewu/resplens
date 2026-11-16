@@ -17,3 +17,11 @@ build/
 
 # local service query log
 /logs/
+
+# B2 training data, rebuilt from eval/finetune/traces/ by `traces select`
+/eval/finetune/kept.jsonl
+/eval/finetune/train.jsonl
+/eval/finetune/traces-review.md
+/eval/finetune/questions-review.md
+/eval/finetune/training/*/checkpoint-*/
+/eval/finetune/training/smoke-*/

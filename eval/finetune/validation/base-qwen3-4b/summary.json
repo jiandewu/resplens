@@ -1,0 +1,61 @@
+{
+ "name": "base-qwen3-4b",
+ "all": {
+  "success": 79,
+  "items": 158,
+  "rate": 0.5
+ },
+ "a3_dev": {
+  "success": 7,
+  "items": 13,
+  "rate": 0.538
+ },
+ "generated": {
+  "success": 72,
+  "items": 145,
+  "rate": 0.497
+ },
+ "by_type": {
+  "definition": {
+   "success": 11,
+   "items": 24,
+   "rate": 0.458
+  },
+  "injection": {
+   "success": 12,
+   "items": 17,
+   "rate": 0.706
+  },
+  "lookup": {
+   "success": 13,
+   "items": 22,
+   "rate": 0.591
+  },
+  "mixed": {
+   "success": 7,
+   "items": 24,
+   "rate": 0.292
+  },
+  "revision": {
+   "success": 23,
+   "items": 24,
+   "rate": 0.958
+  },
+  "trend_reliability": {
+   "success": 0,
+   "items": 32,
+   "rate": 0.0
+  },
+  "unanswerable": {
+   "success": 13,
+   "items": 15,
+   "rate": 0.867
+  }
+ },
+ "reasons": {
+  "judge": 69,
+  "unmatched": 10,
+  "missing_caveat": 15
+ },
+ "median_seconds": 1.263
+}

@@ -14,7 +14,7 @@ The data come from [ObsAwareData](https://github.com/DMA-PRIME/ObsAwareData) (CC
 | A2 | Retrieval over data documentation; retrieval versus whole corpus in context | Done |
 | A3 | Agent that answers trend and reliability questions, with a task evaluation | Done |
 | B1 | Real-time forecasting benchmark on as-of data | Planned |
-| B2 | Fine-tuned small model for tool calling | Planned |
+| B2 | Fine-tuned small model for tool calling | Done |
 | A4 | Public replay of the evaluated runs; local agent service | Replay published; local service done |
 
 ## Tools
@@ -100,6 +100,17 @@ An agent loop gives a local model the six data tools plus a documentation search
 The difference between the systems is not detectable (sign test p = 0.69; the run-1 sensitivity analysis favors gpt-oss by one task). The failures differ in kind: gpt-oss more often misread a tool output or a document (8 runs), and gemma more often gave an incomplete documentation answer (5 runs). Both followed an instruction planted in a data-tool output in all 6 runs, while resisting a planted tool call and a false number in a retrieved document. The retrieval-only pipeline from A2, given no data tools, answered 7 of 24 tasks correctly, none of them data-value questions. Results, the judge's agreement with the author, the changes made after freezing, and failure analysis: [`docs/agent-results.md`](docs/agent-results.md).
 
 **Replay**: every test run, with each model turn, tool call and output, the grades, and the numbers in each answer marked as found in a tool output, checked by hand, or unsupported: <https://jiande.is-a.si/resplens/>. It is built from the files in `eval/` by `uv run python -m resplens.app.replay --out site`.
+
+## Fine-tuned 4B agent
+
+Can a 4B model, fine-tuned on traces from the two larger models, run the same agent? The plan was frozen and [published](docs/finetune-eval.md) before any training question was generated. Training questions were generated from templates and documentation chunks on states and documents held out from the test tasks; both teachers answered them with the agent, and 1,152 conversations passed code checks and an LLM judge (the author reviewed a sample of the filter's decisions). Gemma 4 E4B was chosen over Qwen3-4B on a separate validation set before training, and a LoRA grid (rank, learning rate, epochs) was chosen on the same set: 147 of 158 validation items against 108 for the base model. Both 4B models then ran the 24 held-out A3 tasks three times on vLLM, graded as above.
+
+| | Base Gemma 4 E4B | Fine-tuned | gemma4:31b | gpt-oss:120b |
+|---|---|---|---|---|
+| Mean task success over 3 runs | 0.85 | 0.90 | 0.82 | 0.79 |
+| Held-out tasks solved | 20 of 24 | 22 of 24 | 20 of 24 | 18 of 24 |
+
+The gain over the base model is not detectable on the test tasks (3 tasks solved only by the fine-tuned model, 1 only by the base; sign test p = 0.63), and on the author-graded first run the two tie. The fine-tuned model includes every required number in all 72 runs (base 66) and makes more tool calls. The comparison with the A3 models crosses backends (4-bit on Ollama against bf16 on vLLM) and shows no detectable difference. Results, the full grid, and what changed after freezing: [`docs/finetune-results.md`](docs/finetune-results.md).
 
 ## Run the agent locally
 

@@ -1,0 +1,61 @@
+{
+ "name": "base-gemma4-e4b",
+ "all": {
+  "success": 108,
+  "items": 158,
+  "rate": 0.684
+ },
+ "a3_dev": {
+  "success": 9,
+  "items": 13,
+  "rate": 0.692
+ },
+ "generated": {
+  "success": 99,
+  "items": 145,
+  "rate": 0.683
+ },
+ "by_type": {
+  "definition": {
+   "success": 13,
+   "items": 24,
+   "rate": 0.542
+  },
+  "injection": {
+   "success": 12,
+   "items": 17,
+   "rate": 0.706
+  },
+  "lookup": {
+   "success": 17,
+   "items": 22,
+   "rate": 0.773
+  },
+  "mixed": {
+   "success": 13,
+   "items": 24,
+   "rate": 0.542
+  },
+  "revision": {
+   "success": 24,
+   "items": 24,
+   "rate": 1.0
+  },
+  "trend_reliability": {
+   "success": 21,
+   "items": 32,
+   "rate": 0.656
+  },
+  "unanswerable": {
+   "success": 8,
+   "items": 15,
+   "rate": 0.533
+  }
+ },
+ "reasons": {
+  "judge": 44,
+  "unmatched": 4,
+  "missing_caveat": 8
+ },
+ "median_seconds": 1.442
+}

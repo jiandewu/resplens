@@ -1,0 +1,61 @@
+{
+ "name": "r16-lr0.0001-e3",
+ "all": {
+  "success": 138,
+  "items": 158,
+  "rate": 0.873
+ },
+ "a3_dev": {
+  "success": 11,
+  "items": 13,
+  "rate": 0.846
+ },
+ "generated": {
+  "success": 127,
+  "items": 145,
+  "rate": 0.876
+ },
+ "by_type": {
+  "definition": {
+   "success": 13,
+   "items": 24,
+   "rate": 0.542
+  },
+  "injection": {
+   "success": 15,
+   "items": 17,
+   "rate": 0.882
+  },
+  "lookup": {
+   "success": 22,
+   "items": 22,
+   "rate": 1.0
+  },
+  "mixed": {
+   "success": 22,
+   "items": 24,
+   "rate": 0.917
+  },
+  "revision": {
+   "success": 24,
+   "items": 24,
+   "rate": 1.0
+  },
+  "trend_reliability": {
+   "success": 31,
+   "items": 32,
+   "rate": 0.969
+  },
+  "unanswerable": {
+   "success": 11,
+   "items": 15,
+   "rate": 0.733
+  }
+ },
+ "reasons": {
+  "judge": 12,
+  "stop": 5,
+  "unmatched": 3
+ },
+ "median_seconds": 1.41
+}

@@ -7,6 +7,7 @@ errors, and DataError messages as a user of the MCP server. search_docs is the A
 from __future__ import annotations
 
 import json
+import os
 import re
 import time
 import urllib.request
@@ -64,6 +65,58 @@ def chat(model: str, messages: list[dict], tools: list[dict], think: bool | str,
         result = json.load(response)
     result["wall_seconds"] = time.perf_counter() - start
     return result
+
+
+OPENAI_URL = os.environ.get("RESPLENS_OPENAI_URL", "http://127.0.0.1:8100")
+
+
+def _openai_messages(messages: list[dict]) -> list[dict]:
+    """The loop's Ollama-style history in the OpenAI chat format: tool results are paired, in order, with the ids of
+    the calls in the assistant message before them."""
+    out, pending = [], []
+    for message in messages:
+        if message["role"] == "assistant":
+            calls = [{"id": call["id"], "type": "function",
+                      "function": {"name": call["function"]["name"],
+                                   "arguments": json.dumps(call["function"].get("arguments"))}}
+                     for call in message.get("tool_calls") or []]
+            pending = [call["id"] for call in calls]
+            converted = {"role": "assistant", "content": message.get("content") or ""}
+            if calls:
+                converted["tool_calls"] = calls
+            out.append(converted)
+        elif message["role"] == "tool":
+            out.append({"role": "tool", "tool_call_id": pending.pop(0), "content": message["content"]})
+        else:
+            out.append({"role": message["role"], "content": message["content"]})
+    return out
+
+
+def openai_chat(model: str, messages: list[dict], tools: list[dict], think: bool | str, seed: int,
+                url: str | None = None) -> dict:
+    """chat() for an OpenAI-compatible server such as vLLM (B2, docs/finetune-eval.md). Returns the same shape as
+    chat(), so run_task is unchanged. Reasoning settings do not apply; the B2 models run without reasoning."""
+    body = {"model": model, "messages": _openai_messages(messages), "tools": tools, "temperature": 0, "seed": seed,
+            "max_tokens": MAX_OUTPUT}
+    request = urllib.request.Request(f"{url or OPENAI_URL}/v1/chat/completions", json.dumps(body).encode(),
+                                     {"Content-Type": "application/json"})
+    start = time.perf_counter()
+    with urllib.request.urlopen(request, timeout=1800) as response:
+        result = json.load(response)
+    choice = result["choices"][0]
+    calls = []
+    for call in choice["message"].get("tool_calls") or []:
+        try:
+            arguments = json.loads(call["function"]["arguments"])
+        except (TypeError, json.JSONDecodeError):
+            arguments = call["function"]["arguments"]  # run_task reports non-object arguments as a tool error
+        calls.append({"id": call["id"], "function": {"name": call["function"]["name"], "arguments": arguments}})
+    message = {"role": "assistant", "content": choice["message"].get("content") or ""}
+    if calls:
+        message["tool_calls"] = calls
+    return {"message": message, "done_reason": choice.get("finish_reason"),
+            "prompt_eval_count": result["usage"]["prompt_tokens"], "eval_count": result["usage"]["completion_tokens"],
+            "wall_seconds": time.perf_counter() - start}
 
 
 def document_search(top_k: int = SEARCH_TOP_K) -> Callable[[str], list[dict]]:

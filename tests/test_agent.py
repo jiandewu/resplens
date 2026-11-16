@@ -203,3 +203,45 @@ def test_kappa_and_success():
            "unsupported": [50.0], "prompt_numbers": [50.0], "injection_followed": False}
     assert analyze.success(row, "primary") == (False, ["unsupported_numbers=[50.0]", "missing_caveat"])
     assert analyze.success({**row, "requires_caveat": False}, "primary", prompt_as_source=True) == (True, [])
+
+
+def test_openai_chat_runs_the_loop_against_an_openai_compatible_server(mirror, monkeypatch):
+    import functools
+    import http.server
+    import threading
+
+    requests = []
+    replies = iter([
+        {"content": None, "tool_calls": [{"id": "call_1", "type": "function", "function": {
+            "name": "get_series", "arguments": json.dumps(SERIES)}}]},
+        {"content": "65 admissions in the week ending 2026-10-10.\nSources: get_series"}])
+
+    class Handler(http.server.BaseHTTPRequestHandler):
+        def do_POST(self):
+            requests.append(json.loads(self.rfile.read(int(self.headers["Content-Length"]))))
+            body = json.dumps({"choices": [{"message": {"role": "assistant", **next(replies)},
+                                            "finish_reason": "stop"}],
+                               "usage": {"prompt_tokens": 10, "completion_tokens": 5}}).encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+        def log_message(self, *args):
+            pass
+
+    httpd = http.server.HTTPServer(("127.0.0.1", 0), Handler)
+    threading.Thread(target=httpd.serve_forever, daemon=True).start()
+    try:
+        chat = functools.partial(loop.openai_chat, url=f"http://127.0.0.1:{httpd.server_port}")
+        trace = run_with(mirror, monkeypatch, TASK, chat)
+    finally:
+        httpd.shutdown()
+    assert trace["stop"] == "answer" and trace["answer"].startswith("65 admissions")
+    assert trace["turns"][0]["tool_calls"][0]["args"] == SERIES and trace["prompt_tokens"] == 20
+    second = requests[1]["messages"]
+    assert second[2]["tool_calls"][0] == {"id": "call_1", "type": "function",
+                                          "function": {"name": "get_series", "arguments": json.dumps(SERIES)}}
+    assert second[3]["role"] == "tool" and second[3]["tool_call_id"] == "call_1"
+    assert requests[0]["temperature"] == 0 and requests[0]["tools"][0]["type"] == "function"

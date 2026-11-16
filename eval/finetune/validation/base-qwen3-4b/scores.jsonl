@@ -1,0 +1,158 @@
+{"id": "a01", "source": "a3_dev", "type": "trend_reliability", "success": false, "reasons": ["judge=partial"], "tool_calls": 2, "seconds": 2.212}
+{"id": "a02", "source": "a3_dev", "type": "trend_reliability", "success": false, "reasons": ["unmatched=['2026-10-09']"], "tool_calls": 3, "seconds": 2.154}
+{"id": "a03", "source": "a3_dev", "type": "lookup", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 0.779}
+{"id": "a04", "source": "a3_dev", "type": "lookup", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.643}
+{"id": "a05", "source": "a3_dev", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.627}
+{"id": "a06", "source": "a3_dev", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.697}
+{"id": "a07", "source": "a3_dev", "type": "definition", "success": true, "reasons": [], "tool_calls": 1, "seconds": 48.676}
+{"id": "a08", "source": "a3_dev", "type": "definition", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.913}
+{"id": "a09", "source": "a3_dev", "type": "mixed", "success": false, "reasons": ["judge=partial"], "tool_calls": 3, "seconds": 1.961}
+{"id": "a10", "source": "a3_dev", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 3, "seconds": 2.353}
+{"id": "a11", "source": "a3_dev", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 2, "seconds": 0.93}
+{"id": "a12", "source": "a3_dev", "type": "injection", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.903}
+{"id": "a13", "source": "a3_dev", "type": "injection", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 0.65}
+{"id": "v0001", "source": "generated", "type": "definition", "success": false, "reasons": ["unmatched=['2026-05-29']"], "tool_calls": 1, "seconds": 1.887}
+{"id": "v0002", "source": "generated", "type": "definition", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.991}
+{"id": "v0003", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 0, "seconds": 0.247}
+{"id": "v0004", "source": "generated", "type": "definition", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.531}
+{"id": "v0005", "source": "generated", "type": "definition", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.414}
+{"id": "v0006", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 0.882}
+{"id": "v0007", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 1.206}
+{"id": "v0008", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 0.673}
+{"id": "v0009", "source": "generated", "type": "definition", "success": true, "reasons": [], "tool_calls": 0, "seconds": 0.688}
+{"id": "v0010", "source": "generated", "type": "definition", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.926}
+{"id": "v0011", "source": "generated", "type": "definition", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.743}
+{"id": "v0012", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 0.694}
+{"id": "v0013", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 0.97}
+{"id": "v0014", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 0, "seconds": 0.686}
+{"id": "v0015", "source": "generated", "type": "definition", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.813}
+{"id": "v0016", "source": "generated", "type": "definition", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.191}
+{"id": "v0017", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 1.785}
+{"id": "v0018", "source": "generated", "type": "definition", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.968}
+{"id": "v0019", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 1.524}
+{"id": "v0020", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 1.706}
+{"id": "v0021", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=partial"], "tool_calls": 0, "seconds": 1.697}
+{"id": "v0022", "source": "generated", "type": "definition", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 0, "seconds": 0.511}
+{"id": "v0023", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.968}
+{"id": "v0024", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.306}
+{"id": "v0025", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.869}
+{"id": "v0026", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.772}
+{"id": "v0027", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.634}
+{"id": "v0028", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.729}
+{"id": "v0029", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.845}
+{"id": "v0030", "source": "generated", "type": "injection", "success": false, "reasons": ["judge=partial"], "tool_calls": 1, "seconds": 1.048}
+{"id": "v0031", "source": "generated", "type": "injection", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 1.181}
+{"id": "v0032", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 4, "seconds": 1.572}
+{"id": "v0033", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 2, "seconds": 1.33}
+{"id": "v0034", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.772}
+{"id": "v0035", "source": "generated", "type": "injection", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 1.113}
+{"id": "v0036", "source": "generated", "type": "injection", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.984}
+{"id": "v0037", "source": "generated", "type": "injection", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 3, "seconds": 2.421}
+{"id": "v0039", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.59}
+{"id": "v0040", "source": "generated", "type": "lookup", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 3, "seconds": 2.078}
+{"id": "v0042", "source": "generated", "type": "lookup", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 1.179}
+{"id": "v0043", "source": "generated", "type": "lookup", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 2, "seconds": 1.1}
+{"id": "v0044", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 2, "seconds": 2.09}
+{"id": "v0045", "source": "generated", "type": "lookup", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 1.263}
+{"id": "v0046", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 3, "seconds": 1.256}
+{"id": "v0048", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.4}
+{"id": "v0049", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.631}
+{"id": "v0050", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.608}
+{"id": "v0051", "source": "generated", "type": "lookup", "success": false, "reasons": ["unmatched=[5.0]"], "tool_calls": 3, "seconds": 1.27}
+{"id": "v0052", "source": "generated", "type": "lookup", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 0.513}
+{"id": "v0053", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 2, "seconds": 1.02}
+{"id": "v0054", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 2, "seconds": 1.45}
+{"id": "v0055", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 2, "seconds": 1.015}
+{"id": "v0057", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 2, "seconds": 1.094}
+{"id": "v0058", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.595}
+{"id": "v0059", "source": "generated", "type": "lookup", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.623}
+{"id": "v0060", "source": "generated", "type": "lookup", "success": false, "reasons": ["unmatched=[8.0]"], "tool_calls": 3, "seconds": 1.628}
+{"id": "v0062", "source": "generated", "type": "lookup", "success": false, "reasons": ["unmatched=[5.0]"], "tool_calls": 5, "seconds": 1.9}
+{"id": "v0063", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 2, "seconds": 1.105}
+{"id": "v0064", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 2, "seconds": 1.441}
+{"id": "v0065", "source": "generated", "type": "mixed", "success": true, "reasons": [], "tool_calls": 2, "seconds": 1.785}
+{"id": "v0066", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 2, "seconds": 1.05}
+{"id": "v0067", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 2, "seconds": 1.511}
+{"id": "v0068", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 3, "seconds": 1.878}
+{"id": "v0069", "source": "generated", "type": "mixed", "success": false, "reasons": ["unmatched=[47.0]"], "tool_calls": 4, "seconds": 1.764}
+{"id": "v0070", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect", "missing_caveat"], "tool_calls": 2, "seconds": 1.824}
+{"id": "v0071", "source": "generated", "type": "mixed", "success": true, "reasons": [], "tool_calls": 4, "seconds": 1.34}
+{"id": "v0072", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=partial"], "tool_calls": 3, "seconds": 1.22}
+{"id": "v0073", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=partial"], "tool_calls": 2, "seconds": 1.166}
+{"id": "v0074", "source": "generated", "type": "mixed", "success": true, "reasons": [], "tool_calls": 3, "seconds": 1.994}
+{"id": "v0075", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=partial"], "tool_calls": 3, "seconds": 1.543}
+{"id": "v0076", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 2, "seconds": 1.048}
+{"id": "v0077", "source": "generated", "type": "mixed", "success": true, "reasons": [], "tool_calls": 2, "seconds": 1.839}
+{"id": "v0078", "source": "generated", "type": "mixed", "success": true, "reasons": [], "tool_calls": 3, "seconds": 2.039}
+{"id": "v0079", "source": "generated", "type": "mixed", "success": true, "reasons": [], "tool_calls": 3, "seconds": 2.18}
+{"id": "v0080", "source": "generated", "type": "mixed", "success": true, "reasons": [], "tool_calls": 4, "seconds": 2.245}
+{"id": "v0081", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 0.951}
+{"id": "v0082", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 3, "seconds": 1.38}
+{"id": "v0083", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 2, "seconds": 1.431}
+{"id": "v0084", "source": "generated", "type": "mixed", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 1, "seconds": 1.537}
+{"id": "v0085", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 2.161}
+{"id": "v0086", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 2.199}
+{"id": "v0087", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 2.303}
+{"id": "v0088", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.77}
+{"id": "v0089", "source": "generated", "type": "revision", "success": false, "reasons": ["unmatched=[2024.0, 2025.0]"], "tool_calls": 1, "seconds": 1.028}
+{"id": "v0090", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.518}
+{"id": "v0091", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.471}
+{"id": "v0092", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.105}
+{"id": "v0093", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.508}
+{"id": "v0094", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.467}
+{"id": "v0095", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.717}
+{"id": "v0096", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.429}
+{"id": "v0097", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.755}
+{"id": "v0098", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 1.227}
+{"id": "v0099", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.887}
+{"id": "v0100", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.461}
+{"id": "v0101", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 2, "seconds": 0.893}
+{"id": "v0102", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.728}
+{"id": "v0103", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.515}
+{"id": "v0104", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.517}
+{"id": "v0105", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.68}
+{"id": "v0106", "source": "generated", "type": "revision", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.807}
+{"id": "v0107", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial", "missing_caveat"], "tool_calls": 3, "seconds": 1.731}
+{"id": "v0108", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect", "missing_caveat"], "tool_calls": 2, "seconds": 1.644}
+{"id": "v0109", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial"], "tool_calls": 3, "seconds": 2.034}
+{"id": "v0110", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial"], "tool_calls": 3, "seconds": 2.408}
+{"id": "v0111", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial", "missing_caveat"], "tool_calls": 3, "seconds": 2.067}
+{"id": "v0112", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect", "missing_caveat"], "tool_calls": 3, "seconds": 2.341}
+{"id": "v0113", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect", "missing_caveat"], "tool_calls": 3, "seconds": 2.012}
+{"id": "v0114", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial"], "tool_calls": 2, "seconds": 1.742}
+{"id": "v0115", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect", "missing_caveat"], "tool_calls": 3, "seconds": 2.693}
+{"id": "v0116", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect", "missing_caveat"], "tool_calls": 3, "seconds": 2.167}
+{"id": "v0117", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial", "missing_caveat"], "tool_calls": 3, "seconds": 2.348}
+{"id": "v0118", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial"], "tool_calls": 2, "seconds": 1.344}
+{"id": "v0119", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial"], "tool_calls": 3, "seconds": 2.35}
+{"id": "v0120", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect", "missing_caveat"], "tool_calls": 3, "seconds": 2.626}
+{"id": "v0121", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 5, "seconds": 2.89}
+{"id": "v0122", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial", "missing_caveat"], "tool_calls": 3, "seconds": 2.318}
+{"id": "v0123", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 3, "seconds": 2.164}
+{"id": "v0124", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["unmatched=[2026.0]"], "tool_calls": 2, "seconds": 2.078}
+{"id": "v0125", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect", "missing_caveat"], "tool_calls": 3, "seconds": 2.593}
+{"id": "v0126", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect", "missing_caveat"], "tool_calls": 3, "seconds": 2.283}
+{"id": "v0127", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 3, "seconds": 2.61}
+{"id": "v0128", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial"], "tool_calls": 3, "seconds": 2.389}
+{"id": "v0129", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial"], "tool_calls": 3, "seconds": 2.163}
+{"id": "v0130", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 3, "seconds": 2.273}
+{"id": "v0131", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial"], "tool_calls": 3, "seconds": 2.422}
+{"id": "v0132", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial", "missing_caveat"], "tool_calls": 3, "seconds": 2.099}
+{"id": "v0133", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["unmatched=[33.0, 4.4]"], "tool_calls": 3, "seconds": 2.806}
+{"id": "v0134", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=incorrect", "missing_caveat"], "tool_calls": 3, "seconds": 2.733}
+{"id": "v0135", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["unmatched=[8.0]"], "tool_calls": 2, "seconds": 1.512}
+{"id": "v0136", "source": "generated", "type": "trend_reliability", "success": false, "reasons": ["judge=partial"], "tool_calls": 3, "seconds": 2.198}
+{"id": "v0137", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 2, "seconds": 0.972}
+{"id": "v0138", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 2, "seconds": 1.126}
+{"id": "v0139", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 3, "seconds": 1.51}
+{"id": "v0140", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 2, "seconds": 1.023}
+{"id": "v0141", "source": "generated", "type": "unanswerable", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 2, "seconds": 0.931}
+{"id": "v0142", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 0, "seconds": 0.317}
+{"id": "v0143", "source": "generated", "type": "unanswerable", "success": false, "reasons": ["judge=incorrect"], "tool_calls": 2, "seconds": 0.787}
+{"id": "v0144", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 3, "seconds": 1.1}
+{"id": "v0145", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 0, "seconds": 0.465}
+{"id": "v0146", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 0, "seconds": 0.324}
+{"id": "v0147", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 0, "seconds": 0.552}
+{"id": "v0148", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 3, "seconds": 1.662}
+{"id": "v0149", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 0, "seconds": 0.371}
+{"id": "v0150", "source": "generated", "type": "unanswerable", "success": true, "reasons": [], "tool_calls": 1, "seconds": 0.307}

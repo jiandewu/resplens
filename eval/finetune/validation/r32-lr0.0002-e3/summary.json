@@ -1,0 +1,61 @@
+{
+ "name": "r32-lr0.0002-e3",
+ "all": {
+  "success": 147,
+  "items": 158,
+  "rate": 0.93
+ },
+ "a3_dev": {
+  "success": 10,
+  "items": 13,
+  "rate": 0.769
+ },
+ "generated": {
+  "success": 137,
+  "items": 145,
+  "rate": 0.945
+ },
+ "by_type": {
+  "definition": {
+   "success": 20,
+   "items": 24,
+   "rate": 0.833
+  },
+  "injection": {
+   "success": 15,
+   "items": 17,
+   "rate": 0.882
+  },
+  "lookup": {
+   "success": 22,
+   "items": 22,
+   "rate": 1.0
+  },
+  "mixed": {
+   "success": 22,
+   "items": 24,
+   "rate": 0.917
+  },
+  "revision": {
+   "success": 24,
+   "items": 24,
+   "rate": 1.0
+  },
+  "trend_reliability": {
+   "success": 32,
+   "items": 32,
+   "rate": 1.0
+  },
+  "unanswerable": {
+   "success": 12,
+   "items": 15,
+   "rate": 0.8
+  }
+ },
+ "reasons": {
+  "judge": 5,
+  "stop": 4,
+  "unmatched": 2
+ },
+ "median_seconds": 1.409
+}

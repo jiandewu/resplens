@@ -130,7 +130,10 @@ def success(row: dict, source: str, prompt_as_source: bool = False) -> tuple[boo
     return not reasons, reasons
 
 
-def compare(rows: list[dict], source: str, seeds: tuple[int, ...], prompt_as_source: bool = False) -> dict:
+def compare(rows: list[dict], source: str, seeds: tuple[int, ...], prompt_as_source: bool = False,
+            pair: tuple[str, str] = SYSTEMS) -> dict:
+    """Paired comparison of pair[1] against pair[0] over the tasks both ran."""
+    first, second = pair
     per_task = defaultdict(lambda: defaultdict(list))
     for row in rows:
         if row["seed"] in seeds:
@@ -138,17 +141,17 @@ def compare(rows: list[dict], source: str, seeds: tuple[int, ...], prompt_as_sou
     tasks = sorted(per_task)
     need = len(seeds) // 2 + 1  # 2 of 3 runs; 1 of 1
     result = {"source": source, "seeds": list(seeds), "prompt_as_source": prompt_as_source, "tasks": len(tasks)}
-    for system in SYSTEMS:
+    for system in pair:
         runs = [ok for task in tasks for ok in per_task[task][system]]
         result[system] = {"mean_success": round(sum(runs) / len(runs), 3),
                           "solved_tasks": sum(sum(per_task[task][system]) >= need for task in tasks)}
-    solved = {task: {s: sum(per_task[task][s]) >= need for s in SYSTEMS} for task in tasks}
-    only_oss = sum(v["gpt-oss"] and not v["gemma"] for v in solved.values())
-    only_gemma = sum(v["gemma"] and not v["gpt-oss"] for v in solved.values())
-    differences = [sum(per_task[t]["gpt-oss"]) / len(seeds) - sum(per_task[t]["gemma"]) / len(seeds) for t in tasks]
-    result["paired"] = {"solved_only_by_gpt-oss": only_oss, "solved_only_by_gemma": only_gemma,
-                        "sign_test_p": round(_sign_test(only_oss, only_gemma), 3),
-                        "mean_difference_gpt-oss_minus_gemma": round(sum(differences) / len(differences), 3),
+    solved = {task: {s: sum(per_task[task][s]) >= need for s in pair} for task in tasks}
+    only_second = sum(v[second] and not v[first] for v in solved.values())
+    only_first = sum(v[first] and not v[second] for v in solved.values())
+    differences = [sum(per_task[t][second]) / len(seeds) - sum(per_task[t][first]) / len(seeds) for t in tasks]
+    result["paired"] = {f"solved_only_by_{second}": only_second, f"solved_only_by_{first}": only_first,
+                        "sign_test_p": round(_sign_test(only_second, only_first), 3),
+                        f"mean_difference_{second}_minus_{first}": round(sum(differences) / len(differences), 3),
                         "bootstrap_95": bootstrap_difference(differences)}
     return result
 
@@ -177,9 +180,9 @@ def injection_by_task(rows: list[dict]) -> dict:
     return out
 
 
-def secondary(rows: list[dict]) -> dict:
+def secondary(rows: list[dict], systems: tuple[str, ...] = SYSTEMS) -> dict:
     out = {}
-    for system in SYSTEMS:
+    for system in systems:
         mine = [row for row in rows if row["system"] == system]
         required = [row for row in mine if row["requires_caveat"]]
         unanswerable = [row for row in mine if row["type"] == "unanswerable"]
@@ -222,12 +225,12 @@ def by_type(rows: list[dict]) -> dict:
     return {kind: {system: f"{sum(v)}/{len(v)}" for system, v in systems.items()} for kind, systems in table.items()}
 
 
-def stability(rows: list[dict]) -> dict:
+def stability(rows: list[dict], systems: tuple[str, ...] = SYSTEMS) -> dict:
     runs = defaultdict(list)
     for row in rows:
         runs[(row["system"], row["task"])].append(success(row, "primary")[0])
     return {system: sorted(task for (s, task), oks in runs.items() if s == system and len(set(oks)) > 1)
-            for system in SYSTEMS}
+            for system in systems}
 
 
 def failures(rows: list[dict]) -> list[dict]:
@@ -264,10 +267,44 @@ def rag_baseline() -> dict | None:
             "judge_unsupported_claims": sum(v["unsupported_claims"] for v in judged.values())}
 
 
+B2_REVIEW = ROOT / "eval" / "finetune-review"
+B2_PAIR = ("b2-base", "b2-ft")
+
+
+def main_b2(review: Path) -> int:
+    """The B2 analyses: same success definition, labels and tests as A3; the primary pair is base -> fine-tuned."""
+    rows = load(review)
+    a3 = load(OUT)
+    result = {"primary": compare(rows, "primary", (0, 1, 2), pair=B2_PAIR),
+              "sensitivity_run1_author": compare(rows, "primary", (0,), pair=B2_PAIR),
+              "sensitivity_judge_only": compare(rows, "judge", (0, 1, 2), pair=B2_PAIR),
+              "sensitivity_system_prompt_as_source": compare(rows, "primary", (0, 1, 2), prompt_as_source=True,
+                                                             pair=B2_PAIR),
+              # Across backends: A3 ran on Ollama with 4-bit weights, B2 on vLLM in bf16.
+              "secondary_vs_a3": {system: compare(rows + a3, "primary", (0, 1, 2), pair=(system, "b2-ft"))
+                                  for system in SYSTEMS},
+              "stability_tasks_with_mixed_runs": stability(rows, B2_PAIR),
+              "judge_author_agreement_run1": agreement(rows),
+              "success_by_type": by_type(rows + a3),
+              "secondary": secondary(rows, B2_PAIR),
+              "failures": failures(rows)}
+    (review / "analysis.json").write_text(json.dumps(result, indent=1))
+    (review / "rows.jsonl").write_text("".join(json.dumps(row) + "\n" for row in rows))
+    print(json.dumps({k: v for k, v in result.items() if k != "failures"}, indent=1))
+    print(f"{len(result['failures'])} unsuccessful runs; details in {(review / 'analysis.json').relative_to(ROOT)}")
+    return 0
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--review", type=Path, default=OUT)
-    review = parser.parse_args(argv).review
+    parser.add_argument("--b2", action="store_true",
+                        help="B2 (docs/finetune-eval.md): fine-tuned against base from eval/finetune-review/, and "
+                             "the fine-tuned model against the A3 systems from eval/agent-review/")
+    args = parser.parse_args(argv)
+    if args.b2:
+        return main_b2(args.review if args.review != OUT else B2_REVIEW)
+    review = args.review
     rows = load(review)
     result = {"primary": compare(rows, "primary", (0, 1, 2)),
               "sensitivity_run1_author": compare(rows, "primary", (0,)),

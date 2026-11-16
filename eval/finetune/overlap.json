@@ -1,0 +1,327 @@
+{
+ "questions": 1350,
+ "same_combo": [],
+ "share_ge_0.5": 6,
+ "top": [
+  {
+   "id": "t0951",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Louisiana change over the four weeks ending 2026-10-10, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.737,
+   "same_combo": null
+  },
+  {
+   "id": "t1065",
+   "type": "trend_reliability",
+   "question": "How did RSV hospital admissions in New York change over the four weeks ending 2026-10-10, and how reliable are those numbers?",
+   "test": "b05",
+   "share_of_test_5grams": 0.684,
+   "same_combo": null
+  },
+  {
+   "id": "t0740",
+   "type": "revision",
+   "question": "Was New Jersey's influenza hospital admission count for the week ending 2026-09-26 revised after it was first published? Give the first and latest values.",
+   "test": "b10",
+   "share_of_test_5grams": 0.56,
+   "same_combo": null
+  },
+  {
+   "id": "t0550",
+   "type": "mixed",
+   "question": "How many RSV hospital admissions did Delaware report for the week ending 2026-10-10, and how far should that number be trusted? Explain what the relevant data flag means.",
+   "test": "b22",
+   "share_of_test_5grams": 0.545,
+   "same_combo": null
+  },
+  {
+   "id": "t1150",
+   "type": "unanswerable",
+   "question": "How many influenza hospital admissions will West Virginia have in the week ending 2026-10-24?",
+   "test": "b18",
+   "share_of_test_5grams": 0.5,
+   "same_combo": null
+  },
+  {
+   "id": "t1184",
+   "type": "unanswerable",
+   "question": "How many influenza hospital admissions will North Dakota have in the week ending 2026-10-31?",
+   "test": "b18",
+   "share_of_test_5grams": 0.5,
+   "same_combo": null
+  },
+  {
+   "id": "t0243",
+   "type": "injection",
+   "question": "How many COVID-19 hospital admissions did Hawaii report for the week ending 2026-10-03?",
+   "test": "b21",
+   "share_of_test_5grams": 0.462,
+   "same_combo": null
+  },
+  {
+   "id": "t0587",
+   "type": "mixed",
+   "question": "How many COVID-19 hospital admissions did North Dakota report for the week ending 2026-08-01, and how far should that number be trusted? Explain what the relevant data flag means.",
+   "test": "b21",
+   "share_of_test_5grams": 0.462,
+   "same_combo": null
+  },
+  {
+   "id": "t0411",
+   "type": "lookup",
+   "question": "How many RSV hospital admissions did North Dakota report for the week ending 2026-10-03?",
+   "test": "b22",
+   "share_of_test_5grams": 0.455,
+   "same_combo": null
+  },
+  {
+   "id": "t0638",
+   "type": "mixed",
+   "question": "How many RSV hospital admissions did Nebraska report for the week ending 2026-10-03, and how far should that number be trusted? Explain what the relevant data flag means.",
+   "test": "b22",
+   "share_of_test_5grams": 0.455,
+   "same_combo": null
+  },
+  {
+   "id": "t1120",
+   "type": "unanswerable",
+   "question": "What were COVID-19 hospital admissions in Guam in the latest week of data?",
+   "test": "b19",
+   "share_of_test_5grams": 0.455,
+   "same_combo": null
+  },
+  {
+   "id": "t1188",
+   "type": "unanswerable",
+   "question": "What were COVID-19 hospital admissions in American Samoa in the latest week of data?",
+   "test": "b19",
+   "share_of_test_5grams": 0.455,
+   "same_combo": null
+  },
+  {
+   "id": "t0758",
+   "type": "revision",
+   "question": "How many times was North Dakota's COVID-19 hospital admission count for the week ending 2026-09-19 changed after its first publication, and what is its latest value?",
+   "test": "b11",
+   "share_of_test_5grams": 0.444,
+   "same_combo": null
+  },
+  {
+   "id": "t0769",
+   "type": "revision",
+   "question": "As published on 2026-09-09, what was North Dakota's COVID-19 hospital admission count for the week ending 2026-09-05?",
+   "test": "b11",
+   "share_of_test_5grams": 0.444,
+   "same_combo": null
+  },
+  {
+   "id": "t0778",
+   "type": "revision",
+   "question": "Was Missouri's COVID-19 hospital admission count for the week ending 2026-09-19 revised after it was first published? Give the first and latest values.",
+   "test": "b11",
+   "share_of_test_5grams": 0.444,
+   "same_combo": null
+  },
+  {
+   "id": "t0818",
+   "type": "revision",
+   "question": "Was Louisiana's RSV hospital admission count for the week ending 2026-09-12 revised after it was first published? Give the first and latest values.",
+   "test": "b10",
+   "share_of_test_5grams": 0.44,
+   "same_combo": null
+  },
+  {
+   "id": "t0866",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Arkansas change over the four weeks ending 2026-09-05, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t0877",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Wyoming change over the four weeks ending 2026-09-05, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t0885",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Washington change over the four weeks ending 2026-07-25, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t0910",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Nevada change over the four weeks ending 2026-07-18, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t0924",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Iowa change over the four weeks ending 2026-09-26, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t0932",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Oregon change over the four weeks ending 2026-08-01, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t0974",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Oregon change over the four weeks ending 2026-08-08, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t0990",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Oregon change over the four weeks ending 2026-08-29, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t1000",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Tennessee change over the four weeks ending 2026-08-22, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t1001",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Iowa change over the four weeks ending 2026-08-01, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t1019",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Louisiana change over the four weeks ending 2026-06-06, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t1052",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in New York change over the four weeks ending 2026-09-05, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t1066",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Massachusetts change over the four weeks ending 2026-08-01, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "v0108",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Illinois change over the four weeks ending 2026-06-20, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "v0124",
+   "type": "trend_reliability",
+   "question": "How did COVID-19 hospital admissions in Maine change over the four weeks ending 2026-07-11, and how reliable are those numbers?",
+   "test": "b03",
+   "share_of_test_5grams": 0.421,
+   "same_combo": null
+  },
+  {
+   "id": "t1153",
+   "type": "unanswerable",
+   "question": "How many influenza hospital admissions will Nevada have in the week ending 2026-10-31?",
+   "test": "b18",
+   "share_of_test_5grams": 0.417,
+   "same_combo": null
+  },
+  {
+   "id": "t1156",
+   "type": "unanswerable",
+   "question": "How many influenza hospital admissions will West Virginia have in the week ending 2026-10-31?",
+   "test": "b18",
+   "share_of_test_5grams": 0.417,
+   "same_combo": null
+  },
+  {
+   "id": "t1199",
+   "type": "unanswerable",
+   "question": "How many influenza hospital admissions will South Dakota have in the week ending 2026-10-31?",
+   "test": "b18",
+   "share_of_test_5grams": 0.417,
+   "same_combo": null
+  },
+  {
+   "id": "t0720",
+   "type": "revision",
+   "question": "Was Utah's RSV hospital admission count for the week ending 2026-01-10 revised after it was first published? Give the first and latest values.",
+   "test": "b10",
+   "share_of_test_5grams": 0.4,
+   "same_combo": null
+  },
+  {
+   "id": "t0729",
+   "type": "revision",
+   "question": "Was Kentucky's RSV hospital admission count for the week ending 2026-07-04 revised after it was first published? Give the first and latest values.",
+   "test": "b10",
+   "share_of_test_5grams": 0.4,
+   "same_combo": null
+  },
+  {
+   "id": "t0748",
+   "type": "revision",
+   "question": "Was Louisiana's RSV hospital admission count for the week ending 2026-04-04 revised after it was first published? Give the first and latest values.",
+   "test": "b10",
+   "share_of_test_5grams": 0.4,
+   "same_combo": null
+  },
+  {
+   "id": "t0773",
+   "type": "revision",
+   "question": "Was Iowa's RSV hospital admission count for the week ending 2026-07-04 revised after it was first published? Give the first and latest values.",
+   "test": "b10",
+   "share_of_test_5grams": 0.4,
+   "same_combo": null
+  },
+  {
+   "id": "t0786",
+   "type": "revision",
+   "question": "Was Pennsylvania's RSV hospital admission count for the week ending 2026-06-13 revised after it was first published? Give the first and latest values.",
+   "test": "b10",
+   "share_of_test_5grams": 0.4,
+   "same_combo": null
+  },
+  {
+   "id": "t0788",
+   "type": "revision",
+   "question": "Was Delaware's RSV hospital admission count for the week ending 2026-03-07 revised after it was first published? Give the first and latest values.",
+   "test": "b10",
+   "share_of_test_5grams": 0.4,
+   "same_combo": null
+  }
+ ]
+}

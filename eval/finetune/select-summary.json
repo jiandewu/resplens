@@ -1,0 +1,27 @@
+{
+ "questions": 1173,
+ "traces": 2346,
+ "passing_traces": 1850,
+ "questions_kept": 1152,
+ "kept_by_teacher": {
+  "gemma": 795,
+  "gpt-oss": 357
+ },
+ "kept_by_type": {
+  "definition": 171,
+  "injection": 107,
+  "lookup": 173,
+  "mixed": 180,
+  "revision": 180,
+  "trend_reliability": 231,
+  "unanswerable": 110
+ },
+ "edited": 9,
+ "reasons": {
+  "judge": 65,
+  "unmatched": 188,
+  "missing_caveat": 3,
+  "missing": 27,
+  "reliability_window": 307
+ }
+}

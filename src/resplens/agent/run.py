@@ -16,6 +16,7 @@ import sys
 import urllib.request
 from collections import Counter
 from datetime import datetime
+from functools import partial
 from pathlib import Path
 
 from mcp import Client
@@ -32,7 +33,11 @@ TASKS = ROOT / "eval" / "tasks.jsonl"
 RUN_INPUTS = ["src", "corpus", "eval/tasks.jsonl", "pyproject.toml", "uv.lock"]
 # Reasoning settings chosen on dev 2026-10-30 and fixed (docs/agent-eval.md); --think overrides for dev runs only.
 SYSTEMS = {"gemma": {"model": "gemma4:31b", "think": False},
-           "gpt-oss": {"model": "gpt-oss:120b", "think": "medium"}}
+           "gpt-oss": {"model": "gpt-oss:120b", "think": "medium"},
+           # B2 (docs/finetune-eval.md): Gemma 4 E4B base and fine-tuned, served by vLLM under these names;
+           # what is served (repository, revision, adapter, vLLM version) is passed with --info and recorded.
+           "b2-base": {"model": "b2-base", "think": False, "backend": "vllm"},
+           "b2-ft": {"model": "b2-ft", "think": False, "backend": "vllm"}}
 
 
 def load_tasks(split: str, ids: list[str] | None = None) -> list[dict]:
@@ -57,22 +62,26 @@ def parse_think(value: str) -> bool | str:
 
 
 async def _run(split: str, system: str, seed: int, think: bool | str, ids: list[str] | None,
-               system_prompt: str, resume: Path | None) -> Path:
+               system_prompt: str, resume: Path | None, url: str | None = None, info: dict | None = None) -> Path:
     tasks = load_tasks(split, ids)
     model = SYSTEMS[system]["model"]
     if resume:
         run_dir = resume
         config = json.loads((run_dir / "config.json").read_text())
         model, think, seed, system_prompt = config["model"], config["think"], config["seed"], config["system_prompt"]
+        system, url = config["system"], config.get("url")
     else:
         run_dir = ROOT / "eval" / "agent-runs" / f"{datetime.now():%Y%m%d-%H%M%S}-{split}-{system}-seed{seed}"
         run_dir.mkdir(parents=True)
     out = run_dir / "traces.jsonl"
     done = {json.loads(line)["id"] for line in out.read_text().splitlines()} if out.exists() else set()
+    vllm = SYSTEMS[system].get("backend") == "vllm"
+    chat_fn = partial(loop.openai_chat, url=url) if vllm else loop.chat
     async with Client(server.mcp) as client:
         toolbox = await loop.Toolbox.create(client)
         if not resume:
-            config = {"split": split, "system": system, **model_info(model), "think": think, "seed": seed,
+            served = {"model": model, "url": url or loop.OPENAI_URL, **(info or {})} if vllm else model_info(model)
+            config = {"split": split, "system": system, **served, "think": think, "seed": seed,
                       "temperature": 0, "num_ctx": loop.NUM_CTX, "max_output": loop.MAX_OUTPUT,
                       "num_thread": loop.CPU_THREADS,
                       "max_turns": loop.MAX_TURNS, "max_tool_calls": loop.MAX_TOOL_CALLS,
@@ -90,7 +99,8 @@ async def _run(split: str, system: str, seed: int, think: bool | str, ids: list[
             for task in tasks:
                 if task["id"] in done:
                     continue
-                trace = (await loop.run_task(task, toolbox, model, think, seed, system_prompt)).to_dict()
+                trace = (await loop.run_task(task, toolbox, model, think, seed, system_prompt,
+                                             chat_fn=chat_fn)).to_dict()
                 handle.write(json.dumps(trace) + "\n")
                 handle.flush()
                 print(f"{task['id']} {trace['stop']} turns={trace['model_turns']} calls={trace['tool_calls']} "
@@ -169,6 +179,8 @@ def main(argv=None) -> int:
     run.add_argument("--tasks", help="comma-separated task IDs (default: the whole split)")
     run.add_argument("--system-prompt", type=Path, help="file with a system prompt to try on dev")
     run.add_argument("--resume", type=Path, help="continue an interrupted run directory")
+    run.add_argument("--url", help="vLLM server for the b2 systems (default RESPLENS_OPENAI_URL)")
+    run.add_argument("--info", default="{}", help="JSON recorded in config.json for the b2 systems (what is served)")
     scorer = commands.add_parser("score")
     scorer.add_argument("run_dir", type=Path)
     check = commands.add_parser("mcp-check", help="replay a run's data-tool calls over stdio and compare outputs")
@@ -181,7 +193,8 @@ def main(argv=None) -> int:
         think = parse_think(args.think) if args.think else SYSTEMS[args.system]["think"]
         prompt = args.system_prompt.read_text().strip() if args.system_prompt else loop.SYSTEM_PROMPT
         ids = args.tasks.split(",") if args.tasks else None
-        asyncio.run(_run(args.split, args.system, args.seed, think, ids, prompt, args.resume))
+        asyncio.run(_run(args.split, args.system, args.seed, think, ids, prompt, args.resume, args.url,
+                         json.loads(args.info)))
     elif args.command == "score":
         score(args.run_dir)
     else:

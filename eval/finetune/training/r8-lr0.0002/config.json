@@ -1,0 +1,31 @@
+{
+ "base": "google/gemma-4-E4B-it",
+ "revision": "4ecc2ba63bcac23ba4a767fc87025b1450f84c9c",
+ "rank": 8,
+ "alpha": 16,
+ "dropout": 0.05,
+ "lr": 0.0002,
+ "epochs": 3,
+ "batch": 1,
+ "accumulation": 16,
+ "schedule": "cosine",
+ "warmup": 0.03,
+ "seed": 0,
+ "conversations": 1152,
+ "max_length": 13405,
+ "target": "model\\.language_model\\.layers\\.\\d+\\.(self_attn\\.(q|k|v|o)_proj|mlp\\.(gate|up|down)_proj)",
+ "adapted_modules": 258,
+ "trainable_parameters": 17440768,
+ "attention": {
+  "text_config": "sdpa",
+  "vision_config": "sdpa",
+  "audio_config": "eager"
+ },
+ "sdpa_backend": "efficient",
+ "git_commit": "259cb75",
+ "versions": {
+  "torch": "2.14.0+cu130",
+  "transformers": "5.20.2",
+  "peft": "0.21.3"
+ }
+}
