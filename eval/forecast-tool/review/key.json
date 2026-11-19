@@ -1,0 +1,490 @@
+{
+ "runs": [
+  "20261117-152551-test-gemma-seed0-pv2",
+  "20261117-153120-test-gemma-seed1-pv2",
+  "20261117-153530-test-gemma-seed2-pv2",
+  "20261117-153916-test-gpt-oss-seed0-pv2",
+  "20261117-154553-test-gpt-oss-seed1-pv2",
+  "20261117-154856-test-gpt-oss-seed2-pv2",
+  "20261117-155911-test-b2-base-seed0-pv2",
+  "20261117-160113-test-b2-base-seed1-pv2",
+  "20261117-160301-test-b2-base-seed2-pv2",
+  "20261117-160900-test-b2-ft-seed0-pv2",
+  "20261117-161106-test-b2-ft-seed1-pv2",
+  "20261117-161308-test-b2-ft-seed2-pv2"
+ ],
+ "items": {
+  "H01": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "u01"
+  },
+  "H02": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "o06"
+  },
+  "H03": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "i04"
+  },
+  "H04": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "n02"
+  },
+  "H05": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "o06"
+  },
+  "H06": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "c02"
+  },
+  "H07": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "f03"
+  },
+  "H08": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "c02"
+  },
+  "H09": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "o06"
+  },
+  "H10": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "o04"
+  },
+  "H11": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "i01"
+  },
+  "H12": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "i02"
+  },
+  "H13": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "n02"
+  },
+  "H14": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "i01"
+  },
+  "H15": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "p02"
+  },
+  "H16": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "o03"
+  },
+  "H17": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "f02"
+  },
+  "H18": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "f02"
+  },
+  "H19": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "p03"
+  },
+  "H20": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "c03"
+  },
+  "H21": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "n02"
+  },
+  "H22": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "p02"
+  },
+  "H23": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "i01"
+  },
+  "H24": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "n03"
+  },
+  "H25": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "f05"
+  },
+  "H26": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "o03"
+  },
+  "H27": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "f03"
+  },
+  "H28": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "p04"
+  },
+  "H29": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "f01"
+  },
+  "H30": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "p06"
+  },
+  "H31": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "f03"
+  },
+  "H32": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "o04"
+  },
+  "H33": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "n03"
+  },
+  "H34": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "i04"
+  },
+  "H35": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "p04"
+  },
+  "H36": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "i02"
+  },
+  "H37": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "c02"
+  },
+  "H38": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "f01"
+  },
+  "H39": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "p02"
+  },
+  "H40": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "c03"
+  },
+  "H41": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "p02"
+  },
+  "H42": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "i01"
+  },
+  "H43": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "f05"
+  },
+  "H44": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "p06"
+  },
+  "H45": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "p04"
+  },
+  "H46": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "o01"
+  },
+  "H47": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "p03"
+  },
+  "H48": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "o03"
+  },
+  "H49": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "o01"
+  },
+  "H50": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "n03"
+  },
+  "H51": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "u01"
+  },
+  "H52": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "f01"
+  },
+  "H53": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "c03"
+  },
+  "H54": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "f03"
+  },
+  "H55": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "u04"
+  },
+  "H56": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "u01"
+  },
+  "H57": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "u04"
+  },
+  "H58": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "o03"
+  },
+  "H59": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "p04"
+  },
+  "H60": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "u04"
+  },
+  "H61": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "i04"
+  },
+  "H62": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "f02"
+  },
+  "H63": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "c03"
+  },
+  "H64": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "u04"
+  },
+  "H65": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "p03"
+  },
+  "H66": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "f05"
+  },
+  "H67": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "o01"
+  },
+  "H68": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "p06"
+  },
+  "H69": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "p06"
+  },
+  "H70": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "p03"
+  },
+  "H71": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "i04"
+  },
+  "H72": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "i02"
+  },
+  "H73": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "f02"
+  },
+  "H74": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "i02"
+  },
+  "H75": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "o06"
+  },
+  "H76": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "o04"
+  },
+  "H77": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "o04"
+  },
+  "H78": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "f05"
+  },
+  "H79": {
+   "run": "20261117-152551-test-gemma-seed0-pv2",
+   "task": "u01"
+  },
+  "H80": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "o01"
+  },
+  "H81": {
+   "run": "20261117-155911-test-b2-base-seed0-pv2",
+   "task": "f01"
+  },
+  "H82": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "c02"
+  },
+  "H83": {
+   "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+   "task": "n03"
+  },
+  "H84": {
+   "run": "20261117-160900-test-b2-ft-seed0-pv2",
+   "task": "n02"
+  },
+  "N01": [
+   {
+    "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+    "task": "u01"
+   },
+   {
+    "run": "20261117-154553-test-gpt-oss-seed1-pv2",
+    "task": "u01"
+   },
+   {
+    "run": "20261117-154856-test-gpt-oss-seed2-pv2",
+    "task": "u01"
+   }
+  ],
+  "N02": [
+   {
+    "run": "20261117-154553-test-gpt-oss-seed1-pv2",
+    "task": "f02"
+   },
+   {
+    "run": "20261117-154856-test-gpt-oss-seed2-pv2",
+    "task": "f02"
+   }
+  ],
+  "N03": [
+   {
+    "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+    "task": "o04"
+   }
+  ],
+  "N04": [
+   {
+    "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+    "task": "n03"
+   },
+   {
+    "run": "20261117-154553-test-gpt-oss-seed1-pv2",
+    "task": "n03"
+   },
+   {
+    "run": "20261117-154856-test-gpt-oss-seed2-pv2",
+    "task": "n03"
+   }
+  ],
+  "N05": [
+   {
+    "run": "20261117-153120-test-gemma-seed1-pv2",
+    "task": "f01"
+   }
+  ],
+  "N06": [
+   {
+    "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+    "task": "n02"
+   },
+   {
+    "run": "20261117-154553-test-gpt-oss-seed1-pv2",
+    "task": "n02"
+   },
+   {
+    "run": "20261117-154856-test-gpt-oss-seed2-pv2",
+    "task": "n02"
+   }
+  ],
+  "N07": [
+   {
+    "run": "20261117-153530-test-gemma-seed2-pv2",
+    "task": "f01"
+   }
+  ],
+  "N08": [
+   {
+    "run": "20261117-152551-test-gemma-seed0-pv2",
+    "task": "f01"
+   }
+  ],
+  "N09": [
+   {
+    "run": "20261117-161106-test-b2-ft-seed1-pv2",
+    "task": "f02"
+   },
+   {
+    "run": "20261117-161308-test-b2-ft-seed2-pv2",
+    "task": "f02"
+   }
+  ],
+  "N10": [
+   {
+    "run": "20261117-154553-test-gpt-oss-seed1-pv2",
+    "task": "f01"
+   },
+   {
+    "run": "20261117-154856-test-gpt-oss-seed2-pv2",
+    "task": "f01"
+   }
+  ],
+  "N11": [
+   {
+    "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+    "task": "c03"
+   }
+  ],
+  "N12": [
+   {
+    "run": "20261117-154553-test-gpt-oss-seed1-pv2",
+    "task": "o04"
+   }
+  ],
+  "N13": [
+   {
+    "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+    "task": "o03"
+   }
+  ],
+  "N14": [
+   {
+    "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+    "task": "f02"
+   }
+  ],
+  "N15": [
+   {
+    "run": "20261117-154553-test-gpt-oss-seed1-pv2",
+    "task": "c03"
+   },
+   {
+    "run": "20261117-154856-test-gpt-oss-seed2-pv2",
+    "task": "c03"
+   }
+  ],
+  "N16": [
+   {
+    "run": "20261117-153916-test-gpt-oss-seed0-pv2",
+    "task": "f01"
+   }
+  ]
+ }
+}

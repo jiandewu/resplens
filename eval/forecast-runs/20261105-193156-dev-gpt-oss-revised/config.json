@@ -1,0 +1,128 @@
+{
+ "split": "dev",
+ "system": "gpt-oss",
+ "version": "revised",
+ "variant": "h26_last_year",
+ "pathogen": "influenza",
+ "states": [
+  "CT",
+  "DE",
+  "FL",
+  "GA",
+  "MT",
+  "NC",
+  "PA",
+  "RI",
+  "SC",
+  "TX"
+ ],
+ "dates": [
+  "2024-10-04",
+  "2024-10-11",
+  "2024-10-18",
+  "2024-10-25",
+  "2024-11-01",
+  "2024-11-08",
+  "2024-11-15",
+  "2024-11-22",
+  "2024-11-29",
+  "2024-12-06",
+  "2024-12-13",
+  "2024-12-20",
+  "2024-12-27",
+  "2025-01-03",
+  "2025-01-10",
+  "2025-01-17",
+  "2025-01-24",
+  "2025-01-31",
+  "2025-02-07",
+  "2025-02-14",
+  "2025-02-21",
+  "2025-02-28",
+  "2025-03-07",
+  "2025-03-14",
+  "2025-03-21",
+  "2025-03-28"
+ ],
+ "data_release": "v2.0.0+2026-10-16",
+ "levels": [
+  0.01,
+  0.025,
+  0.05,
+  0.1,
+  0.15,
+  0.2,
+  0.25,
+  0.3,
+  0.35,
+  0.4,
+  0.45,
+  0.5,
+  0.55,
+  0.6,
+  0.65,
+  0.7,
+  0.75,
+  0.8,
+  0.85,
+  0.9,
+  0.95,
+  0.975,
+  0.99
+ ],
+ "git_commit": "58874de",
+ "started": "2026-11-05T19:31:56",
+ "model": "gpt-oss:120b",
+ "digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+ "ollama_version": "0.40.13",
+ "think": "medium",
+ "temperature": 0,
+ "seed": 0,
+ "num_ctx": 20480,
+ "max_output": 16384,
+ "num_thread": 32,
+ "system_prompt": "You forecast weekly counts of hospital admissions. Use only the data you are given.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "week_1": {
+    "type": "array",
+    "items": {
+     "type": "number"
+    },
+    "minItems": 23,
+    "maxItems": 23
+   },
+   "week_2": {
+    "type": "array",
+    "items": {
+     "type": "number"
+    },
+    "minItems": 23,
+    "maxItems": 23
+   },
+   "week_3": {
+    "type": "array",
+    "items": {
+     "type": "number"
+    },
+    "minItems": 23,
+    "maxItems": 23
+   },
+   "week_4": {
+    "type": "array",
+    "items": {
+     "type": "number"
+    },
+    "minItems": 23,
+    "maxItems": 23
+   }
+  },
+  "required": [
+   "week_1",
+   "week_2",
+   "week_3",
+   "week_4"
+  ]
+ }
+}

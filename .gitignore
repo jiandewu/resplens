@@ -18,6 +18,11 @@ build/
 # local service query log
 /logs/
 
+# derived inputs for the forecasting benchmark (rebuilt from the pinned data)
+/cache/
+/eval/forecast-b1/runs/*/forecasts.jsonl
+/eval/forecast-b1/runs/*/scores.jsonl
+
 # B2 training data, rebuilt from eval/finetune/traces/ by `traces select`
 /eval/finetune/kept.jsonl
 /eval/finetune/train.jsonl

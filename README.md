@@ -13,9 +13,10 @@ The data come from [ObsAwareData](https://github.com/DMA-PRIME/ObsAwareData) (CC
 | A1 | Data tools and MCP server | Done |
 | A2 | Retrieval over data documentation; retrieval versus whole corpus in context | Done |
 | A3 | Agent that answers trend and reliability questions, with a task evaluation | Done |
-| B1 | Real-time forecasting benchmark on as-of data | Planned |
+| B1 | Real-time forecasting benchmark on as-of data; LLMs as forecasters | Done |
 | B2 | Fine-tuned small model for tool calling | Done |
 | A4 | Public replay of the evaluated runs; local agent service | Replay published; local service done |
+| B1 + A3 | Forecast tool for the agent, with a task evaluation | Done |
 
 ## Tools
 
@@ -111,6 +112,40 @@ Can a 4B model, fine-tuned on traces from the two larger models, run the same ag
 | Held-out tasks solved | 20 of 24 | 22 of 24 | 20 of 24 | 18 of 24 |
 
 The gain over the base model is not detectable on the test tasks (3 tasks solved only by the fine-tuned model, 1 only by the base; sign test p = 0.63), and on the author-graded first run the two tie. The fine-tuned model includes every required number in all 72 runs (base 66) and makes more tool calls. The comparison with the A3 models crosses backends (4-bit on Ollama against bf16 on vLLM) and shows no detectable difference. Results, the full grid, and what changed after freezing: [`docs/finetune-results.md`](docs/finetune-results.md).
+
+## Forecasting on data as it was published
+
+Backtests of surveillance forecasts usually train and score on the latest, revised data, but a forecast made on a given Friday could only use what had been published by then. The release history in ObsAwareData makes it possible to rebuild each state's series exactly as published on every past date. The benchmark plan was frozen and [published](docs/forecast-eval.md) before any test forecast: NHSN weekly hospital admissions for COVID-19, influenza and RSV in 51 locations, 1- to 4-week-ahead quantile forecasts on 69 Fridays (2025-04-04 to 2026-07-24), settings chosen on 2022-10 to 2025-03, scored by weighted interval score (WIS) against persistence. Every model ran twice, on the real-time and on the revised series.
+
+| Model (real-time data) | WIS relative to persistence [95% CI] | 95% interval coverage |
+|---|---|---|
+| LightGBM | 0.712 [0.666, 0.755] | 0.902 |
+| TabPFN v2 | 0.731 [0.627, 0.859] | 0.880 |
+| Median ensemble | 0.740 [0.679, 0.812] | 0.960 |
+| Chronos-2 | 0.787 [0.734, 0.853] | 0.978 |
+| ARIMA | 0.965 [0.940, 0.989] | 0.927 |
+| ETS | 1.096 [0.933, 1.307] | 0.932 |
+
+Six of eight models beat persistence. Backtesting on revised data instead flatters LightGBM by 4.4 points of relative WIS and Chronos-2 by 2.7, and changes nothing for ARIMA. Results, Chronos-2-Synth and seasonal naive, by pathogen and target week, and sensitivity analyses: [`docs/forecast-results.md`](docs/forecast-results.md).
+
+A separate, smaller experiment asked `gemma4:31b` and `gpt-oss:120b` to forecast directly from the recent series (influenza, 10 states, the same 69 dates; plan [`docs/llm-forecast-eval.md`](docs/llm-forecast-eval.md)). On real-time data neither was detectably better than persistence (relative WIS 0.992 and 0.916); on revised data gpt-oss was (0.829). Results: [`docs/llm-forecast-results.md`](docs/llm-forecast-results.md).
+
+```bash
+uv sync --extra forecast
+uv run python -m resplens.forecast.inputs --split test --version realtime   # series as published on each date; resumable
+uv run --extra forecast python -m resplens.forecast.bench run --split test --model lightgbm --version realtime
+```
+
+## Forecast tool for the agent
+
+The benchmark's best model becomes one more tool, `forecast_admissions`: for a state and pathogen it returns 4-week medians, 50% and 95% intervals, and its own backtest accuracy, and the system prompt gains one rule (report the intervals, say it is a model forecast, check the reliability of the weeks it starts from). A task evaluation was frozen before any test run ([plan](docs/forecast-tool-eval.md)): 31 tasks, 21 held out, covering forecasts, forecasts that start from undercounted weeks, comparisons, questions the tool cannot answer, non-forecast questions and prompt injection; three runs per task, graded as in the agent evaluation.
+
+| | gemma4:31b | gpt-oss:120b | Base Gemma 4 E4B | Fine-tuned E4B |
+|---|---|---|---|---|
+| Mean task success over 3 runs | 0.98 | 0.90 | 0.44 | 0.56 |
+| Held-out tasks solved | 21 of 21 | 19 of 21 | 9 of 21 | 11 of 21 |
+
+The pre-specified comparison, fine-tuned E4B against `gemma4:31b`, favors the larger model (10 tasks solved only by it, none only by the 4B model; sign test p = 0.002). Given a forecast, the 4B models often skipped the reliability check and its caveat, and the fine-tuned model looped until the turn limit on questions outside the tool's coverage; it never saw this tool in training. No system invented a forecast number or followed an injected instruction. Results: [`docs/forecast-tool-results.md`](docs/forecast-tool-results.md); design: [`docs/forecast-tool.md`](docs/forecast-tool.md).
 
 ## Run the agent locally
 

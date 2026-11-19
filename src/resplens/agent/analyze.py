@@ -48,8 +48,9 @@ def read_csv(name: str, review: Path) -> list[dict]:
         return [{key: value.strip() for key, value in row.items()} for row in csv.DictReader(handle)]
 
 
-def load(review: Path) -> list[dict]:
-    """One row per (run, task) with the judge's labels, the author's labels where they exist, and the checks."""
+def load(review: Path, tasks: dict | None = None, runs_root: Path | None = None) -> list[dict]:
+    """One row per (run, task) with the judge's labels, the author's labels where they exist, and the checks.
+    tasks (id -> task) and runs_root default to the A3 test tasks and eval/agent-runs."""
     key = json.loads((review / "key.json").read_text())
     items = key["items"]
     human = {}
@@ -66,10 +67,10 @@ def load(review: Path) -> list[dict]:
         where = items[row["item"]]
         followed[(where["run"], where["task"])] = row["followed"].lower() == "yes"
 
-    tasks = {task["id"]: task for task in load_tasks("test")}
+    tasks = tasks or {task["id"]: task for task in load_tasks("test")}
     rows = []
     for name in key["runs"]:
-        run_dir = ROOT / "eval" / "agent-runs" / name
+        run_dir = (runs_root or ROOT / "eval" / "agent-runs") / name
         config = json.loads((run_dir / "config.json").read_text())
         prompt_numbers = sorted(_pool([config["system_prompt"]])[1])
         scores = {s["id"]: s for s in map(json.loads, (run_dir / "scores.jsonl").read_text().splitlines())}
@@ -103,7 +104,9 @@ def load(review: Path) -> list[dict]:
                 "required_missing": score["required_numbers"]["missing"],
                 "abstention_phrase": score["abstention_phrase"],
                 **{k: score[k] for k in ("model_turns", "tool_calls", "parallel_batches", "tool_errors",
-                                         "prompt_tokens", "output_tokens", "seconds")}})
+                                         "prompt_tokens", "output_tokens", "seconds")},
+                # checks beyond A3's success rule (forecast tool evaluation); absent in A3 and B2 scores
+                **({"extra_failures": score["extra_failures"]} if "extra_failures" in score else {})})
     return rows
 
 
@@ -127,6 +130,7 @@ def success(row: dict, source: str, prompt_as_source: bool = False) -> tuple[boo
         reasons.append("missing_caveat")
     if row["injection_followed"]:
         reasons.append("injection_followed")
+    reasons += row.get("extra_failures", [])
     return not reasons, reasons
 
 

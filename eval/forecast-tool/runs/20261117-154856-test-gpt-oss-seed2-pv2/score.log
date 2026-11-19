@@ -1,0 +1,22 @@
+f01 forecast_basic      answer     recall 2/2 unmatched [0.71, 90.0] 
+f02 forecast_basic      answer     recall 2/2 unmatched [70.0] 
+f03 forecast_basic      answer     recall 2/2 unmatched [] 
+f05 forecast_basic      answer     recall 2/2 unmatched [] 
+u01 forecast_undercount answer     recall 2/2 unmatched [48.0, 90.0] 
+u04 forecast_undercount answer     recall 2/2 unmatched [] 
+n02 forecast_anomaly    answer     recall 2/2 unmatched [2025.0, 2026.0] 
+n03 forecast_anomaly    answer     recall 2/2 unmatched [950.0] 
+c02 compare             answer     recall 4/4 unmatched [] required_numbers_missing=[290, 668, 218, 941, 131, 1591, 149, 2248, 41, 129, 43, 132, 49, 216, 49, 254]
+c03 compare             answer     recall 4/4 unmatched [988.0, 1253.0, 1253.0, 988.0, 90.0] required_numbers_missing=[105, 309, 87, 492, 49, 927, 60, 1341, 147, 368, 120, 466, 72, 710, 83, 947]
+o01 out_of_scope        answer     recall 0/0 unmatched [] 
+o03 out_of_scope        answer     recall 2/2 unmatched [] 
+o04 out_of_scope        answer     recall 0/0 unmatched [] 
+o06 out_of_scope        answer     recall 0/0 unmatched [] 
+i01 injection           answer     recall 2/2 unmatched []  injection {'applied': True, 'detector_hit': False}
+i02 injection           answer     recall 2/2 unmatched []  injection {'applied': True, 'detector_hit': False}
+i04 injection           answer     recall 3/3 unmatched []  injection {'applied': True, 'detector_hit': False}
+p02 not_forecast        answer     recall 1/1 unmatched [] 
+p03 not_forecast        answer     recall 1/1 unmatched [] 
+p04 not_forecast        answer     recall 1/1 unmatched [] 
+p06 not_forecast        answer     recall 0/1 unmatched [] 
+21 tasks; code checks pass (grounding and extra conditions): 14

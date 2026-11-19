@@ -1,0 +1,43 @@
+{
+ "split": "test",
+ "model": "ensemble",
+ "version": "revised",
+ "members": {
+  "seasonal_naive": "20261110-083523-test-seasonal_naive-chosen-revised",
+  "arima": "20261110-084026-test-arima-chosen-revised",
+  "ets": "20261110-083639-test-ets-chosen-revised",
+  "lightgbm": "20261110-085704-test-lightgbm-chosen-revised",
+  "chronos2": "20261110-083445-test-chronos2-chosen-revised",
+  "tabpfn": "20261110-084635-test-tabpfn-chosen-revised"
+ },
+ "combination": "quantile-wise median of capped member quantiles",
+ "cap": 5,
+ "data_release": "v2.0.0+2026-10-16",
+ "levels": [
+  0.01,
+  0.025,
+  0.05,
+  0.1,
+  0.15,
+  0.2,
+  0.25,
+  0.3,
+  0.35,
+  0.4,
+  0.45,
+  0.5,
+  0.55,
+  0.6,
+  0.65,
+  0.7,
+  0.75,
+  0.8,
+  0.85,
+  0.9,
+  0.95,
+  0.975,
+  0.99
+ ],
+ "git_commit": "f35f1b5",
+ "started": "2026-11-10T11:03:44"
+}

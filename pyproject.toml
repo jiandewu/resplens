@@ -31,6 +31,12 @@ app = [
     "fastapi>=0.162.2",
     "uvicorn>=0.54.0",
 ]
+forecast = [
+    "chronos-forecasting>=2.3.2",
+    "lightgbm>=4.7.0",
+    "statsforecast>=2.1.1",
+    "tabpfn>=9.2.0",
+]
 
 [build-system]
 requires = ["uv_build>=0.11.3,<0.12.0"]

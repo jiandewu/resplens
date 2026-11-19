@@ -1,0 +1,1318 @@
+{
+ "audit": {
+  "gemma/realtime": {
+   "forecasts": 690,
+   "failed": 0,
+   "repaired": 0,
+   "sorted": 0,
+   "clipped": 0,
+   "seconds_median": 7.5,
+   "seconds_max": 21.0,
+   "output_tokens_median": 389.0,
+   "output_tokens_max": 574
+  },
+  "gemma/revised": {
+   "forecasts": 690,
+   "failed": 0,
+   "repaired": 0,
+   "sorted": 0,
+   "clipped": 0,
+   "seconds_median": 7.4,
+   "seconds_max": 10.5,
+   "output_tokens_median": 389.0,
+   "output_tokens_max": 573
+  },
+  "gpt-oss/realtime": {
+   "forecasts": 690,
+   "failed": 0,
+   "repaired": 0,
+   "sorted": 2,
+   "clipped": 0,
+   "seconds_median": 20.4,
+   "seconds_max": 60.5,
+   "output_tokens_median": 3581.5,
+   "output_tokens_max": 10560
+  },
+  "gpt-oss/revised": {
+   "forecasts": 690,
+   "failed": 0,
+   "repaired": 0,
+   "sorted": 4,
+   "clipped": 0,
+   "seconds_median": 20.4,
+   "seconds_max": 65.4,
+   "output_tokens_median": 3589.5,
+   "output_tokens_max": 11444
+  },
+  "persistence/realtime": {
+   "forecasts": 690,
+   "failed": 0
+  },
+  "persistence/revised": {
+   "forecasts": 690,
+   "failed": 0
+  }
+ },
+ "versions": {
+  "realtime": {
+   "common_forecasts": 2760,
+   "forecasts_with_truth": 2760,
+   "coverage": {
+    "persistence": {
+     "cover50": 0.568,
+     "cover95": 0.946
+    },
+    "gemma": {
+     "cover50": 0.472,
+     "cover95": 0.82
+    },
+    "gpt-oss": {
+     "cover50": 0.319,
+     "cover95": 0.654
+    }
+   },
+   "mean_wis": {
+    "persistence": 74.99,
+    "gemma": 74.42,
+    "gpt-oss": 68.66
+   },
+   "gemma": {
+    "relative_wis": {
+     "ratio": 0.992,
+     "ci95": [
+      0.684,
+      1.375
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_mae": {
+     "ratio": 1.018,
+     "ci95": [
+      0.723,
+      1.405
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_wis_by_target_week": {
+     "1": {
+      "ratio": 1.104,
+      "ci95": [
+       0.927,
+       1.368
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 1.083,
+      "ci95": [
+       0.817,
+       1.449
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "3": {
+      "ratio": 0.969,
+      "ci95": [
+       0.623,
+       1.416
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "4": {
+      "ratio": 0.913,
+      "ci95": [
+       0.541,
+       1.377
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_mae_by_target_week": {
+     "1": {
+      "ratio": 1.165,
+      "ci95": [
+       0.948,
+       1.492
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 1.075,
+      "ci95": [
+       0.808,
+       1.457
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "3": {
+      "ratio": 0.963,
+      "ci95": [
+       0.642,
+       1.4
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "4": {
+      "ratio": 0.965,
+      "ci95": [
+       0.608,
+       1.428
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_state": {
+     "CT": {
+      "ratio": 1.017,
+      "ci95": [
+       0.659,
+       1.418
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "DE": {
+      "ratio": 0.932,
+      "ci95": [
+       0.62,
+       1.428
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "FL": {
+      "ratio": 0.938,
+      "ci95": [
+       0.711,
+       1.255
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "GA": {
+      "ratio": 0.962,
+      "ci95": [
+       0.623,
+       1.348
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "MT": {
+      "ratio": 1.039,
+      "ci95": [
+       0.723,
+       1.425
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "NC": {
+      "ratio": 1.087,
+      "ci95": [
+       0.729,
+       1.453
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "PA": {
+      "ratio": 1.14,
+      "ci95": [
+       0.712,
+       1.69
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "RI": {
+      "ratio": 1.232,
+      "ci95": [
+       0.66,
+       1.846
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "SC": {
+      "ratio": 1.1,
+      "ci95": [
+       0.604,
+       1.708
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "TX": {
+      "ratio": 0.783,
+      "ci95": [
+       0.51,
+       1.138
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_mae_by_state": {
+     "CT": {
+      "ratio": 0.983,
+      "ci95": [
+       0.694,
+       1.286
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "DE": {
+      "ratio": 1.04,
+      "ci95": [
+       0.692,
+       1.627
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "FL": {
+      "ratio": 0.881,
+      "ci95": [
+       0.688,
+       1.149
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "GA": {
+      "ratio": 0.935,
+      "ci95": [
+       0.664,
+       1.257
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "MT": {
+      "ratio": 1.183,
+      "ci95": [
+       0.807,
+       1.714
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "NC": {
+      "ratio": 1.088,
+      "ci95": [
+       0.745,
+       1.495
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "PA": {
+      "ratio": 1.137,
+      "ci95": [
+       0.749,
+       1.657
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "RI": {
+      "ratio": 1.254,
+      "ci95": [
+       0.732,
+       1.814
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "SC": {
+      "ratio": 1.143,
+      "ci95": [
+       0.664,
+       1.734
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "TX": {
+      "ratio": 0.97,
+      "ci95": [
+       0.646,
+       1.444
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "sensitivity_failures_as_persistence": {
+     "ratio": 0.992,
+     "ci95": [
+      0.684,
+      1.375
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    }
+   },
+   "gpt-oss": {
+    "relative_wis": {
+     "ratio": 0.916,
+     "ci95": [
+      0.805,
+      1.058
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_mae": {
+     "ratio": 0.845,
+     "ci95": [
+      0.737,
+      1.009
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_wis_by_target_week": {
+     "1": {
+      "ratio": 1.043,
+      "ci95": [
+       0.938,
+       1.189
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 0.961,
+      "ci95": [
+       0.85,
+       1.122
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "3": {
+      "ratio": 0.89,
+      "ci95": [
+       0.769,
+       1.056
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "4": {
+      "ratio": 0.86,
+      "ci95": [
+       0.734,
+       1.013
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_mae_by_target_week": {
+     "1": {
+      "ratio": 0.98,
+      "ci95": [
+       0.878,
+       1.153
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 0.886,
+      "ci95": [
+       0.775,
+       1.082
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "3": {
+      "ratio": 0.799,
+      "ci95": [
+       0.688,
+       0.976
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.801,
+      "ci95": [
+       0.68,
+       0.974
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "CT": {
+      "ratio": 0.902,
+      "ci95": [
+       0.604,
+       1.177
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "DE": {
+      "ratio": 0.6,
+      "ci95": [
+       0.457,
+       0.784
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "FL": {
+      "ratio": 1.337,
+      "ci95": [
+       1.015,
+       1.733
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "GA": {
+      "ratio": 0.881,
+      "ci95": [
+       0.715,
+       1.14
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "MT": {
+      "ratio": 1.062,
+      "ci95": [
+       0.786,
+       1.33
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "NC": {
+      "ratio": 0.741,
+      "ci95": [
+       0.539,
+       0.973
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "PA": {
+      "ratio": 0.801,
+      "ci95": [
+       0.602,
+       1.059
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "RI": {
+      "ratio": 0.845,
+      "ci95": [
+       0.596,
+       1.168
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "SC": {
+      "ratio": 1.023,
+      "ci95": [
+       0.8,
+       1.338
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "TX": {
+      "ratio": 0.741,
+      "ci95": [
+       0.55,
+       0.961
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_mae_by_state": {
+     "CT": {
+      "ratio": 0.765,
+      "ci95": [
+       0.537,
+       0.978
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "DE": {
+      "ratio": 0.571,
+      "ci95": [
+       0.455,
+       0.737
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "FL": {
+      "ratio": 1.073,
+      "ci95": [
+       0.831,
+       1.405
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "GA": {
+      "ratio": 0.811,
+      "ci95": [
+       0.679,
+       1.009
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "MT": {
+      "ratio": 1.01,
+      "ci95": [
+       0.763,
+       1.341
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "NC": {
+      "ratio": 0.723,
+      "ci95": [
+       0.537,
+       0.967
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "PA": {
+      "ratio": 0.747,
+      "ci95": [
+       0.555,
+       1.038
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "RI": {
+      "ratio": 0.741,
+      "ci95": [
+       0.555,
+       0.966
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "SC": {
+      "ratio": 0.949,
+      "ci95": [
+       0.703,
+       1.361
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "TX": {
+      "ratio": 0.799,
+      "ci95": [
+       0.618,
+       1.061
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "sensitivity_failures_as_persistence": {
+     "ratio": 0.916,
+     "ci95": [
+      0.805,
+      1.058
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    }
+   },
+   "gemma_vs_gpt-oss": {
+    "relative_wis": {
+     "ratio": 1.084,
+     "ci95": [
+      0.752,
+      1.497
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_mae": {
+     "ratio": 1.204,
+     "ci95": [
+      0.881,
+      1.59
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    }
+   }
+  },
+  "revised": {
+   "common_forecasts": 2760,
+   "forecasts_with_truth": 2760,
+   "coverage": {
+    "persistence": {
+     "cover50": 0.563,
+     "cover95": 0.959
+    },
+    "gemma": {
+     "cover50": 0.439,
+     "cover95": 0.809
+    },
+    "gpt-oss": {
+     "cover50": 0.333,
+     "cover95": 0.674
+    }
+   },
+   "mean_wis": {
+    "persistence": 77.81,
+    "gemma": 78.1,
+    "gpt-oss": 64.52
+   },
+   "gemma": {
+    "relative_wis": {
+     "ratio": 1.004,
+     "ci95": [
+      0.701,
+      1.355
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_mae": {
+     "ratio": 1.013,
+     "ci95": [
+      0.736,
+      1.359
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_wis_by_target_week": {
+     "1": {
+      "ratio": 1.17,
+      "ci95": [
+       0.983,
+       1.419
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 1.076,
+      "ci95": [
+       0.807,
+       1.413
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "3": {
+      "ratio": 0.963,
+      "ci95": [
+       0.62,
+       1.377
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "4": {
+      "ratio": 0.93,
+      "ci95": [
+       0.578,
+       1.34
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_mae_by_target_week": {
+     "1": {
+      "ratio": 1.224,
+      "ci95": [
+       0.999,
+       1.522
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 1.056,
+      "ci95": [
+       0.8,
+       1.396
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "3": {
+      "ratio": 0.942,
+      "ci95": [
+       0.637,
+       1.33
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "4": {
+      "ratio": 0.959,
+      "ci95": [
+       0.635,
+       1.358
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_state": {
+     "CT": {
+      "ratio": 0.983,
+      "ci95": [
+       0.594,
+       1.398
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "DE": {
+      "ratio": 1.015,
+      "ci95": [
+       0.652,
+       1.494
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "FL": {
+      "ratio": 1.008,
+      "ci95": [
+       0.728,
+       1.375
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "GA": {
+      "ratio": 1.032,
+      "ci95": [
+       0.631,
+       1.446
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "MT": {
+      "ratio": 1.255,
+      "ci95": [
+       0.8,
+       1.798
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "NC": {
+      "ratio": 1.071,
+      "ci95": [
+       0.813,
+       1.34
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "PA": {
+      "ratio": 1.08,
+      "ci95": [
+       0.688,
+       1.552
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "RI": {
+      "ratio": 1.163,
+      "ci95": [
+       0.698,
+       1.614
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "SC": {
+      "ratio": 1.051,
+      "ci95": [
+       0.666,
+       1.545
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "TX": {
+      "ratio": 0.827,
+      "ci95": [
+       0.537,
+       1.182
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_mae_by_state": {
+     "CT": {
+      "ratio": 0.91,
+      "ci95": [
+       0.61,
+       1.236
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "DE": {
+      "ratio": 1.059,
+      "ci95": [
+       0.686,
+       1.629
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "FL": {
+      "ratio": 0.925,
+      "ci95": [
+       0.699,
+       1.228
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "GA": {
+      "ratio": 1.007,
+      "ci95": [
+       0.676,
+       1.379
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "MT": {
+      "ratio": 1.425,
+      "ci95": [
+       0.892,
+       2.129
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "NC": {
+      "ratio": 1.025,
+      "ci95": [
+       0.789,
+       1.327
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "PA": {
+      "ratio": 1.071,
+      "ci95": [
+       0.735,
+       1.491
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "RI": {
+      "ratio": 1.095,
+      "ci95": [
+       0.724,
+       1.455
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "SC": {
+      "ratio": 1.08,
+      "ci95": [
+       0.731,
+       1.566
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "TX": {
+      "ratio": 1.014,
+      "ci95": [
+       0.686,
+       1.439
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "sensitivity_failures_as_persistence": {
+     "ratio": 1.004,
+     "ci95": [
+      0.701,
+      1.355
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    }
+   },
+   "gpt-oss": {
+    "relative_wis": {
+     "ratio": 0.829,
+     "ci95": [
+      0.744,
+      0.913
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.765,
+     "ci95": [
+      0.688,
+      0.858
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_target_week": {
+     "1": {
+      "ratio": 0.991,
+      "ci95": [
+       0.836,
+       1.174
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 0.867,
+      "ci95": [
+       0.781,
+       0.957
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.784,
+      "ci95": [
+       0.685,
+       0.886
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.782,
+      "ci95": [
+       0.681,
+       0.887
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_mae_by_target_week": {
+     "1": {
+      "ratio": 0.93,
+      "ci95": [
+       0.796,
+       1.145
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 0.783,
+      "ci95": [
+       0.707,
+       0.89
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.705,
+      "ci95": [
+       0.616,
+       0.814
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.737,
+      "ci95": [
+       0.645,
+       0.849
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "CT": {
+      "ratio": 0.668,
+      "ci95": [
+       0.466,
+       0.856
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "DE": {
+      "ratio": 0.435,
+      "ci95": [
+       0.334,
+       0.576
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "FL": {
+      "ratio": 1.052,
+      "ci95": [
+       0.791,
+       1.417
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "GA": {
+      "ratio": 0.878,
+      "ci95": [
+       0.697,
+       1.079
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "MT": {
+      "ratio": 0.915,
+      "ci95": [
+       0.697,
+       1.127
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "NC": {
+      "ratio": 0.669,
+      "ci95": [
+       0.437,
+       0.933
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "PA": {
+      "ratio": 0.786,
+      "ci95": [
+       0.605,
+       1.012
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "RI": {
+      "ratio": 0.831,
+      "ci95": [
+       0.645,
+       1.05
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "SC": {
+      "ratio": 0.991,
+      "ci95": [
+       0.811,
+       1.126
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "TX": {
+      "ratio": 0.768,
+      "ci95": [
+       0.536,
+       1.038
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_mae_by_state": {
+     "CT": {
+      "ratio": 0.612,
+      "ci95": [
+       0.425,
+       0.798
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "DE": {
+      "ratio": 0.432,
+      "ci95": [
+       0.333,
+       0.561
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "FL": {
+      "ratio": 0.874,
+      "ci95": [
+       0.692,
+       1.121
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "GA": {
+      "ratio": 0.789,
+      "ci95": [
+       0.66,
+       0.959
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "MT": {
+      "ratio": 0.875,
+      "ci95": [
+       0.72,
+       1.05
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "NC": {
+      "ratio": 0.621,
+      "ci95": [
+       0.461,
+       0.801
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "PA": {
+      "ratio": 0.726,
+      "ci95": [
+       0.571,
+       0.947
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "RI": {
+      "ratio": 0.7,
+      "ci95": [
+       0.543,
+       0.908
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "SC": {
+      "ratio": 0.892,
+      "ci95": [
+       0.721,
+       1.083
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "TX": {
+      "ratio": 0.809,
+      "ci95": [
+       0.578,
+       1.111
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "sensitivity_failures_as_persistence": {
+     "ratio": 0.829,
+     "ci95": [
+      0.744,
+      0.913
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "gemma_vs_gpt-oss": {
+    "relative_wis": {
+     "ratio": 1.21,
+     "ci95": [
+      0.84,
+      1.642
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_mae": {
+     "ratio": 1.325,
+     "ci95": [
+      0.97,
+      1.732
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    }
+   }
+  }
+ },
+ "revision_effect": {
+  "gemma": {
+   "difference": 0.011,
+   "ci95": [
+    -0.04,
+    0.055
+   ],
+   "dates": 69
+  },
+  "gpt-oss": {
+   "difference": -0.086,
+   "ci95": [
+    -0.199,
+    0.008
+   ],
+   "dates": 69
+  }
+ }
+}

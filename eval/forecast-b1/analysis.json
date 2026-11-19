@@ -1,0 +1,2965 @@
+{
+ "systems": [
+  "persistence",
+  "seasonal_naive",
+  "arima",
+  "ets",
+  "lightgbm",
+  "chronos2",
+  "chronos2_synth",
+  "tabpfn",
+  "ensemble"
+ ],
+ "versions": {
+  "realtime": {
+   "rows": 41576,
+   "rows_with_fallbacks_kept": 42216,
+   "removed_for_fallbacks": {
+    "persistence": 0,
+    "seasonal_naive": 640,
+    "arima": 0,
+    "ets": 0,
+    "lightgbm": 0,
+    "chronos2": 0,
+    "chronos2_synth": 0,
+    "tabpfn": 0,
+    "ensemble": 640
+   },
+   "summary": {
+    "persistence": {
+     "mean_wis": 26.615,
+     "mean_wis_uncapped": 26.853,
+     "cover50": 0.435,
+     "cover95": 0.935,
+     "capped_rows": 1147
+    },
+    "seasonal_naive": {
+     "mean_wis": 77.139,
+     "mean_wis_uncapped": 129.58,
+     "cover50": 0.494,
+     "cover95": 0.91,
+     "capped_rows": 1570
+    },
+    "arima": {
+     "mean_wis": 25.685,
+     "mean_wis_uncapped": 25.711,
+     "cover50": 0.52,
+     "cover95": 0.927,
+     "capped_rows": 235
+    },
+    "ets": {
+     "mean_wis": 29.175,
+     "mean_wis_uncapped": 29.494,
+     "cover50": 0.52,
+     "cover95": 0.932,
+     "capped_rows": 502
+    },
+    "lightgbm": {
+     "mean_wis": 18.942,
+     "mean_wis_uncapped": 19.028,
+     "cover50": 0.475,
+     "cover95": 0.902,
+     "capped_rows": 342
+    },
+    "chronos2": {
+     "mean_wis": 20.959,
+     "mean_wis_uncapped": 20.959,
+     "cover50": 0.416,
+     "cover95": 0.978,
+     "capped_rows": 0
+    },
+    "chronos2_synth": {
+     "mean_wis": 21.806,
+     "mean_wis_uncapped": 21.808,
+     "cover50": 0.406,
+     "cover95": 0.977,
+     "capped_rows": 36
+    },
+    "tabpfn": {
+     "mean_wis": 19.466,
+     "mean_wis_uncapped": 19.566,
+     "cover50": 0.424,
+     "cover95": 0.88,
+     "capped_rows": 555
+    },
+    "ensemble": {
+     "mean_wis": 19.699,
+     "mean_wis_uncapped": 19.699,
+     "cover50": 0.522,
+     "cover95": 0.96,
+     "capped_rows": 0
+    }
+   },
+   "rank_by_mean_wis": [
+    "lightgbm",
+    "tabpfn",
+    "ensemble",
+    "chronos2",
+    "chronos2_synth",
+    "arima",
+    "persistence",
+    "ets",
+    "seasonal_naive"
+   ],
+   "seasonal_naive": {
+    "relative_wis": {
+     "ratio": 2.898,
+     "ci95": [
+      1.891,
+      4.277
+     ],
+     "dates": 69,
+     "verdict": "worse"
+    },
+    "relative_mae": {
+     "ratio": 3.052,
+     "ci95": [
+      1.889,
+      4.686
+     ],
+     "dates": 69,
+     "verdict": "worse"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 5.125,
+      "ci95": [
+       2.988,
+       7.187
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "influenza": {
+      "ratio": 1.783,
+      "ci95": [
+       1.285,
+       2.46
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "rsv": {
+      "ratio": 2.602,
+      "ci95": [
+       1.534,
+       4.066
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 3.238,
+      "ci95": [
+       1.895,
+       5.134
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "2": {
+      "ratio": 2.9,
+      "ci95": [
+       1.767,
+       4.553
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "3": {
+      "ratio": 2.819,
+      "ci95": [
+       1.787,
+       4.228
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "4": {
+      "ratio": 2.816,
+      "ci95": [
+       1.831,
+       4.139
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 1.091,
+     "AL": 4.488,
+     "AR": 1.469,
+     "AZ": 1.524,
+     "CA": 1.326,
+     "CO": 1.457,
+     "CT": 1.807,
+     "DC": 2.315,
+     "DE": 1.218,
+     "FL": 1.932,
+     "GA": 1.682,
+     "HI": 1.548,
+     "IA": 1.239,
+     "ID": 0.961,
+     "IL": 1.001,
+     "IN": 1.246,
+     "KS": 1.084,
+     "KY": 1.366,
+     "LA": 1.348,
+     "MA": 5.399,
+     "MD": 1.891,
+     "ME": 2.201,
+     "MI": 1.32,
+     "MN": 5.276,
+     "MO": 1.031,
+     "MS": 1.331,
+     "MT": 1.466,
+     "NC": 5.93,
+     "ND": 1.781,
+     "NE": 1.089,
+     "NH": 1.43,
+     "NJ": 1.707,
+     "NM": 1.636,
+     "NV": 3.255,
+     "NY": 2.465,
+     "OH": 1.706,
+     "OK": 1.408,
+     "OR": 1.011,
+     "PA": 2.14,
+     "RI": 1.251,
+     "SC": 1.311,
+     "SD": 1.477,
+     "TN": 1.483,
+     "TX": 13.202,
+     "UT": 0.852,
+     "VA": 1.124,
+     "VT": 1.711,
+     "WA": 1.151,
+     "WI": 1.513,
+     "WV": 4.55,
+     "WY": 1.331
+    },
+    "location_normalized_relative_wis": 2.089,
+    "sensitivity_uncapped": {
+     "ratio": 4.826,
+     "ci95": [
+      2.557,
+      8.062
+     ],
+     "dates": 69,
+     "verdict": "worse"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 2.885,
+     "ci95": [
+      1.884,
+      4.253
+     ],
+     "dates": 69,
+     "verdict": "worse"
+    }
+   },
+   "arima": {
+    "relative_wis": {
+     "ratio": 0.965,
+     "ci95": [
+      0.94,
+      0.989
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.96,
+     "ci95": [
+      0.936,
+      0.986
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.949,
+      "ci95": [
+       0.914,
+       0.992
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.962,
+      "ci95": [
+       0.927,
+       0.988
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 1.008,
+      "ci95": [
+       0.964,
+       1.051
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.993,
+      "ci95": [
+       0.96,
+       1.031
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 0.976,
+      "ci95": [
+       0.947,
+       1.008
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "3": {
+      "ratio": 0.963,
+      "ci95": [
+       0.936,
+       0.988
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.948,
+      "ci95": [
+       0.917,
+       0.973
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 0.94,
+     "AL": 1.146,
+     "AR": 0.942,
+     "AZ": 1.009,
+     "CA": 0.896,
+     "CO": 1.004,
+     "CT": 1.037,
+     "DC": 0.946,
+     "DE": 0.966,
+     "FL": 0.99,
+     "GA": 0.912,
+     "HI": 1.014,
+     "IA": 0.924,
+     "ID": 0.963,
+     "IL": 0.914,
+     "IN": 0.909,
+     "KS": 0.958,
+     "KY": 0.951,
+     "LA": 1.173,
+     "MA": 1.038,
+     "MD": 0.97,
+     "ME": 0.908,
+     "MI": 0.969,
+     "MN": 0.996,
+     "MO": 0.957,
+     "MS": 0.973,
+     "MT": 0.953,
+     "NC": 0.967,
+     "ND": 0.9,
+     "NE": 0.954,
+     "NH": 0.938,
+     "NJ": 0.889,
+     "NM": 1.107,
+     "NV": 1.053,
+     "NY": 0.949,
+     "OH": 0.892,
+     "OK": 1.017,
+     "OR": 0.917,
+     "PA": 1.023,
+     "RI": 0.937,
+     "SC": 0.864,
+     "SD": 0.966,
+     "TN": 0.965,
+     "TX": 0.998,
+     "UT": 1.148,
+     "VA": 0.9,
+     "VT": 0.914,
+     "WA": 0.953,
+     "WI": 0.953,
+     "WV": 0.935,
+     "WY": 0.986
+    },
+    "location_normalized_relative_wis": 0.97,
+    "sensitivity_uncapped": {
+     "ratio": 0.957,
+     "ci95": [
+      0.933,
+      0.981
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.965,
+     "ci95": [
+      0.941,
+      0.99
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "ets": {
+    "relative_wis": {
+     "ratio": 1.096,
+     "ci95": [
+      0.933,
+      1.307
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_mae": {
+     "ratio": 1.124,
+     "ci95": [
+      0.945,
+      1.355
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 1.013,
+      "ci95": [
+       0.994,
+       1.036
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "influenza": {
+      "ratio": 1.166,
+      "ci95": [
+       0.876,
+       1.515
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "rsv": {
+      "ratio": 1.003,
+      "ci95": [
+       0.943,
+       1.066
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 1.038,
+      "ci95": [
+       0.944,
+       1.168
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 1.071,
+      "ci95": [
+       0.925,
+       1.271
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "3": {
+      "ratio": 1.102,
+      "ci95": [
+       0.918,
+       1.343
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "4": {
+      "ratio": 1.133,
+      "ci95": [
+       0.927,
+       1.395
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 1.082,
+     "AL": 1.102,
+     "AR": 1.008,
+     "AZ": 1.13,
+     "CA": 0.976,
+     "CO": 0.996,
+     "CT": 1.204,
+     "DC": 0.999,
+     "DE": 1.157,
+     "FL": 1.04,
+     "GA": 1.142,
+     "HI": 1.025,
+     "IA": 1.213,
+     "ID": 1.086,
+     "IL": 1.073,
+     "IN": 1.105,
+     "KS": 1.162,
+     "KY": 1.088,
+     "LA": 1.096,
+     "MA": 1.112,
+     "MD": 1.134,
+     "ME": 1.162,
+     "MI": 1.149,
+     "MN": 1.297,
+     "MO": 1.105,
+     "MS": 1.034,
+     "MT": 0.973,
+     "NC": 1.139,
+     "ND": 1.275,
+     "NE": 1.101,
+     "NH": 1.059,
+     "NJ": 1.094,
+     "NM": 1.203,
+     "NV": 1.146,
+     "NY": 1.169,
+     "OH": 1.097,
+     "OK": 1.003,
+     "OR": 0.96,
+     "PA": 1.109,
+     "RI": 1.298,
+     "SC": 1.229,
+     "SD": 0.991,
+     "TN": 1.069,
+     "TX": 0.94,
+     "UT": 1.154,
+     "VA": 1.208,
+     "VT": 1.008,
+     "WA": 0.978,
+     "WI": 1.313,
+     "WV": 1.069,
+     "WY": 1.058
+    },
+    "location_normalized_relative_wis": 1.104,
+    "sensitivity_uncapped": {
+     "ratio": 1.098,
+     "ci95": [
+      0.929,
+      1.316
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 1.095,
+     "ci95": [
+      0.933,
+      1.304
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    }
+   },
+   "lightgbm": {
+    "relative_wis": {
+     "ratio": 0.712,
+     "ci95": [
+      0.666,
+      0.755
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.732,
+     "ci95": [
+      0.679,
+      0.789
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.68,
+      "ci95": [
+       0.634,
+       0.733
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.681,
+      "ci95": [
+       0.615,
+       0.731
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 0.89,
+      "ci95": [
+       0.719,
+       1.101
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.792,
+      "ci95": [
+       0.745,
+       0.843
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "2": {
+      "ratio": 0.743,
+      "ci95": [
+       0.696,
+       0.793
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.704,
+      "ci95": [
+       0.649,
+       0.757
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.663,
+      "ci95": [
+       0.6,
+       0.724
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 1.052,
+     "AL": 0.752,
+     "AR": 0.734,
+     "AZ": 0.728,
+     "CA": 0.663,
+     "CO": 0.603,
+     "CT": 0.76,
+     "DC": 0.834,
+     "DE": 0.872,
+     "FL": 0.799,
+     "GA": 0.67,
+     "HI": 0.996,
+     "IA": 0.71,
+     "ID": 0.771,
+     "IL": 0.714,
+     "IN": 0.635,
+     "KS": 0.75,
+     "KY": 0.701,
+     "LA": 0.681,
+     "MA": 0.671,
+     "MD": 0.644,
+     "ME": 0.777,
+     "MI": 0.769,
+     "MN": 0.649,
+     "MO": 0.801,
+     "MS": 0.762,
+     "MT": 0.798,
+     "NC": 0.66,
+     "ND": 0.895,
+     "NE": 0.738,
+     "NH": 0.816,
+     "NJ": 0.637,
+     "NM": 0.75,
+     "NV": 0.845,
+     "NY": 0.717,
+     "OH": 0.639,
+     "OK": 0.863,
+     "OR": 0.809,
+     "PA": 0.781,
+     "RI": 0.776,
+     "SC": 0.746,
+     "SD": 0.844,
+     "TN": 0.704,
+     "TX": 0.594,
+     "UT": 0.79,
+     "VA": 0.669,
+     "VT": 0.881,
+     "WA": 0.685,
+     "WI": 0.736,
+     "WV": 0.653,
+     "WY": 0.996
+    },
+    "location_normalized_relative_wis": 0.755,
+    "sensitivity_uncapped": {
+     "ratio": 0.709,
+     "ci95": [
+      0.663,
+      0.752
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.713,
+     "ci95": [
+      0.667,
+      0.758
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "chronos2": {
+    "relative_wis": {
+     "ratio": 0.787,
+     "ci95": [
+      0.734,
+      0.853
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.837,
+     "ci95": [
+      0.775,
+      0.916
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.875,
+      "ci95": [
+       0.837,
+       0.921
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.723,
+      "ci95": [
+       0.627,
+       0.828
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 0.855,
+      "ci95": [
+       0.815,
+       0.899
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.917,
+      "ci95": [
+       0.846,
+       1.018
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 0.83,
+      "ci95": [
+       0.772,
+       0.909
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.769,
+      "ci95": [
+       0.707,
+       0.845
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.719,
+      "ci95": [
+       0.658,
+       0.786
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 0.888,
+     "AL": 0.813,
+     "AR": 0.814,
+     "AZ": 0.955,
+     "CA": 0.746,
+     "CO": 0.834,
+     "CT": 0.763,
+     "DC": 0.828,
+     "DE": 0.805,
+     "FL": 0.775,
+     "GA": 0.864,
+     "HI": 0.975,
+     "IA": 0.789,
+     "ID": 0.728,
+     "IL": 0.781,
+     "IN": 0.718,
+     "KS": 0.811,
+     "KY": 0.799,
+     "LA": 0.766,
+     "MA": 0.84,
+     "MD": 0.85,
+     "ME": 0.847,
+     "MI": 0.87,
+     "MN": 0.806,
+     "MO": 0.797,
+     "MS": 0.768,
+     "MT": 0.783,
+     "NC": 0.727,
+     "ND": 0.813,
+     "NE": 0.863,
+     "NH": 0.816,
+     "NJ": 0.769,
+     "NM": 0.763,
+     "NV": 0.846,
+     "NY": 0.693,
+     "OH": 0.782,
+     "OK": 0.853,
+     "OR": 0.824,
+     "PA": 0.922,
+     "RI": 0.813,
+     "SC": 0.765,
+     "SD": 0.828,
+     "TN": 0.737,
+     "TX": 0.701,
+     "UT": 0.758,
+     "VA": 0.76,
+     "VT": 0.81,
+     "WA": 0.768,
+     "WI": 0.869,
+     "WV": 0.743,
+     "WY": 0.937
+    },
+    "location_normalized_relative_wis": 0.807,
+    "sensitivity_uncapped": {
+     "ratio": 0.78,
+     "ci95": [
+      0.73,
+      0.843
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.79,
+     "ci95": [
+      0.737,
+      0.856
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "chronos2_synth": {
+    "relative_wis": {
+     "ratio": 0.819,
+     "ci95": [
+      0.736,
+      0.931
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.877,
+     "ci95": [
+      0.776,
+      1.013
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.819,
+      "ci95": [
+       0.745,
+       0.906
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.806,
+      "ci95": [
+       0.665,
+       0.987
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 0.87,
+      "ci95": [
+       0.811,
+       0.94
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.9,
+      "ci95": [
+       0.797,
+       1.033
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 0.841,
+      "ci95": [
+       0.742,
+       0.976
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.808,
+      "ci95": [
+       0.714,
+       0.935
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.78,
+      "ci95": [
+       0.695,
+       0.886
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 0.904,
+     "AL": 0.809,
+     "AR": 0.92,
+     "AZ": 0.974,
+     "CA": 0.7,
+     "CO": 0.772,
+     "CT": 0.79,
+     "DC": 0.942,
+     "DE": 0.84,
+     "FL": 0.786,
+     "GA": 0.92,
+     "HI": 0.94,
+     "IA": 0.751,
+     "ID": 0.726,
+     "IL": 0.796,
+     "IN": 0.744,
+     "KS": 0.793,
+     "KY": 0.872,
+     "LA": 0.784,
+     "MA": 0.85,
+     "MD": 0.937,
+     "ME": 0.864,
+     "MI": 0.948,
+     "MN": 0.766,
+     "MO": 0.839,
+     "MS": 0.91,
+     "MT": 0.83,
+     "NC": 0.89,
+     "ND": 0.773,
+     "NE": 0.807,
+     "NH": 0.826,
+     "NJ": 0.821,
+     "NM": 0.749,
+     "NV": 0.819,
+     "NY": 0.715,
+     "OH": 0.843,
+     "OK": 0.926,
+     "OR": 0.842,
+     "PA": 0.923,
+     "RI": 0.816,
+     "SC": 0.947,
+     "SD": 0.89,
+     "TN": 0.799,
+     "TX": 0.729,
+     "UT": 0.815,
+     "VA": 0.859,
+     "VT": 0.855,
+     "WA": 0.84,
+     "WI": 0.841,
+     "WV": 0.838,
+     "WY": 0.95
+    },
+    "location_normalized_relative_wis": 0.84,
+    "sensitivity_uncapped": {
+     "ratio": 0.812,
+     "ci95": [
+      0.731,
+      0.92
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.819,
+     "ci95": [
+      0.736,
+      0.93
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "tabpfn": {
+    "relative_wis": {
+     "ratio": 0.731,
+     "ci95": [
+      0.627,
+      0.859
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.756,
+     "ci95": [
+      0.646,
+      0.893
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.724,
+      "ci95": [
+       0.65,
+       0.81
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.689,
+      "ci95": [
+       0.527,
+       0.894
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 0.904,
+      "ci95": [
+       0.708,
+       1.158
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.734,
+      "ci95": [
+       0.647,
+       0.83
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "2": {
+      "ratio": 0.695,
+      "ci95": [
+       0.589,
+       0.831
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.716,
+      "ci95": [
+       0.592,
+       0.869
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.766,
+      "ci95": [
+       0.621,
+       0.935
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 1.416,
+     "AL": 0.798,
+     "AR": 0.809,
+     "AZ": 0.939,
+     "CA": 0.68,
+     "CO": 0.677,
+     "CT": 0.784,
+     "DC": 0.929,
+     "DE": 0.798,
+     "FL": 0.746,
+     "GA": 0.672,
+     "HI": 1.244,
+     "IA": 0.71,
+     "ID": 1.001,
+     "IL": 0.714,
+     "IN": 0.566,
+     "KS": 0.743,
+     "KY": 0.616,
+     "LA": 0.743,
+     "MA": 0.703,
+     "MD": 0.625,
+     "ME": 0.929,
+     "MI": 0.862,
+     "MN": 0.687,
+     "MO": 0.795,
+     "MS": 0.971,
+     "MT": 1.04,
+     "NC": 0.676,
+     "ND": 1.106,
+     "NE": 0.738,
+     "NH": 1.025,
+     "NJ": 0.622,
+     "NM": 0.897,
+     "NV": 1.06,
+     "NY": 0.773,
+     "OH": 0.643,
+     "OK": 0.915,
+     "OR": 0.756,
+     "PA": 0.714,
+     "RI": 0.906,
+     "SC": 0.74,
+     "SD": 0.887,
+     "TN": 0.766,
+     "TX": 0.573,
+     "UT": 1.132,
+     "VA": 0.653,
+     "VT": 0.839,
+     "WA": 0.758,
+     "WI": 0.766,
+     "WV": 0.593,
+     "WY": 1.334
+    },
+    "location_normalized_relative_wis": 0.825,
+    "sensitivity_uncapped": {
+     "ratio": 0.729,
+     "ci95": [
+      0.627,
+      0.853
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.732,
+     "ci95": [
+      0.628,
+      0.86
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "ensemble": {
+    "relative_wis": {
+     "ratio": 0.74,
+     "ci95": [
+      0.679,
+      0.812
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.784,
+     "ci95": [
+      0.717,
+      0.862
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.76,
+      "ci95": [
+       0.727,
+       0.797
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.735,
+      "ci95": [
+       0.626,
+       0.854
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 0.718,
+      "ci95": [
+       0.662,
+       0.78
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.805,
+      "ci95": [
+       0.761,
+       0.861
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "2": {
+      "ratio": 0.766,
+      "ci95": [
+       0.711,
+       0.833
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.732,
+      "ci95": [
+       0.662,
+       0.813
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.703,
+      "ci95": [
+       0.622,
+       0.796
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 0.844,
+     "AL": 0.799,
+     "AR": 0.722,
+     "AZ": 0.773,
+     "CA": 0.622,
+     "CO": 0.708,
+     "CT": 0.813,
+     "DC": 0.794,
+     "DE": 0.817,
+     "FL": 0.73,
+     "GA": 0.733,
+     "HI": 0.899,
+     "IA": 0.771,
+     "ID": 0.699,
+     "IL": 0.738,
+     "IN": 0.666,
+     "KS": 0.747,
+     "KY": 0.728,
+     "LA": 0.726,
+     "MA": 0.858,
+     "MD": 0.758,
+     "ME": 0.81,
+     "MI": 0.785,
+     "MN": 0.751,
+     "MO": 0.783,
+     "MS": 0.746,
+     "MT": 0.755,
+     "NC": 0.786,
+     "ND": 0.872,
+     "NE": 0.756,
+     "NH": 0.793,
+     "NJ": 0.725,
+     "NM": 0.741,
+     "NV": 0.826,
+     "NY": 0.731,
+     "OH": 0.715,
+     "OK": 0.799,
+     "OR": 0.739,
+     "PA": 0.779,
+     "RI": 0.79,
+     "SC": 0.788,
+     "SD": 0.744,
+     "TN": 0.717,
+     "TX": 0.689,
+     "UT": 0.762,
+     "VA": 0.724,
+     "VT": 0.784,
+     "WA": 0.693,
+     "WI": 0.775,
+     "WV": 0.714,
+     "WY": 0.828
+    },
+    "location_normalized_relative_wis": 0.762,
+    "sensitivity_uncapped": {
+     "ratio": 0.734,
+     "ci95": [
+      0.674,
+      0.803
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.741,
+     "ci95": [
+      0.68,
+      0.812
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "chronos2_synth_vs_chronos2": {
+    "ratio": 1.04,
+    "ci95": [
+     0.98,
+     1.103
+    ],
+    "dates": 69,
+    "verdict": "no detectable difference"
+   },
+   "lightgbm_ed": {
+    "rows": 30600,
+    "first_date": "2025-08-15",
+    "summary": {
+     "persistence": {
+      "mean_wis": 31.867,
+      "mean_wis_uncapped": 32.188,
+      "cover50": 0.434,
+      "cover95": 0.931,
+      "capped_rows": 1120
+     },
+     "lightgbm": {
+      "mean_wis": 23.012,
+      "mean_wis_uncapped": 23.134,
+      "cover50": 0.464,
+      "cover95": 0.894,
+      "capped_rows": 364
+     },
+     "lightgbm_ed": {
+      "mean_wis": 21.971,
+      "mean_wis_uncapped": 22.103,
+      "cover50": 0.459,
+      "cover95": 0.886,
+      "capped_rows": 256
+     }
+    },
+    "relative_wis_vs_persistence": {
+     "ratio": 0.689,
+     "ci95": [
+      0.613,
+      0.792
+     ],
+     "dates": 50,
+     "verdict": "better"
+    },
+    "relative_wis_vs_lightgbm": {
+     "ratio": 0.955,
+     "ci95": [
+      0.863,
+      1.077
+     ],
+     "dates": 50,
+     "verdict": "no detectable difference"
+    },
+    "lightgbm_relative_wis_vs_persistence_same_rows": {
+     "ratio": 0.722,
+     "ci95": [
+      0.673,
+      0.768
+     ],
+     "dates": 50,
+     "verdict": "better"
+    }
+   }
+  },
+  "revised": {
+   "rows": 41432,
+   "rows_with_fallbacks_kept": 42216,
+   "removed_for_fallbacks": {
+    "persistence": 0,
+    "seasonal_naive": 784,
+    "arima": 0,
+    "ets": 0,
+    "lightgbm": 0,
+    "chronos2": 0,
+    "chronos2_synth": 0,
+    "tabpfn": 0,
+    "ensemble": 784
+   },
+   "summary": {
+    "persistence": {
+     "mean_wis": 27.309,
+     "mean_wis_uncapped": 27.589,
+     "cover50": 0.438,
+     "cover95": 0.942,
+     "capped_rows": 1271
+    },
+    "seasonal_naive": {
+     "mean_wis": 80.46,
+     "mean_wis_uncapped": 137.931,
+     "cover50": 0.503,
+     "cover95": 0.913,
+     "capped_rows": 1644
+    },
+    "arima": {
+     "mean_wis": 26.393,
+     "mean_wis_uncapped": 26.425,
+     "cover50": 0.53,
+     "cover95": 0.937,
+     "capped_rows": 317
+    },
+    "ets": {
+     "mean_wis": 30.773,
+     "mean_wis_uncapped": 31.189,
+     "cover50": 0.529,
+     "cover95": 0.939,
+     "capped_rows": 588
+    },
+    "lightgbm": {
+     "mean_wis": 18.234,
+     "mean_wis_uncapped": 18.347,
+     "cover50": 0.497,
+     "cover95": 0.919,
+     "capped_rows": 398
+    },
+    "chronos2": {
+     "mean_wis": 20.779,
+     "mean_wis_uncapped": 20.779,
+     "cover50": 0.432,
+     "cover95": 0.977,
+     "capped_rows": 0
+    },
+    "chronos2_synth": {
+     "mean_wis": 21.647,
+     "mean_wis_uncapped": 21.652,
+     "cover50": 0.431,
+     "cover95": 0.977,
+     "capped_rows": 57
+    },
+    "tabpfn": {
+     "mean_wis": 19.421,
+     "mean_wis_uncapped": 19.554,
+     "cover50": 0.442,
+     "cover95": 0.894,
+     "capped_rows": 582
+    },
+    "ensemble": {
+     "mean_wis": 19.695,
+     "mean_wis_uncapped": 19.695,
+     "cover50": 0.542,
+     "cover95": 0.965,
+     "capped_rows": 0
+    }
+   },
+   "rank_by_mean_wis": [
+    "lightgbm",
+    "tabpfn",
+    "ensemble",
+    "chronos2",
+    "chronos2_synth",
+    "arima",
+    "persistence",
+    "ets",
+    "seasonal_naive"
+   ],
+   "seasonal_naive": {
+    "relative_wis": {
+     "ratio": 2.946,
+     "ci95": [
+      1.927,
+      4.31
+     ],
+     "dates": 69,
+     "verdict": "worse"
+    },
+    "relative_mae": {
+     "ratio": 3.105,
+     "ci95": [
+      1.921,
+      4.727
+     ],
+     "dates": 69,
+     "verdict": "worse"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 5.185,
+      "ci95": [
+       3.069,
+       7.154
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "influenza": {
+      "ratio": 1.838,
+      "ci95": [
+       1.341,
+       2.477
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "rsv": {
+      "ratio": 2.643,
+      "ci95": [
+       1.514,
+       4.191
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 3.416,
+      "ci95": [
+       2.027,
+       5.327
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "2": {
+      "ratio": 2.954,
+      "ci95": [
+       1.813,
+       4.573
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "3": {
+      "ratio": 2.845,
+      "ci95": [
+       1.808,
+       4.226
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "4": {
+      "ratio": 2.832,
+      "ci95": [
+       1.842,
+       4.148
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 1.094,
+     "AL": 4.82,
+     "AR": 1.619,
+     "AZ": 1.701,
+     "CA": 1.394,
+     "CO": 1.463,
+     "CT": 2.026,
+     "DC": 2.22,
+     "DE": 1.187,
+     "FL": 1.994,
+     "GA": 1.686,
+     "HI": 1.527,
+     "IA": 1.2,
+     "ID": 1.014,
+     "IL": 1.031,
+     "IN": 1.271,
+     "KS": 1.07,
+     "KY": 1.417,
+     "LA": 1.43,
+     "MA": 5.474,
+     "MD": 1.936,
+     "ME": 2.185,
+     "MI": 1.294,
+     "MN": 5.473,
+     "MO": 1.13,
+     "MS": 1.4,
+     "MT": 1.476,
+     "NC": 5.865,
+     "ND": 1.76,
+     "NE": 1.075,
+     "NH": 1.434,
+     "NJ": 1.741,
+     "NM": 1.608,
+     "NV": 3.217,
+     "NY": 2.504,
+     "OH": 1.699,
+     "OK": 1.553,
+     "OR": 0.996,
+     "PA": 2.068,
+     "RI": 1.475,
+     "SC": 1.328,
+     "SD": 1.605,
+     "TN": 1.474,
+     "TX": 13.13,
+     "UT": 0.852,
+     "VA": 1.129,
+     "VT": 1.689,
+     "WA": 1.168,
+     "WI": 1.538,
+     "WV": 4.766,
+     "WY": 1.366
+    },
+    "location_normalized_relative_wis": 2.129,
+    "sensitivity_uncapped": {
+     "ratio": 4.999,
+     "ci95": [
+      2.638,
+      8.312
+     ],
+     "dates": 69,
+     "verdict": "worse"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 2.93,
+     "ci95": [
+      1.919,
+      4.284
+     ],
+     "dates": 69,
+     "verdict": "worse"
+    }
+   },
+   "arima": {
+    "relative_wis": {
+     "ratio": 0.966,
+     "ci95": [
+      0.939,
+      0.993
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.955,
+     "ci95": [
+      0.927,
+      0.982
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.945,
+      "ci95": [
+       0.909,
+       0.991
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.962,
+      "ci95": [
+       0.924,
+       0.991
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 1.028,
+      "ci95": [
+       0.981,
+       1.077
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.997,
+      "ci95": [
+       0.962,
+       1.037
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 0.977,
+      "ci95": [
+       0.946,
+       1.01
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "3": {
+      "ratio": 0.964,
+      "ci95": [
+       0.934,
+       0.992
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.949,
+      "ci95": [
+       0.916,
+       0.977
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 0.909,
+     "AL": 1.17,
+     "AR": 0.94,
+     "AZ": 0.999,
+     "CA": 0.931,
+     "CO": 1.006,
+     "CT": 1.014,
+     "DC": 0.93,
+     "DE": 0.969,
+     "FL": 0.988,
+     "GA": 0.939,
+     "HI": 1.008,
+     "IA": 0.927,
+     "ID": 0.963,
+     "IL": 0.886,
+     "IN": 0.906,
+     "KS": 0.919,
+     "KY": 0.924,
+     "LA": 1.221,
+     "MA": 1.063,
+     "MD": 0.962,
+     "ME": 0.896,
+     "MI": 0.97,
+     "MN": 0.992,
+     "MO": 0.935,
+     "MS": 0.964,
+     "MT": 0.922,
+     "NC": 0.971,
+     "ND": 0.884,
+     "NE": 0.955,
+     "NH": 0.964,
+     "NJ": 0.882,
+     "NM": 1.008,
+     "NV": 1.077,
+     "NY": 0.943,
+     "OH": 0.894,
+     "OK": 1.024,
+     "OR": 0.938,
+     "PA": 1.015,
+     "RI": 0.95,
+     "SC": 0.861,
+     "SD": 0.942,
+     "TN": 0.954,
+     "TX": 1.028,
+     "UT": 1.152,
+     "VA": 0.899,
+     "VT": 0.898,
+     "WA": 0.949,
+     "WI": 0.955,
+     "WV": 0.893,
+     "WY": 0.987
+    },
+    "location_normalized_relative_wis": 0.966,
+    "sensitivity_uncapped": {
+     "ratio": 0.958,
+     "ci95": [
+      0.93,
+      0.984
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.967,
+     "ci95": [
+      0.939,
+      0.993
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "ets": {
+    "relative_wis": {
+     "ratio": 1.127,
+     "ci95": [
+      0.945,
+      1.347
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_mae": {
+     "ratio": 1.151,
+     "ci95": [
+      0.949,
+      1.392
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 1.026,
+      "ci95": [
+       1.002,
+       1.054
+      ],
+      "dates": 69,
+      "verdict": "worse"
+     },
+     "influenza": {
+      "ratio": 1.204,
+      "ci95": [
+       0.886,
+       1.557
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "rsv": {
+      "ratio": 1.036,
+      "ci95": [
+       0.964,
+       1.111
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 1.073,
+      "ci95": [
+       0.968,
+       1.205
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 1.098,
+      "ci95": [
+       0.936,
+       1.303
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "3": {
+      "ratio": 1.131,
+      "ci95": [
+       0.927,
+       1.379
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "4": {
+      "ratio": 1.164,
+      "ci95": [
+       0.939,
+       1.433
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 1.086,
+     "AL": 1.143,
+     "AR": 1.04,
+     "AZ": 1.136,
+     "CA": 1.013,
+     "CO": 0.999,
+     "CT": 1.213,
+     "DC": 0.996,
+     "DE": 1.219,
+     "FL": 1.07,
+     "GA": 1.201,
+     "HI": 1.021,
+     "IA": 1.186,
+     "ID": 1.058,
+     "IL": 1.077,
+     "IN": 1.164,
+     "KS": 1.204,
+     "KY": 1.133,
+     "LA": 1.136,
+     "MA": 1.124,
+     "MD": 1.191,
+     "ME": 1.186,
+     "MI": 1.152,
+     "MN": 1.264,
+     "MO": 1.184,
+     "MS": 1.034,
+     "MT": 0.978,
+     "NC": 1.088,
+     "ND": 1.29,
+     "NE": 1.127,
+     "NH": 1.09,
+     "NJ": 1.106,
+     "NM": 1.206,
+     "NV": 1.189,
+     "NY": 1.352,
+     "OH": 1.102,
+     "OK": 1.067,
+     "OR": 1.047,
+     "PA": 1.095,
+     "RI": 1.219,
+     "SC": 1.242,
+     "SD": 0.989,
+     "TN": 1.092,
+     "TX": 0.983,
+     "UT": 1.144,
+     "VA": 1.215,
+     "VT": 1.021,
+     "WA": 0.993,
+     "WI": 1.321,
+     "WV": 1.261,
+     "WY": 1.083
+    },
+    "location_normalized_relative_wis": 1.128,
+    "sensitivity_uncapped": {
+     "ratio": 1.13,
+     "ci95": [
+      0.942,
+      1.356
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 1.126,
+     "ci95": [
+      0.945,
+      1.343
+     ],
+     "dates": 69,
+     "verdict": "no detectable difference"
+    }
+   },
+   "lightgbm": {
+    "relative_wis": {
+     "ratio": 0.668,
+     "ci95": [
+      0.618,
+      0.715
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.698,
+     "ci95": [
+      0.641,
+      0.757
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.635,
+      "ci95": [
+       0.598,
+       0.679
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.651,
+      "ci95": [
+       0.576,
+       0.711
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 0.798,
+      "ci95": [
+       0.628,
+       1.016
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.735,
+      "ci95": [
+       0.694,
+       0.773
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "2": {
+      "ratio": 0.692,
+      "ci95": [
+       0.644,
+       0.739
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.665,
+      "ci95": [
+       0.605,
+       0.721
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.627,
+      "ci95": [
+       0.562,
+       0.691
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 1.05,
+     "AL": 0.722,
+     "AR": 0.686,
+     "AZ": 0.711,
+     "CA": 0.611,
+     "CO": 0.6,
+     "CT": 0.696,
+     "DC": 0.825,
+     "DE": 0.774,
+     "FL": 0.693,
+     "GA": 0.653,
+     "HI": 0.991,
+     "IA": 0.687,
+     "ID": 0.743,
+     "IL": 0.623,
+     "IN": 0.596,
+     "KS": 0.743,
+     "KY": 0.676,
+     "LA": 0.667,
+     "MA": 0.667,
+     "MD": 0.638,
+     "ME": 0.775,
+     "MI": 0.687,
+     "MN": 0.65,
+     "MO": 0.678,
+     "MS": 0.755,
+     "MT": 0.775,
+     "NC": 0.655,
+     "ND": 0.874,
+     "NE": 0.73,
+     "NH": 0.798,
+     "NJ": 0.638,
+     "NM": 0.749,
+     "NV": 0.834,
+     "NY": 0.649,
+     "OH": 0.63,
+     "OK": 0.72,
+     "OR": 0.727,
+     "PA": 0.725,
+     "RI": 0.789,
+     "SC": 0.738,
+     "SD": 0.845,
+     "TN": 0.696,
+     "TX": 0.533,
+     "UT": 0.796,
+     "VA": 0.64,
+     "VT": 0.852,
+     "WA": 0.675,
+     "WI": 0.692,
+     "WV": 0.612,
+     "WY": 1.005
+    },
+    "location_normalized_relative_wis": 0.725,
+    "sensitivity_uncapped": {
+     "ratio": 0.665,
+     "ci95": [
+      0.615,
+      0.712
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.669,
+     "ci95": [
+      0.618,
+      0.717
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "chronos2": {
+    "relative_wis": {
+     "ratio": 0.761,
+     "ci95": [
+      0.7,
+      0.835
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.805,
+     "ci95": [
+      0.734,
+      0.894
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.854,
+      "ci95": [
+       0.816,
+       0.9
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.704,
+      "ci95": [
+       0.593,
+       0.824
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 0.788,
+      "ci95": [
+       0.753,
+       0.826
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.892,
+      "ci95": [
+       0.817,
+       0.997
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "2": {
+      "ratio": 0.798,
+      "ci95": [
+       0.733,
+       0.885
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.743,
+      "ci95": [
+       0.676,
+       0.825
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.698,
+      "ci95": [
+       0.633,
+       0.77
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 0.849,
+     "AL": 0.815,
+     "AR": 0.737,
+     "AZ": 0.971,
+     "CA": 0.706,
+     "CO": 0.821,
+     "CT": 0.759,
+     "DC": 0.758,
+     "DE": 0.742,
+     "FL": 0.71,
+     "GA": 0.844,
+     "HI": 0.964,
+     "IA": 0.772,
+     "ID": 0.765,
+     "IL": 0.729,
+     "IN": 0.694,
+     "KS": 0.781,
+     "KY": 0.765,
+     "LA": 0.737,
+     "MA": 0.823,
+     "MD": 0.841,
+     "ME": 0.82,
+     "MI": 0.847,
+     "MN": 0.808,
+     "MO": 0.748,
+     "MS": 0.739,
+     "MT": 0.784,
+     "NC": 0.733,
+     "ND": 0.804,
+     "NE": 0.851,
+     "NH": 0.791,
+     "NJ": 0.765,
+     "NM": 0.748,
+     "NV": 0.804,
+     "NY": 0.68,
+     "OH": 0.782,
+     "OK": 0.784,
+     "OR": 0.805,
+     "PA": 0.871,
+     "RI": 0.802,
+     "SC": 0.738,
+     "SD": 0.813,
+     "TN": 0.705,
+     "TX": 0.666,
+     "UT": 0.757,
+     "VA": 0.734,
+     "VT": 0.787,
+     "WA": 0.766,
+     "WI": 0.826,
+     "WV": 0.739,
+     "WY": 0.948
+    },
+    "location_normalized_relative_wis": 0.785,
+    "sensitivity_uncapped": {
+     "ratio": 0.753,
+     "ci95": [
+      0.695,
+      0.824
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.764,
+     "ci95": [
+      0.703,
+      0.838
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "chronos2_synth": {
+    "relative_wis": {
+     "ratio": 0.793,
+     "ci95": [
+      0.698,
+      0.914
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.849,
+     "ci95": [
+      0.734,
+      0.996
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.763,
+      "ci95": [
+       0.697,
+       0.843
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.806,
+      "ci95": [
+       0.64,
+       1.005
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "rsv": {
+      "ratio": 0.803,
+      "ci95": [
+       0.746,
+       0.866
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.876,
+      "ci95": [
+       0.766,
+       1.017
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     },
+     "2": {
+      "ratio": 0.807,
+      "ci95": [
+       0.698,
+       0.952
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.781,
+      "ci95": [
+       0.676,
+       0.915
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.759,
+      "ci95": [
+       0.665,
+       0.873
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 0.872,
+     "AL": 0.821,
+     "AR": 0.835,
+     "AZ": 0.98,
+     "CA": 0.652,
+     "CO": 0.769,
+     "CT": 0.763,
+     "DC": 0.859,
+     "DE": 0.79,
+     "FL": 0.723,
+     "GA": 0.909,
+     "HI": 0.939,
+     "IA": 0.741,
+     "ID": 0.726,
+     "IL": 0.729,
+     "IN": 0.719,
+     "KS": 0.759,
+     "KY": 0.814,
+     "LA": 0.754,
+     "MA": 0.844,
+     "MD": 0.943,
+     "ME": 0.838,
+     "MI": 0.862,
+     "MN": 0.759,
+     "MO": 0.797,
+     "MS": 0.877,
+     "MT": 0.828,
+     "NC": 0.898,
+     "ND": 0.784,
+     "NE": 0.799,
+     "NH": 0.829,
+     "NJ": 0.814,
+     "NM": 0.742,
+     "NV": 0.801,
+     "NY": 0.715,
+     "OH": 0.853,
+     "OK": 0.835,
+     "OR": 0.863,
+     "PA": 0.868,
+     "RI": 0.838,
+     "SC": 0.934,
+     "SD": 0.862,
+     "TN": 0.782,
+     "TX": 0.707,
+     "UT": 0.815,
+     "VA": 0.825,
+     "VT": 0.824,
+     "WA": 0.838,
+     "WI": 0.791,
+     "WV": 0.816,
+     "WY": 0.964
+    },
+    "location_normalized_relative_wis": 0.818,
+    "sensitivity_uncapped": {
+     "ratio": 0.785,
+     "ci95": [
+      0.693,
+      0.902
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.792,
+     "ci95": [
+      0.699,
+      0.913
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "tabpfn": {
+    "relative_wis": {
+     "ratio": 0.711,
+     "ci95": [
+      0.596,
+      0.847
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.734,
+     "ci95": [
+      0.613,
+      0.882
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.665,
+      "ci95": [
+       0.605,
+       0.739
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.707,
+      "ci95": [
+       0.514,
+       0.934
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 0.82,
+      "ci95": [
+       0.629,
+       1.072
+      ],
+      "dates": 69,
+      "verdict": "no detectable difference"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.703,
+      "ci95": [
+       0.598,
+       0.837
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "2": {
+      "ratio": 0.667,
+      "ci95": [
+       0.56,
+       0.799
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.702,
+      "ci95": [
+       0.57,
+       0.861
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.75,
+      "ci95": [
+       0.597,
+       0.923
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 1.39,
+     "AL": 0.805,
+     "AR": 0.797,
+     "AZ": 0.961,
+     "CA": 0.622,
+     "CO": 0.688,
+     "CT": 0.73,
+     "DC": 0.991,
+     "DE": 0.756,
+     "FL": 0.677,
+     "GA": 0.675,
+     "HI": 1.238,
+     "IA": 0.7,
+     "ID": 1.001,
+     "IL": 0.653,
+     "IN": 0.565,
+     "KS": 0.758,
+     "KY": 0.646,
+     "LA": 0.738,
+     "MA": 0.696,
+     "MD": 0.66,
+     "ME": 0.94,
+     "MI": 0.81,
+     "MN": 0.673,
+     "MO": 0.753,
+     "MS": 0.993,
+     "MT": 1.007,
+     "NC": 0.677,
+     "ND": 1.062,
+     "NE": 0.752,
+     "NH": 1.05,
+     "NJ": 0.633,
+     "NM": 0.914,
+     "NV": 1.069,
+     "NY": 0.775,
+     "OH": 0.64,
+     "OK": 0.854,
+     "OR": 0.696,
+     "PA": 0.687,
+     "RI": 0.868,
+     "SC": 0.74,
+     "SD": 0.966,
+     "TN": 0.713,
+     "TX": 0.539,
+     "UT": 1.156,
+     "VA": 0.631,
+     "VT": 0.862,
+     "WA": 0.758,
+     "WI": 0.733,
+     "WV": 0.625,
+     "WY": 1.42
+    },
+    "location_normalized_relative_wis": 0.818,
+    "sensitivity_uncapped": {
+     "ratio": 0.709,
+     "ci95": [
+      0.596,
+      0.841
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.713,
+     "ci95": [
+      0.598,
+      0.848
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "ensemble": {
+    "relative_wis": {
+     "ratio": 0.721,
+     "ci95": [
+      0.65,
+      0.801
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_mae": {
+     "ratio": 0.76,
+     "ci95": [
+      0.682,
+      0.848
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "relative_wis_by_pathogen": {
+     "covid": {
+      "ratio": 0.731,
+      "ci95": [
+       0.702,
+       0.765
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "influenza": {
+      "ratio": 0.732,
+      "ci95": [
+       0.603,
+       0.862
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "rsv": {
+      "ratio": 0.659,
+      "ci95": [
+       0.612,
+       0.71
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_horizon": {
+     "1": {
+      "ratio": 0.786,
+      "ci95": [
+       0.736,
+       0.846
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "2": {
+      "ratio": 0.745,
+      "ci95": [
+       0.682,
+       0.82
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "3": {
+      "ratio": 0.714,
+      "ci95": [
+       0.636,
+       0.803
+      ],
+      "dates": 69,
+      "verdict": "better"
+     },
+     "4": {
+      "ratio": 0.685,
+      "ci95": [
+       0.599,
+       0.783
+      ],
+      "dates": 69,
+      "verdict": "better"
+     }
+    },
+    "relative_wis_by_state": {
+     "AK": 0.818,
+     "AL": 0.789,
+     "AR": 0.687,
+     "AZ": 0.785,
+     "CA": 0.6,
+     "CO": 0.708,
+     "CT": 0.761,
+     "DC": 0.777,
+     "DE": 0.765,
+     "FL": 0.676,
+     "GA": 0.727,
+     "HI": 0.891,
+     "IA": 0.759,
+     "ID": 0.69,
+     "IL": 0.682,
+     "IN": 0.653,
+     "KS": 0.732,
+     "KY": 0.716,
+     "LA": 0.721,
+     "MA": 0.856,
+     "MD": 0.763,
+     "ME": 0.806,
+     "MI": 0.75,
+     "MN": 0.749,
+     "MO": 0.731,
+     "MS": 0.733,
+     "MT": 0.747,
+     "NC": 0.782,
+     "ND": 0.842,
+     "NE": 0.753,
+     "NH": 0.789,
+     "NJ": 0.726,
+     "NM": 0.719,
+     "NV": 0.82,
+     "NY": 0.733,
+     "OH": 0.714,
+     "OK": 0.717,
+     "OR": 0.709,
+     "PA": 0.751,
+     "RI": 0.773,
+     "SC": 0.774,
+     "SD": 0.738,
+     "TN": 0.705,
+     "TX": 0.67,
+     "UT": 0.762,
+     "VA": 0.704,
+     "VT": 0.767,
+     "WA": 0.686,
+     "WI": 0.751,
+     "WV": 0.718,
+     "WY": 0.837
+    },
+    "location_normalized_relative_wis": 0.745,
+    "sensitivity_uncapped": {
+     "ratio": 0.714,
+     "ci95": [
+      0.645,
+      0.791
+     ],
+     "dates": 69,
+     "verdict": "better"
+    },
+    "sensitivity_fallbacks_kept": {
+     "ratio": 0.722,
+     "ci95": [
+      0.651,
+      0.801
+     ],
+     "dates": 69,
+     "verdict": "better"
+    }
+   },
+   "chronos2_synth_vs_chronos2": {
+    "ratio": 1.042,
+    "ci95": [
+     0.973,
+     1.11
+    ],
+    "dates": 69,
+    "verdict": "no detectable difference"
+   },
+   "lightgbm_ed": {
+    "rows": 30600,
+    "first_date": "2025-08-15",
+    "summary": {
+     "persistence": {
+      "mean_wis": 32.518,
+      "mean_wis_uncapped": 32.894,
+      "cover50": 0.439,
+      "cover95": 0.939,
+      "capped_rows": 1248
+     },
+     "lightgbm": {
+      "mean_wis": 22.333,
+      "mean_wis_uncapped": 22.488,
+      "cover50": 0.482,
+      "cover95": 0.911,
+      "capped_rows": 413
+     },
+     "lightgbm_ed": {
+      "mean_wis": 21.624,
+      "mean_wis_uncapped": 21.854,
+      "cover50": 0.474,
+      "cover95": 0.898,
+      "capped_rows": 300
+     }
+    },
+    "relative_wis_vs_persistence": {
+     "ratio": 0.665,
+     "ci95": [
+      0.58,
+      0.783
+     ],
+     "dates": 50,
+     "verdict": "better"
+    },
+    "relative_wis_vs_lightgbm": {
+     "ratio": 0.968,
+     "ci95": [
+      0.857,
+      1.119
+     ],
+     "dates": 50,
+     "verdict": "no detectable difference"
+    },
+    "lightgbm_relative_wis_vs_persistence_same_rows": {
+     "ratio": 0.687,
+     "ci95": [
+      0.634,
+      0.735
+     ],
+     "dates": 50,
+     "verdict": "better"
+    }
+   }
+  }
+ },
+ "revision_effect": {
+  "seasonal_naive": {
+   "difference": 0.048,
+   "ci95": [
+    -0.051,
+    0.128
+   ],
+   "dates": 69,
+   "verdict": "no detectable difference"
+  },
+  "arima": {
+   "difference": 0.001,
+   "ci95": [
+    -0.005,
+    0.008
+   ],
+   "dates": 69,
+   "verdict": "no detectable difference"
+  },
+  "ets": {
+   "difference": 0.031,
+   "ci95": [
+    0.007,
+    0.058
+   ],
+   "dates": 69,
+   "verdict": "revised worse"
+  },
+  "lightgbm": {
+   "difference": -0.044,
+   "ci95": [
+    -0.063,
+    -0.028
+   ],
+   "dates": 69,
+   "verdict": "revised better"
+  },
+  "chronos2": {
+   "difference": -0.027,
+   "ci95": [
+    -0.044,
+    -0.011
+   ],
+   "dates": 69,
+   "verdict": "revised better"
+  },
+  "chronos2_synth": {
+   "difference": -0.027,
+   "ci95": [
+    -0.05,
+    -0.005
+   ],
+   "dates": 69,
+   "verdict": "revised better"
+  },
+  "tabpfn": {
+   "difference": -0.02,
+   "ci95": [
+    -0.052,
+    0.008
+   ],
+   "dates": 69,
+   "verdict": "no detectable difference"
+  },
+  "ensemble": {
+   "difference": -0.019,
+   "ci95": [
+    -0.034,
+    -0.005
+   ],
+   "dates": 69,
+   "verdict": "revised better"
+  }
+ },
+ "rank_change": {
+  "realtime": [
+   "lightgbm",
+   "tabpfn",
+   "ensemble",
+   "chronos2",
+   "chronos2_synth",
+   "arima",
+   "persistence",
+   "ets",
+   "seasonal_naive"
+  ],
+  "revised": [
+   "lightgbm",
+   "tabpfn",
+   "ensemble",
+   "chronos2",
+   "chronos2_synth",
+   "arima",
+   "persistence",
+   "ets",
+   "seasonal_naive"
+  ]
+ }
+}

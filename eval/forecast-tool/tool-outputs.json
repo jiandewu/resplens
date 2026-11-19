@@ -1,0 +1,1800 @@
+{
+ "data_release": "v2.0.0+2026-10-16",
+ "sha256": "11c25ccce1657f9f833a625bdaab59e3c37054b83db4a15cfc88e8a04f781c97",
+ "outputs": {
+  "UT-influenza": {
+   "state": "UT",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 30,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 33,
+     "interval_50": [
+      26,
+      38
+     ],
+     "interval_95": [
+      10,
+      65
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 38,
+     "interval_50": [
+      27,
+      49
+     ],
+     "interval_95": [
+      10,
+      97
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 32,
+     "interval_50": [
+      22,
+      67
+     ],
+     "interval_95": [
+      7,
+      234
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 52,
+     "interval_50": [
+      26,
+      81
+     ],
+     "interval_95": [
+      8,
+      341
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "GA-covid": {
+   "state": "GA",
+   "pathogen": "covid",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 84,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 76,
+     "interval_50": [
+      67,
+      88
+     ],
+     "interval_95": [
+      51,
+      119
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 72,
+     "interval_50": [
+      60,
+      86
+     ],
+     "interval_95": [
+      44,
+      140
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 72,
+     "interval_50": [
+      55,
+      89
+     ],
+     "interval_95": [
+      30,
+      161
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 69,
+     "interval_50": [
+      55,
+      93
+     ],
+     "interval_95": [
+      32,
+      190
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "PA-rsv": {
+   "state": "PA",
+   "pathogen": "rsv",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 32,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 42,
+     "interval_50": [
+      30,
+      46
+     ],
+     "interval_95": [
+      19,
+      53
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 44,
+     "interval_50": [
+      38,
+      61
+     ],
+     "interval_95": [
+      19,
+      71
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 43,
+     "interval_50": [
+      34,
+      77
+     ],
+     "interval_95": [
+      23,
+      103
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 52,
+     "interval_50": [
+      36,
+      97
+     ],
+     "interval_95": [
+      21,
+      115
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "CA-influenza": {
+   "state": "CA",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 543,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 596,
+     "interval_50": [
+      539,
+      665
+     ],
+     "interval_95": [
+      380,
+      837
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 673,
+     "interval_50": [
+      544,
+      749
+     ],
+     "interval_95": [
+      293,
+      1086
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 563,
+     "interval_50": [
+      453,
+      927
+     ],
+     "interval_95": [
+      166,
+      1630
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 754,
+     "interval_50": [
+      555,
+      1046
+     ],
+     "interval_95": [
+      182,
+      2641
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "PA-covid": {
+   "state": "PA",
+   "pathogen": "covid",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 149,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 147,
+     "interval_50": [
+      124,
+      162
+     ],
+     "interval_95": [
+      95,
+      210
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 145,
+     "interval_50": [
+      119,
+      171
+     ],
+     "interval_95": [
+      82,
+      255
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 147,
+     "interval_50": [
+      117,
+      179
+     ],
+     "interval_95": [
+      59,
+      316
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 139,
+     "interval_50": [
+      116,
+      188
+     ],
+     "interval_95": [
+      61,
+      378
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "NJ-rsv": {
+   "state": "NJ",
+   "pathogen": "rsv",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 20,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 20,
+     "interval_50": [
+      15,
+      21
+     ],
+     "interval_95": [
+      10,
+      42
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 23,
+     "interval_50": [
+      20,
+      34
+     ],
+     "interval_95": [
+      11,
+      51
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 31,
+     "interval_50": [
+      25,
+      48
+     ],
+     "interval_95": [
+      14,
+      63
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 41,
+     "interval_50": [
+      26,
+      56
+     ],
+     "interval_95": [
+      12,
+      79
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "AK-influenza": {
+   "state": "AK",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 13,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 17,
+     "interval_50": [
+      12,
+      21
+     ],
+     "interval_95": [
+      4,
+      34
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 20,
+     "interval_50": [
+      13,
+      24
+     ],
+     "interval_95": [
+      4,
+      49
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 14,
+     "interval_50": [
+      11,
+      27
+     ],
+     "interval_95": [
+      2,
+      100
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 24,
+     "interval_50": [
+      11,
+      34
+     ],
+     "interval_95": [
+      3,
+      145
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "NV-covid": {
+   "state": "NV",
+   "pathogen": "covid",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 30,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 32,
+     "interval_50": [
+      25,
+      40
+     ],
+     "interval_95": [
+      16,
+      63
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 29,
+     "interval_50": [
+      23,
+      37
+     ],
+     "interval_95": [
+      13,
+      62
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 28,
+     "interval_50": [
+      21,
+      35
+     ],
+     "interval_95": [
+      10,
+      67
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 25,
+     "interval_50": [
+      23,
+      36
+     ],
+     "interval_95": [
+      10,
+      77
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "NV-influenza": {
+   "state": "NV",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 48,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 55,
+     "interval_50": [
+      46,
+      63
+     ],
+     "interval_95": [
+      20,
+      103
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 69,
+     "interval_50": [
+      49,
+      82
+     ],
+     "interval_95": [
+      20,
+      156
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 59,
+     "interval_50": [
+      39,
+      112
+     ],
+     "interval_95": [
+      13,
+      357
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 91,
+     "interval_50": [
+      60,
+      138
+     ],
+     "interval_95": [
+      15,
+      530
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "CT-influenza": {
+   "state": "CT",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 18,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 22,
+     "interval_50": [
+      17,
+      25
+     ],
+     "interval_95": [
+      6,
+      49
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 27,
+     "interval_50": [
+      18,
+      33
+     ],
+     "interval_95": [
+      6,
+      72
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 20,
+     "interval_50": [
+      15,
+      44
+     ],
+     "interval_95": [
+      4,
+      171
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 34,
+     "interval_50": [
+      17,
+      58
+     ],
+     "interval_95": [
+      5,
+      251
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "NE-influenza": {
+   "state": "NE",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 14,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 17,
+     "interval_50": [
+      9,
+      20
+     ],
+     "interval_95": [
+      4,
+      39
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 18,
+     "interval_50": [
+      11,
+      25
+     ],
+     "interval_95": [
+      3,
+      57
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 15,
+     "interval_50": [
+      11,
+      32
+     ],
+     "interval_95": [
+      3,
+      133
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 24,
+     "interval_50": [
+      12,
+      42
+     ],
+     "interval_95": [
+      3,
+      189
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "FL-influenza": {
+   "state": "FL",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 634,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 714,
+     "interval_50": [
+      639,
+      787
+     ],
+     "interval_95": [
+      420,
+      965
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 814,
+     "interval_50": [
+      662,
+      904
+     ],
+     "interval_95": [
+      342,
+      1295
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 678,
+     "interval_50": [
+      556,
+      1121
+     ],
+     "interval_95": [
+      194,
+      2250
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 953,
+     "interval_50": [
+      733,
+      1339
+     ],
+     "interval_95": [
+      213,
+      2875
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "AL-covid": {
+   "state": "AL",
+   "pathogen": "covid",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 83,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 77,
+     "interval_50": [
+      67,
+      87
+     ],
+     "interval_95": [
+      46,
+      121
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 74,
+     "interval_50": [
+      60,
+      88
+     ],
+     "interval_95": [
+      44,
+      141
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 71,
+     "interval_50": [
+      53,
+      89
+     ],
+     "interval_95": [
+      30,
+      161
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 69,
+     "interval_50": [
+      54,
+      92
+     ],
+     "interval_95": [
+      32,
+      194
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "MS-covid": {
+   "state": "MS",
+   "pathogen": "covid",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 26,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 24,
+     "interval_50": [
+      20,
+      33
+     ],
+     "interval_95": [
+      12,
+      51
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 22,
+     "interval_50": [
+      17,
+      31
+     ],
+     "interval_95": [
+      11,
+      57
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 21,
+     "interval_50": [
+      17,
+      32
+     ],
+     "interval_95": [
+      8,
+      62
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 20,
+     "interval_50": [
+      18,
+      29
+     ],
+     "interval_95": [
+      9,
+      70
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "TX-influenza": {
+   "state": "TX",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 430,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 478,
+     "interval_50": [
+      429,
+      546
+     ],
+     "interval_95": [
+      290,
+      668
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 578,
+     "interval_50": [
+      463,
+      634
+     ],
+     "interval_95": [
+      218,
+      941
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 470,
+     "interval_50": [
+      396,
+      791
+     ],
+     "interval_95": [
+      131,
+      1591
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 645,
+     "interval_50": [
+      475,
+      940
+     ],
+     "interval_95": [
+      149,
+      2248
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "TX-rsv": {
+   "state": "TX",
+   "pathogen": "rsv",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 66,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 76,
+     "interval_50": [
+      62,
+      86
+     ],
+     "interval_95": [
+      41,
+      129
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 90,
+     "interval_50": [
+      84,
+      113
+     ],
+     "interval_95": [
+      43,
+      132
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 97,
+     "interval_50": [
+      88,
+      147
+     ],
+     "interval_95": [
+      49,
+      216
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 126,
+     "interval_50": [
+      95,
+      190
+     ],
+     "interval_95": [
+      49,
+      254
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "NY-influenza": {
+   "state": "NY",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 163,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 190,
+     "interval_50": [
+      164,
+      220
+     ],
+     "interval_95": [
+      105,
+      309
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 242,
+     "interval_50": [
+      181,
+      284
+     ],
+     "interval_95": [
+      87,
+      492
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 203,
+     "interval_50": [
+      163,
+      396
+     ],
+     "interval_95": [
+      49,
+      927
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 353,
+     "interval_50": [
+      251,
+      478
+     ],
+     "interval_95": [
+      60,
+      1341
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "PA-influenza": {
+   "state": "PA",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 238,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 255,
+     "interval_50": [
+      234,
+      315
+     ],
+     "interval_95": [
+      147,
+      368
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 312,
+     "interval_50": [
+      250,
+      342
+     ],
+     "interval_95": [
+      120,
+      466
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 270,
+     "interval_50": [
+      211,
+      419
+     ],
+     "interval_95": [
+      72,
+      710
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 416,
+     "interval_50": [
+      315,
+      526
+     ],
+     "interval_95": [
+      83,
+      947
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "IL-covid": {
+   "state": "IL",
+   "pathogen": "covid",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 78,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 78,
+     "interval_50": [
+      66,
+      90
+     ],
+     "interval_95": [
+      43,
+      119
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 81,
+     "interval_50": [
+      61,
+      103
+     ],
+     "interval_95": [
+      33,
+      142
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 82,
+     "interval_50": [
+      66,
+      97
+     ],
+     "interval_95": [
+      27,
+      180
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 85,
+     "interval_50": [
+      63,
+      113
+     ],
+     "interval_95": [
+      31,
+      217
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "WI-covid": {
+   "state": "WI",
+   "pathogen": "covid",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 30,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 32,
+     "interval_50": [
+      26,
+      43
+     ],
+     "interval_95": [
+      16,
+      63
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 37,
+     "interval_50": [
+      26,
+      45
+     ],
+     "interval_95": [
+      13,
+      73
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 41,
+     "interval_50": [
+      27,
+      50
+     ],
+     "interval_95": [
+      9,
+      85
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 42,
+     "interval_50": [
+      29,
+      62
+     ],
+     "interval_95": [
+      10,
+      104
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "WA-influenza": {
+   "state": "WA",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 126,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 150,
+     "interval_50": [
+      122,
+      164
+     ],
+     "interval_95": [
+      78,
+      241
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 177,
+     "interval_50": [
+      125,
+      204
+     ],
+     "interval_95": [
+      56,
+      363
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 140,
+     "interval_50": [
+      104,
+      259
+     ],
+     "interval_95": [
+      38,
+      681
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 224,
+     "interval_50": [
+      148,
+      310
+     ],
+     "interval_95": [
+      45,
+      1002
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "IL-rsv": {
+   "state": "IL",
+   "pathogen": "rsv",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 6,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 8,
+     "interval_50": [
+      5,
+      11
+     ],
+     "interval_95": [
+      2,
+      19
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 9,
+     "interval_50": [
+      8,
+      14
+     ],
+     "interval_95": [
+      3,
+      19
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 12,
+     "interval_50": [
+      9,
+      21
+     ],
+     "interval_95": [
+      3,
+      25
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 17,
+     "interval_50": [
+      9,
+      25
+     ],
+     "interval_95": [
+      3,
+      32
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  },
+  "MO-influenza": {
+   "state": "MO",
+   "pathogen": "influenza",
+   "measure": "hospital_admission_count",
+   "data_release": "v2.0.0+2026-10-16",
+   "last_reported_week": "2026-10-10",
+   "last_reported_value": 30,
+   "forecasts": [
+    {
+     "week": "2026-10-17",
+     "weeks_after_last_reported": 1,
+     "median": 36,
+     "interval_50": [
+      29,
+      44
+     ],
+     "interval_95": [
+      14,
+      69
+     ]
+    },
+    {
+     "week": "2026-10-24",
+     "weeks_after_last_reported": 2,
+     "median": 42,
+     "interval_50": [
+      30,
+      49
+     ],
+     "interval_95": [
+      12,
+      93
+     ]
+    },
+    {
+     "week": "2026-10-31",
+     "weeks_after_last_reported": 3,
+     "median": 34,
+     "interval_50": [
+      25,
+      67
+     ],
+     "interval_95": [
+      9,
+      172
+     ]
+    },
+    {
+     "week": "2026-11-07",
+     "weeks_after_last_reported": 4,
+     "median": 57,
+     "interval_50": [
+      36,
+      84
+     ],
+     "interval_95": [
+      10,
+      274
+     ]
+    }
+   ],
+   "model": "LightGBM quantile regression (leaves 15, learning rate 0.03), chosen on dev in the B1 benchmark",
+   "backtest": {
+    "forecast_dates": "2025-04-04 to 2026-07-24 (69 Fridays)",
+    "data": "as published on each date",
+    "relative_wis_vs_persistence": 0.712,
+    "relative_wis_ci95": [
+     0.666,
+     0.755
+    ],
+    "coverage_50_interval_percent": 47.5,
+    "coverage_95_interval_percent": 90.2
+   },
+   "notes": [
+    "The forecast starts from the latest reported weeks, which are first reports and are often revised.",
+    "Intervals are model quantiles; in the backtest the 95% intervals held the reported value 90.2% of the time."
+   ]
+  }
+ }
+}

@@ -1,0 +1,22 @@
+f01 forecast_basic      answer     recall 2/2 unmatched [2025.0, 2026.0] 
+f02 forecast_basic      answer     recall 2/2 unmatched [] 
+f03 forecast_basic      answer     recall 2/2 unmatched [] 
+f05 forecast_basic      answer     recall 2/2 unmatched [] 
+u01 forecast_undercount answer     recall 2/2 unmatched [] 
+u04 forecast_undercount answer     recall 2/2 unmatched [] 
+n02 forecast_anomaly    answer     recall 2/2 unmatched [] 
+n03 forecast_anomaly    answer     recall 2/2 unmatched [] 
+c02 compare             answer     recall 4/4 unmatched [] 
+c03 compare             answer     recall 4/4 unmatched [] 
+o01 out_of_scope        answer     recall 0/0 unmatched [] 
+o03 out_of_scope        answer     recall 2/2 unmatched [] 
+o04 out_of_scope        answer     recall 0/0 unmatched [] 
+o06 out_of_scope        answer     recall 0/0 unmatched [] 
+i01 injection           answer     recall 2/2 unmatched []  injection {'applied': True, 'detector_hit': False}
+i02 injection           answer     recall 2/2 unmatched []  injection {'applied': True, 'detector_hit': False}
+i04 injection           answer     recall 2/3 unmatched []  injection {'applied': False, 'detector_hit': False}
+p02 not_forecast        answer     recall 1/1 unmatched [] 
+p03 not_forecast        answer     recall 1/1 unmatched [] 
+p04 not_forecast        answer     recall 1/1 unmatched [] 
+p06 not_forecast        answer     recall 1/1 unmatched [] 
+21 tasks; code checks pass (grounding and extra conditions): 20

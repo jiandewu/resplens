@@ -72,8 +72,12 @@ def write_sheet(out: Path, name: str, title: str, intro: str, items: list[tuple[
         writer.writerows(csv_rows)
 
 
-def build(run_dirs: list[Path], out: Path = OUT) -> dict:
-    tasks = {task["id"]: task for split in ("dev", "test") for task in load_tasks(split)}
+RUBRIC = "the rubric in docs/agent-eval.md"
+
+
+def build(run_dirs: list[Path], out: Path = OUT, tasks: dict | None = None, rubric: str = RUBRIC) -> dict:
+    """tasks (id -> task) and rubric default to A3; the forecast tool evaluation passes its own."""
+    tasks = tasks or {task["id"]: task for split in ("dev", "test") for task in load_tasks(split)}
     rows = load_runs(run_dirs)
     rng = random.Random(SHUFFLE_SEED)
     out.mkdir(parents=True, exist_ok=True)
@@ -91,7 +95,7 @@ def build(run_dirs: list[Path], out: Path = OUT) -> dict:
         csv_rows.append([item, row["trace"]["id"], "", "", ""])
     write_sheet(out, "grades", "Run-1 grades (blind)",
                 "Grade each answer's `correctness` (correct, partial, incorrect) and `caveat_stated` (yes, no), using "
-                "the rubric in docs/agent-eval.md. Answers are shown with hyphens normalized and citation markers "
+                f"{rubric}. Answers are shown with hyphens normalized and citation markers "
                 "removed; tool calls are sorted, not in the order made.", items,
                 ["item", "task", "correctness", "caveat_stated", "note"], csv_rows)
 

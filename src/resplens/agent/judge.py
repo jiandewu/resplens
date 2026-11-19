@@ -71,11 +71,11 @@ def valid(verdict: dict) -> bool:
             and all(isinstance(verdict[key], bool) for key in ("unsupported_claims", "abstained", "caveat_stated")))
 
 
-def judge_one(task: dict, trace: dict, seed: int = 0) -> dict:
+def judge_one(task: dict, trace: dict, seed: int = 0, prompt: str = JUDGE_PROMPT) -> dict:
     body = {"model": JUDGE, "stream": False, "think": True, "format": SCHEMA, "keep_alive": "30m",
             "options": {"temperature": 0, "seed": seed, "num_ctx": 65536, "num_predict": MAX_JUDGE_TOKENS,
                         "num_thread": CPU_THREADS},
-            "messages": [{"role": "system", "content": JUDGE_PROMPT},
+            "messages": [{"role": "system", "content": prompt},
                          {"role": "user", "content": judge_input(task, trace)}]}
     request = urllib.request.Request(f"{OLLAMA_URL}/api/chat", json.dumps(body).encode(),
                                      {"Content-Type": "application/json"})

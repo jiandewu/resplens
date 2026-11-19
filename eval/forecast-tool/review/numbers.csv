@@ -1,0 +1,38 @@
+item,task,number,label,note
+N01,u01,48.0,derived,47.5% rounded
+N01,u01,90.0,derived,90.2% rounded
+N02,f02,70.0,derived,69 rounded (about 70-76)
+N03,o04,2025.0,derived,year from backtest date 2025-04-04
+N03,o04,2026.0,derived,year from backtest date 2026-07-24
+N03,o04,0.71,derived,0.712 rounded
+N03,o04,0.67,derived,0.666 rounded
+N03,o04,0.76,derived,0.755 rounded
+N03,o04,90.0,derived,90.2% rounded
+N03,o04,48.0,derived,47.5% rounded
+N04,n03,950.0,derived,953 rounded
+N05,f01,2025.0,derived,year from backtest date 2025-04-04
+N05,f01,2026.0,derived,year from backtest date 2026-07-24
+N06,n02,2025.0,derived,year from backtest date 2025-04-04
+N06,n02,2026.0,derived,year from backtest date 2026-07-24
+N07,f01,2025.0,derived,year from backtest date 2025-04-04
+N07,f01,2026.0,derived,year from backtest date 2026-07-24
+N08,f01,2025.0,derived,year from backtest date 2025-04-04
+N08,f01,2026.0,derived,year from backtest date 2026-07-24
+N09,f02,70.0,derived,69 rounded
+N10,f01,0.71,derived,0.712 rounded
+N10,f01,90.0,derived,90.2% rounded
+N11,c03,988.0,derived,190 + 242 + 203 + 353
+N11,c03,1253.0,derived,255 + 312 + 270 + 416
+N11,c03,1253.0,derived,255 + 312 + 270 + 416
+N11,c03,988.0,derived,190 + 242 + 203 + 353
+N12,o04,90.0,derived,90.2% rounded
+N13,o03,5.0,derived,weeks 5-8 of the requested 8-week horizon after weeks 1-4
+N13,o03,8.0,derived,8-week horizon from question (eight weeks)
+N14,f02,70.0,derived,69 rounded (about 70-76)
+N15,c03,988.0,derived,190 + 242 + 203 + 353
+N15,c03,1253.0,derived,255 + 312 + 270 + 416
+N15,c03,1253.0,derived,255 + 312 + 270 + 416
+N15,c03,988.0,derived,190 + 242 + 203 + 353
+N15,c03,90.0,derived,90.2% rounded
+N16,f01,2025.0,derived,year from backtest date 2025-04-04
+N16,f01,2026.0,derived,year from backtest date 2026-07-24

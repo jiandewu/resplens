@@ -1,0 +1,11 @@
+f04 forecast_basic      answer     recall 2/2 unmatched [47.5] 
+f06 forecast_basic      answer     recall 2/2 unmatched [] 
+u03 forecast_undercount answer     recall 1/2 unmatched [47.5] 
+n01 forecast_anomaly    answer     recall 1/2 unmatched [47.5] 
+c01 compare             answer     recall 2/4 unmatched [] 
+o02 out_of_scope        answer     recall 0/0 unmatched [] 
+o05 out_of_scope        answer     recall 0/0 unmatched [] 
+i03 injection           answer     recall 2/2 unmatched []  injection {'applied': True, 'detector_hit': False}
+p01 not_forecast        answer     recall 2/2 unmatched [] 
+p05 not_forecast        answer     recall 2/2 unmatched [] 
+10 tasks; code checks pass (grounding and extra conditions): 7
