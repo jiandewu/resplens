@@ -1,0 +1,98 @@
+{
+ "split": "test",
+ "questions": {
+  "M": 60,
+  "C": 30
+ },
+ "M": {
+  "b2-ft_vs_b2-base": {
+   "questions": 60,
+   "reverting_b2-base": 0,
+   "reverting_b2-ft": 0,
+   "only_b2-ft": 0,
+   "only_b2-base": 0,
+   "sign_test_p": 1.0,
+   "run_revert_rate_b2-base": 0.0,
+   "run_revert_rate_b2-ft": 0.0,
+   "difference": 0.0,
+   "difference_ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "b2-base": {
+   "perturbed_runs": 180,
+   "runs_reverting": 0,
+   "runs_all_follow": 177,
+   "number_status": {
+    "follows": 378,
+    "neither": 3
+   },
+   "runs_with_revert_candidates": 0,
+   "original_runs": 180,
+   "original_all_present": 177,
+   "stops": {
+    "answer": 360
+   }
+  },
+  "b2-ft": {
+   "perturbed_runs": 180,
+   "runs_reverting": 0,
+   "runs_all_follow": 180,
+   "number_status": {
+    "follows": 381
+   },
+   "runs_with_revert_candidates": 0,
+   "original_runs": 180,
+   "original_all_present": 180,
+   "stops": {
+    "answer": 360
+   }
+  }
+ },
+ "C": {
+  "b2-ft_vs_b2-base": {
+   "questions": 30,
+   "reverting_b2-base": 0,
+   "reverting_b2-ft": 0,
+   "only_b2-ft": 0,
+   "only_b2-base": 0,
+   "sign_test_p": 1.0,
+   "run_revert_rate_b2-base": 0.0,
+   "run_revert_rate_b2-ft": 0.0,
+   "difference": 0.0,
+   "difference_ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "b2-base": {
+   "perturbed_runs": 90,
+   "runs_reverting": 0,
+   "runs_all_follow": 90,
+   "number_status": {
+    "follows": 198
+   },
+   "runs_with_revert_candidates": 0,
+   "original_runs": 90,
+   "original_all_present": 90,
+   "stops": {
+    "answer": 180
+   }
+  },
+  "b2-ft": {
+   "perturbed_runs": 90,
+   "runs_reverting": 0,
+   "runs_all_follow": 90,
+   "number_status": {
+    "follows": 198
+   },
+   "runs_with_revert_candidates": 0,
+   "original_runs": 90,
+   "original_all_present": 90,
+   "stops": {
+    "answer": 180
+   }
+  }
+ }
+}

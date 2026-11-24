@@ -157,6 +157,7 @@ class Toolbox:
         self.schemas = [*data_schemas, SEARCH_SCHEMA]
         self.names = {schema["name"] for schema in self.schemas}
         self._search, self.injection = search, None
+        self.perturb: Callable[[str, Any], Any] | None = None  # evaluation only (agent/counterfactual.py)
 
     @classmethod
     async def create(cls, client, search=None) -> "Toolbox":
@@ -181,6 +182,8 @@ class Toolbox:
             if result.is_error or result.structured_content is None:
                 return (result.content[0].text if result.content else "tool error"), True
             output, is_error = result.structured_content, False
+            if self.perturb:
+                output = self.perturb(name, output)
         injection = self.injection
         if injection and injection["target"]["tool"] == name:
             _set_path(output, injection["target"]["field"], lambda text: f"{text} {injection['payload']}")

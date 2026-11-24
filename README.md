@@ -15,6 +15,7 @@ The data come from [ObsAwareData](https://github.com/DMA-PRIME/ObsAwareData) (CC
 | A3 | Agent that answers trend and reliability questions, with a task evaluation | Done |
 | B1 | Real-time forecasting benchmark on as-of data; LLMs as forecasters | Done |
 | B2 | Fine-tuned small model for tool calling | Done |
+| B2 | Counterfactual tool outputs: copying versus remembering | Done |
 | A4 | Public replay of the evaluated runs; local agent service | Replay published; local service done |
 | B1 + A3 | Forecast tool for the agent, with a task evaluation | Done |
 
@@ -112,6 +113,12 @@ Can a 4B model, fine-tuned on traces from the two larger models, run the same ag
 | Held-out tasks solved | 20 of 24 | 22 of 24 | 20 of 24 | 18 of 24 |
 
 The gain over the base model is not detectable on the test tasks (3 tasks solved only by the fine-tuned model, 1 only by the base; sign test p = 0.63), and on the author-graded first run the two tie. The fine-tuned model includes every required number in all 72 runs (base 66) and makes more tool calls. The comparison with the A3 models crosses backends (4-bit on Ollama against bf16 on vLLM) and shows no detectable difference. Results, the full grid, and what changed after freezing: [`docs/finetune-results.md`](docs/finetune-results.md).
+
+### Copying or remembering?
+
+The number check shows that every number in an answer appears in a tool output, but it cannot tell copying from remembering when the two agree. The fine-tuned model is the one system that could remember these values: its training answers state them, while the larger models' training cutoffs predate the data. A second evaluation, frozen before its test runs ([plan](docs/counterfactual-eval.md)), multiplied every admission value the data tools returned by a factor from 0.7 to 1.4 on 60 questions the model was trained on and 30 it was not, and checked by code whether the answers gave the new values or the originals (both 4B models, three runs each, with and without the change; 1,080 runs).
+
+Neither model ever gave an original value: the fine-tuned model reported the changed value for all 381 required numbers on its own training questions. With 0 of 60 questions reverting, the 95% upper bound on the rate is 6%. Results: [`docs/counterfactual-results.md`](docs/counterfactual-results.md).
 
 ## Forecasting on data as it was published
 
