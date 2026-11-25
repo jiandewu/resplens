@@ -9,6 +9,7 @@ import argparse
 import json
 import re
 import time
+import urllib.error
 import urllib.request
 from datetime import datetime
 from pathlib import Path
@@ -42,19 +43,32 @@ def format_documents(items: list[tuple[str, str]]) -> str:
 
 
 def chat(messages: list[dict], num_ctx: int, keep_alive: str | int = "30m") -> dict:
+    # truncate/shift false: by default Ollama silently cuts a prompt longer than num_ctx (observed 2026-11-25,
+    # Ollama 0.40.13: 8,905 tokens became prompt_eval_count 2,051), which the check below cannot see, since it
+    # only sees the count after truncation. With truncate false the server rejects the request instead.
     body = {"model": GENERATOR, "messages": messages, "stream": False, "think": False, "keep_alive": keep_alive,
+            "truncate": False, "shift": False,
             "options": {"num_ctx": num_ctx, "num_predict": MAX_OUTPUT, "temperature": 0, "seed": 0}}
     request = urllib.request.Request(f"{OLLAMA_URL}/api/chat", json.dumps(body).encode(),
                                      {"Content-Type": "application/json"})
     start = time.perf_counter()
-    with urllib.request.urlopen(request, timeout=3600) as response:
-        result = json.load(response)
+    try:
+        with urllib.request.urlopen(request, timeout=3600) as response:
+            result = json.load(response)
+    except urllib.error.HTTPError as error:
+        detail = error.read().decode(errors="replace")
+        if error.code == 400 and "context" in detail:
+            raise ContextOverflow(f"num_ctx {num_ctx}: {detail}") from error
+        raise
     result["wall_seconds"] = time.perf_counter() - start
     prompt, output = result.get("prompt_eval_count", 0), result.get("eval_count", 0)
     # A prompt that fills the window leaves no room for the answer: the server then drops earlier
     # context while generating, without an error (observed: an invented quote at num_ctx 131,072).
     if prompt + MAX_OUTPUT > num_ctx:
         raise ContextOverflow(f"prompt {prompt} + output limit {MAX_OUTPUT} exceeds num_ctx {num_ctx}")
+    # Generation stopped by the window rather than by the output limit.
+    if result.get("done_reason") == "length" and output < MAX_OUTPUT:
+        raise ContextOverflow(f"window full after {prompt} prompt + {output} output tokens (num_ctx {num_ctx})")
     return result
 
 

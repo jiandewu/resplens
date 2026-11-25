@@ -1,6 +1,6 @@
 from resplens.retrieval.bm25 import BM25, tokenize
 from resplens.retrieval.chunking import approx_tokens, chunk_document, sections
-from resplens.retrieval.metrics import bootstrap_ci, first_hit_rank, mrr, recall_at
+from resplens.retrieval.metrics import bootstrap_ci, contains, first_hit_rank, mrr, normalize, recall_at
 
 
 DOC = """# Methods
@@ -71,6 +71,13 @@ def test_rank_and_metrics():
     assert mrr(ranks) == (1 + 0.5 + 0.25) / 4
     low, high = bootstrap_ci([0.0, 1.0] * 20)
     assert low < 0.5 < high
+
+
+def test_normalize_treats_identifier_underscores_as_spaces():
+    assert normalize("Weeks are `observed_valid`.") == "weeks are observed valid."
+    assert contains("Weeks are `observed_valid`.", "weeks are observed valid")
+    assert contains("Weeks are `observed_valid`.", "observed_valid")
+    assert normalize("_emphasis_ and <st>_long_all.csv") == "emphasis and <st>long all.csv"
 
 
 def test_long_table_is_split_between_rows():

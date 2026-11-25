@@ -7,8 +7,10 @@ import re
 
 
 def normalize(text: str) -> str:
-    """Lowercase, Markdown emphasis and code marks removed, whitespace collapsed."""
-    return re.sub(r"\s+", " ", re.sub(r"[*`_]", "", text.lower())).strip()
+    """Lowercase; an underscore inside a word becomes a space, so `observed_valid` matches "observed valid"; other
+    Markdown emphasis and code marks removed; whitespace collapsed."""
+    text = re.sub(r"(?<=[^\W_])_+(?=[^\W_])", " ", text.lower())
+    return re.sub(r"\s+", " ", re.sub(r"[*`_]", "", text)).strip()
 
 
 def contains(chunk_text: str, quote: str) -> bool:
